@@ -1,8 +1,11 @@
 body{
     background-color:#DDDDF2 ;
     margin: 0px;
-        font-family: "Patrick Hand", cursive;
-    background-color: #e8e8f5;
+    background-color:#F7F3EE;
+    background-image:url("Assets/beige-paper-1920x1080.png");
+    background-size:cover;
+    background-attachment:fixed;
+    min-height: 100vh;
 }
 
 ul{
@@ -43,28 +46,65 @@ a{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 80vh;
+    min-height: 100vh;
+    padding: 80px 20px 150px;
+    box-sizing: border-box;
 }
 h1{
-    font-size: 50px;
-    margin: 0px;
-    color: #000000;
-    padding: 20px;
+    font-family: "cormorant garamond", serif;
+    font-size: 40px;
 }
 h2{
-    font-size: 20px;
+    font-size: 30px;
     margin: 0px;
     color: #000000;
-   
+    text-align: center;
+   font-family: "cormorant garamond", serif;
+   font-weight: normal;
 }
 p{
     font-size: 15px;
     margin: 0px;
     color: #000000;
     padding: 20px;
+    text-align: center;
 }
 
 li:hover{
    background-color: rgb(163, 178, 232);
 
+}
+
+.arrow_text{
+    font-size: 15px;
+    margin: 0px;
+    color: #000000;
+    padding: 20px;
+    font-family: "caveat", cursive;
+}
+
+#arrow{
+    width: 50px;
+    height: 50px;
+    display: block;
+    width: 50%;
+    margin: auto;
+
+}
+.view-work-div{
+    margin-top: 60px;
+    text-align: center;
+}
+
+
+.image_DeepWithin{
+    width: 500px;
+    height: auto;
+}
+
+.Feature_image{
+    margin-top: 90px;
+}
+.Featured_Image2{
+    margin-top: 90px;
 }
