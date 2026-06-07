@@ -3,44 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>Portfolio – My Work</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="Homepage.css">
     <link rel="stylesheet" href="MyWork.css">
 </head>
 <header>
-
-<div>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="AboutMe.html">About</a></li>
-            <li><a href="MyWork.html">My Work</a></li>
-            <li><a href="Resume.pdf">Resume</a></li>
-        </ul>
-    </nav>
-</div>
-
+    <div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="AboutMe.html">About me</a></li>
+                <li><a href="MyWork.html">My work</a></li>
+                <li><a href="Resume.pdf">Resume</a></li>
+            </ul>
+        </nav>
+    </div>
 </header>
 <body>
-    <div class="Content_Container2">
-        <div class="Content_Container_Row">
-            <a href="#">
-         <img class="img_size" src="assets/barnleylogo.png" alt="Barnley Logo">
-            </a>
-            <a href="WhoPosionedPippy.html">
-         <img class="img_size" src="assets/who posioned pippy.png" alt="'Who Posioned Pippy'">
-            </a>
 
+    <!-- UPPER SECTION -->
+    <div class="uppersection">
+        <div class="back-button">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"/>
+            </svg>
         </div>
-        <div class="Content_Container_Row2">
-            <a href="TheInterfaceIsLyingToYou.html">
-        <img class="img_size" src="assets/theinterfaceislyingtou.png" alt="The interfce is lying to you">
-            </a>
-            <a href="#">
-        <img class="img_size" src="assets/contentcreation.png" alt="'Content Creation'">
-            </a>
+        <div>
+            <h1>Explore My Projects</h1>
+            <h2>Designing immersive storytelling through UX, Storytelling and Interaction</h2>
+        </div>
+    </div>
+
+    <!-- GRID -->
+    <div class="all-projects-container">
+
+        <!-- CARD 1: Featured (tall, col 1, rows 1–2) -->
+        <div class="feature-container featured">
+            <div class="tags">
+                <div class="feature_tag"><h3>&#9734; Featured Project</h3></div>
+                <div class="interactive_tag"><h3>Interactive</h3></div>
+            </div>
+            <img src="assets/theinterfaceislyingtou.png" alt="The Interface Is Lying To You" class="featured-image">
+            <div class="featured-description">
+                <h1>The interface is lying to you</h1>
+                <p class="text_size">UX / Interactive Experience</p>
+            </div>
+            <div class="description">
+                <div class="description-text">
+                    <p class="text_description">An interactive web experience that explores deceptive UX patterns challenges user trust through play.</p>
+                </div>
+                <div class="button">
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARD 2: Who Poisoned Pippy (top-middle) -->
+        <div class="feature-container2">
+            <div class="tags">
+                <div class="interactive_tag"><h3>Interactive</h3></div>
+            </div>
+            <img src="assets/whoposionedpippy.png" alt="Who Poisoned Pippy?" class="featured-image">
+            <div class="featured-description">
+                <h1>Who Poisoned Pippy?</h1>
+                <p class="text_size">Interactive Storytelling</p>
+            </div>
+            <div class="description">
+                <div class="description-text">
+                    <p class="text_description">An interactive detective style experience that guides users through clues, evidence and narrative choices.</p>
+                </div>
+                <div class="button">
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARD 3: Deep Within (top-right) -->
+        <div class="feature-container2">
+            <div class="tags">
+                <div class="mobileux_tag"><h3>Mobile UX</h3></div>
+            </div>
+            <img src="assets/Group 3.svg" alt="Deep Within" class="featured-image">
+            <div class="featured-description">
+                <h1>Deep within</h1>
+                <p class="text_size">UX Research / Design</p>
+            </div>
+            <div class="description">
+                <div class="description-text">
+                    <p class="text_description">A mindfulness app redesign focused on creating a calmer, more intuitive mobile experience through UX research and interface design.</p>
+                </div>
+                <div class="button">
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARD 4: Barnley Training Guide (wide, col 2–3, row 2) -->
+        <div class="feature-container2 wide-card">
+            <div class="card-left">
+                <div class="tags">
+                    <div class="ux_tag"><h3>UX Case Study</h3></div>
+                    <div class="webdesign_tag"><h3>Web Design</h3></div>
+                </div>
+                <div class="featured-description">
+                    <h1>Barnley Training Guide UX</h1>
+                    <p class="text_size">UX Research / Design</p>
+                </div>
+                <div class="description">
+                    <div class="description-text">
+                        <p class="text_description">Redesigning the Barnley Training Guide into a website to improve navigation, clarity and user engagement.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-right">
+                <img src="assets/iMac 24 inch.svg" alt="Barnley Training Guide" class="featured-image">
+                <div id="button-posit" class="button">
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
+                    </svg>
+                </div>
+            </div>
         </div>
 
     </div>
+
 </body>
 </html>

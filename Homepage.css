@@ -1,6 +1,8 @@
 body{
     background-color:#DDDDF2 ;
     margin: 0px;
+        font-family: "Patrick Hand", cursive;
+    background-color: #e8e8f5;
 }
 
 ul{
@@ -11,6 +13,7 @@ ul{
     margin: 0px;
     
 }
+
 li a{
     margin: 0px 20px;
     text-decoration: none;
