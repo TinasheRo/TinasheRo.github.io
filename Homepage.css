@@ -106,5 +106,19 @@ li:hover{
     margin-top: 90px;
 }
 .Featured_Image2{
-    margin-top: 90px;
+    
+}
+
+.image_Pippy{
+    width: 700px;
+    height: auto;
+}
+.feature_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 80px 20px 150px;
+    box-sizing: border-box;
 }
