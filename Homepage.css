@@ -6,7 +6,9 @@ body{
     background-attachment:fixed;
     min-height: 100vh;
 }
-
+.sub-head{
+    margin: 0px;
+}
 ul{
     display: flex;
     justify-content: end;
