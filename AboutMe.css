@@ -33,7 +33,7 @@ h3{
 
     font-weight:500;
     margin-bottom: 0px;
-     text-align: left;
+    text-align: left;
     padding: 10px;
     font-family: "cormorant garamond", serif;
  
@@ -92,7 +92,7 @@ h4{
     justify-items: center;
     justify-content: center;
     text-align: center;
-
+    justify-content: flex-start;
 }
 
 .h4_mod{
@@ -106,12 +106,15 @@ h4{
     margin-top: 10px;
     padding: 0px;
     text-align: center;
+    min-height: 40px;
 }
 .skill_card h4{
     font-size: 25px;
     text-align: center;
     font-family: "cormorant garamond", serif;
-    font-weight: normal;}
+    font-weight: normal;
+    min-height: 40px;
+}
 #skills_head{
     font-size: 40px;
      text-align: center;
