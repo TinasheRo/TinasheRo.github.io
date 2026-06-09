@@ -162,3 +162,6 @@ h2{
     transform: translateY(40px);
 }
 
+html{
+    scroll-behavior: smooth;
+}
