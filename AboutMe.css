@@ -25,12 +25,13 @@ p{
     margin-bottom: 0px;
     padding: 10px;
     text-align: left;
+    font-family: sans-serif;
     transform: translateY(-30px);
 }
 h3{
     font-size: 40px;
     transform: translateY(-50px);
-    font-weight: bold;
+    font-weight:500;
     margin-bottom: 0px;
      text-align: left;
     padding: 10px;
