@@ -52,6 +52,7 @@ a{
 h1{
     font-family: "cormorant garamond", serif;
     font-size: 40px;
+    padding: 0px;
 }
 h2{
     font-size: 30px;
