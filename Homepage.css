@@ -6,8 +6,8 @@ body{
     background-attachment:fixed;
     min-height: 100vh;
 }
-.sub-head{
-    margin: 0px;
+#subhead{
+    margin-top: 0px;
 }
 ul{
     display: flex;
@@ -17,7 +17,9 @@ ul{
     margin: 0px;
     
 }
-
+.Social_Media_Icons{
+    margin-top: 20px;
+}
 li a{
     margin: 0px 20px;
     text-decoration: none;
@@ -55,6 +57,7 @@ h1{
     font-family: "cormorant garamond", serif;
     font-size: 40px;
     padding: 0px;
+    margin-bottom: 10px;
 }
 h2{
     font-size: 30px;
