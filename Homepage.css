@@ -1,7 +1,7 @@
 body{
     background-color:#f2f2f8 ;
     margin: 0px;
-    background-image:url("Assets/beige-paper-1920x1080.png");
+    background-image:url("assets/beige-paper-1920x1080.png");
     background-size:cover;
     background-attachment:fixed;
     min-height: 100vh;
