@@ -62,11 +62,17 @@ font-style: italic;
     font-size: 20px;
 }
 
-.Problem_container h2{
+.Problem_container h2, .userpersona_container h2{
     font-weight: 800;
     margin-left: 30px;
 }
-
+.userpersona_container{
+    margin-top: 30px;
+}
+.userpersona_container h3{
+    margin-left: 30px;
+    font: size 20px;
+}
 .Problem_container ul{
     list-style-type: circle;
     margin-left: 30px;
@@ -83,11 +89,11 @@ font-style: italic;
     background-color: #F8F8F8;
     padding: 20px;
     margin-left: 40px;
-    width: 25rem;
+    width: 35rem;
     text-align: center;
     margin-left: 35px;
-    font-size: 20px;
-    font-style: italic;
+    font-size: 25px;
+
     margin-top: 20px;
 
 }
@@ -100,7 +106,7 @@ font-style: italic;
     margin-top: 60px;
 }
 .Research_Finding h3{
-    margin-left: 30px;
+    margin-left: 35px;
 }
 .no1_container h4{
     margin-left: 30px;
