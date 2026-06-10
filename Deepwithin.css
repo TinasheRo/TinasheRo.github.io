@@ -83,15 +83,24 @@ font-style: italic;
     background-color: #F8F8F8;
     padding: 20px;
     margin-left: 40px;
-    width: 23rem;
+    width: 25rem;
+    text-align: center;
+    margin-left: 35px;
+    font-size: 20px;
+    font-style: italic;
     margin-top: 20px;
+
 }
 .no1_container{
     display: flex;
     flex-direction: row;
 }
+
+.Research_Finding{
+    margin-top: 60px;
+}
 .Research_Finding h3{
-    margin-left: 20px;
+    margin-left: 30px;
 }
 .no1_container h4{
     margin-left: 30px;
