@@ -1,10 +1,10 @@
 body{
-    background-color:#f2f2f8 ;
-    margin: 0px;
+    background-color:#f2f2f8;
     background-image:url("assets/beige-paper-1920x1080.png");
     background-size:cover;
     background-attachment:fixed;
     min-height: 100vh;
+    margin: 0px;
 }
 #subhead{
     margin-top: 0px;
@@ -35,7 +35,7 @@ li a{
 }
 header{
 background-color: #F8F8F8;
-margin: 0px;
+
 border-bottom: 1px solid #000000;
 
 }
