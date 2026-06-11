@@ -26,6 +26,14 @@ ul{
     align-items: center;
     display: flex;
     justify-content: center;
+
+}
+
+.Social_Media_Icons img{
+    max-width: 100%;
+    height: auto;
+    display: block;
+    background: transparent;
 }
 li a{
     margin: 0px 20px;
