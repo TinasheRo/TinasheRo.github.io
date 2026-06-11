@@ -23,13 +23,31 @@ hr{
     border: 0.5px solid rgba(0,0,0,0.1);}
 #smalldescr{
     font-size: medium;
-    margin-top: 40px;
+    margin-top:
+     40px;
 }
 
 
 .Intro-container h1{
     margin-top: 10px;
     font-weight:900;
+}
+
+#prototype_sec{
+    width: 100%;
+    display: block;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+
+}
+
+.vid{
+    width: 100%;
+    max-width: 500px;
+    justify-content: center;
+    
 }
 
 .Intro-container p{
@@ -42,7 +60,7 @@ hr{
  
 }
 .image_deep2{
-    width: 50%;
+    width: 70%;
     margin-left: auto;
     margin-right: auto;
     display: block;
@@ -56,7 +74,9 @@ margin-top: 20px;
 color: rgba(0, 0, 0, 0.698);
 font-style: italic;
 }
-
+.Problem_container {
+    margin-top: 40px;
+}
 .Problem_container h3{
     margin-left: 30px;
     font-size: 20px;
