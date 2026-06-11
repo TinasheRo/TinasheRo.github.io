@@ -7,7 +7,11 @@ body{
     margin: 0px;
 }
 #subhead{
-    margin-top: 0px;
+    margin-top: 15px;
+    font-size: 20px;
+}
+.Social_Media_Icons{
+    margin-top: 100px;
 }
 ul{
     display: flex;

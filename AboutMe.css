@@ -7,11 +7,15 @@
     padding: 30px;
     width: 80%;
     height: auto;
-    margin: 70px auto;
+    margin: 50px auto;
+}
+.content-container{
+     margin-right: 30px;
 }
 .content-container p{
     width: 400px;
     text-align: left;
+   
 }
 
 .about-me-photo{
@@ -119,6 +123,7 @@ h4{
     font-family: "cormorant garamond", serif;
     font-weight: normal;
     min-height: 40px;
+    padding: 10px;
 }
 #skills_head{
     font-size: 30px;
@@ -135,7 +140,7 @@ h4{
   align-items: start;
   max-width: 1500px;
   margin: 0 auto;
-  padding: 80px 60px;
+  padding: 60px 60px;
    
 }
 .logo{
@@ -160,4 +165,19 @@ h4{
   grid-template-rows: 90px auto 45px auto;
   justify-items: center;
   text-align: center;
+}
+@keyframes appear{
+    from{
+        opacity: 0;
+        scale: 0.5;
+    }
+    to{
+        opacity: 1;
+        scale: 1;
+    }
+}
+.animation{
+    animation: appear linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
 }
