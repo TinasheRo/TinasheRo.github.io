@@ -82,7 +82,8 @@ font-style: italic;
 }
 .Problem_container h3{
     margin-left: 30px;
-    font-size: 20px;
+    font-size: 30px;
+    font-family: "cormorant garamond", serif;
 }
 
 .Problem_container h2, .userpersona_container h2{
@@ -94,7 +95,8 @@ font-style: italic;
 }
 .userpersona_container h3{
     margin-left: 30px;
-    font-size:  20px;
+    font-size:  30px;
+    font-family: "cormorant garamond", serif;
 }
 .Problem_container ul{
     list-style-type: circle;
@@ -130,6 +132,8 @@ font-style: italic;
 }
 .Research_Finding h3{
     margin-left: 35px;
+    font-size: 30px;
+    font-family: "cormorant garamond", serif;
 }
 .no1_container h4{
     margin-left: 30px;
@@ -156,6 +160,8 @@ font-style: italic;
 }
 .Competitor_Analysis h3{
       margin-left: 30px;
+      font-size: 30px;
+      font-family: "cormorant garamond", serif;
 }
 
 .Designprocess p{
@@ -163,6 +169,8 @@ font-style: italic;
 }
 .Designprocess h3{
     margin-left: 30px;
+    font-size: 30px;
+    font-family: "cormorant garamond", serif;
 }
 .iterations_section p{
     margin-left: 30px;
@@ -170,24 +178,24 @@ font-style: italic;
 
 .iterations_section h3{
     margin-left: 30px;
+    font-family: "cormorant garamond", serif;
+    font-size: 30px;
 }
 
 .iterations_section h5{
     margin-left: 30px;
-    font-size: 40px;
+    font-size: 35px;
     margin-bottom: 0px;
 }
 .iterations_section h4{
     margin-left: 30px;
-    font-size: 30px;
+    font-size: 25px;
     margin-top: 5px;
 }
 .iterations_section li{
     width: 500px;
-    
-
-    
-   
+    text-align: center;
+    list-style: none;
     margin-left: 30px;
     margin-top: 30px;
     vertical-align: top ;
@@ -205,21 +213,6 @@ max-width: 1000px;
     
 }
 
-.HomeandMood{
-    display: flex;
-    flex-direction: row;
-    gap:0;
-    margin: 0;
-    align-items: center;
-    text-align: center;
-    margin-left: 30px;
-    
-}
-.HomeandMood p{
-padding: 0px;
-margin: 5px;
-
-}
 .competiter_pic{
     width: 700px;
     margin-left: 30px;
@@ -227,6 +220,13 @@ margin: 5px;
 }
 
 
+.designprocess_image{
+    width: 1200px;
+    height: auto;
+    margin-right: 70px;
+}
 
-
-
+span{
+    font-weight: 800;
+    font-size: 20px;
+}
