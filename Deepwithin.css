@@ -91,7 +91,7 @@ font-style: italic;
 }
 .userpersona_container h3{
     margin-left: 30px;
-    font: size 20px;
+    font-size:  20px;
 }
 .Problem_container ul{
     list-style-type: circle;
@@ -147,3 +147,48 @@ font-style: italic;
    display: inline-block;
   
 }
+
+.Competitor_Analysis p{
+      margin-left: 30px;
+}
+.Competitor_Analysis h3{
+      margin-left: 30px;
+}
+
+.Designprocess p{
+    margin-left: 30px;
+}
+.Designprocess h3{
+    margin-left: 30px;
+}
+.iterations_section p{
+    margin-left: 30px;
+}
+
+.iterations_section h3{
+    margin-left: 30px;
+}
+
+.iterations_section h5{
+    margin-left: 30px;
+    font-size: 30px;
+}
+.iterations_section h4{
+    margin-left: 30px;
+    font-size: 30px;
+}
+.iterations_section li{
+    width: 500px;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: 30%;
+    vertical-align: top;
+}
+.image_iteration{
+margin-top: 20px;
+}
+
+
+
+
