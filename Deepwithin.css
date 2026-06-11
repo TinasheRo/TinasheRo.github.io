@@ -26,11 +26,14 @@ hr{
     margin-top:
      40px;
 }
-
+.Intro-container h5{
+    font-size: medium;
+}
 
 .Intro-container h1{
     margin-top: 10px;
     font-weight:900;
+    font-size: 70px;
 }
 
 #prototype_sec{
@@ -79,7 +82,8 @@ font-style: italic;
 }
 .Problem_container h3{
     margin-left: 30px;
-    font-size: 20px;
+    font-size: 30px;
+    font-family: "cormorant garamond", serif;
 }
 
 .Problem_container h2, .userpersona_container h2{
@@ -91,7 +95,8 @@ font-style: italic;
 }
 .userpersona_container h3{
     margin-left: 30px;
-    font-size:  20px;
+    font-size:  30px;
+    font-family: "cormorant garamond", serif;
 }
 .Problem_container ul{
     list-style-type: circle;
@@ -127,6 +132,8 @@ font-style: italic;
 }
 .Research_Finding h3{
     margin-left: 35px;
+    font-size: 30px;
+    font-family: "cormorant garamond", serif;
 }
 .no1_container h4{
     margin-left: 30px;
@@ -153,6 +160,8 @@ font-style: italic;
 }
 .Competitor_Analysis h3{
       margin-left: 30px;
+      font-size: 30px;
+      font-family: "cormorant garamond", serif;
 }
 
 .Designprocess p{
@@ -160,6 +169,8 @@ font-style: italic;
 }
 .Designprocess h3{
     margin-left: 30px;
+    font-size: 30px;
+    font-family: "cormorant garamond", serif;
 }
 .iterations_section p{
     margin-left: 30px;
@@ -167,31 +178,55 @@ font-style: italic;
 
 .iterations_section h3{
     margin-left: 30px;
+    font-family: "cormorant garamond", serif;
+    font-size: 30px;
 }
 
 .iterations_section h5{
     margin-left: 30px;
-    font-size: 30px;
+    font-size: 35px;
+    margin-bottom: 0px;
 }
 .iterations_section h4{
     margin-left: 30px;
-    font-size: 30px;
+    font-size: 25px;
+    margin-top: 5px;
 }
 .iterations_section li{
     width: 500px;
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content:flex-end;
-   
+    list-style: none;
+    margin-left: 30px;
+    margin-top: 30px;
     vertical-align: top ;
 }
 .image_iteration{
-margin-top: 20px;
+margin-top: 30px;
 margin-left: 0px;
+max-width: 1000px;
+}
+.iteration_container_homepage{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    align-items: center;
+    
+}
+
+.competiter_pic{
+    width: 700px;
+    margin-left: 30px;
+    padding: 40px 0px 40px 0px;
 }
 
 
+.designprocess_image{
+    width: 1200px;
+    height: auto;
+    margin-right: 70px;
+}
 
-
+span{
+    font-weight: 800;
+    font-size: 20px;
+}
