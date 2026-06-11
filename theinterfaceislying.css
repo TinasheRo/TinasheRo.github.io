@@ -1,0 +1,15 @@
+#change_width{
+       width: 100%;
+    display: block;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+
+}
+
+.interactive_link{
+    font-family:"caveat", cursive;
+    font-weight: 800;
+    font-size: large;
+}
