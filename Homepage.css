@@ -7,9 +7,10 @@ body{
     margin: 0px;
 }
 #subhead{
-    margin-top: 15px;
+    margin-top: 0px;
     font-size: 20px;
     font-weight: 600;
+    line-height: 1.6;
 }
 .Social_Media_Icons{
     margin-top: 100px;
@@ -75,6 +76,8 @@ h1{
     padding-bottom: 0px;
     margin-bottom: 10px;
     text-align: center;
+    font-weight: bolder;
+    line-height: 1.6;
 }
 h2{
     font-size: 30px;
@@ -88,6 +91,7 @@ h2{
 #subheading2{
 color: lch(60% 0 0 / 2);
      font-size: 1rem;
+
 }
 p{
     font-size: 14px;
