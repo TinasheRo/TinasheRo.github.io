@@ -8,11 +8,14 @@ body{
 }
 #subhead{
     margin-top: 15px;
-    font-size: 20px;
+    font-size: 1.5rem;
+    font-weight:normal;
+    font-family: "inter";
+    
 }
-.Social_Media_Icons{
-    margin-top: 100px;
-}
+
+
+
 ul{
     display: flex;
     justify-content: end;
@@ -21,19 +24,42 @@ ul{
     margin: 0px;
     
 }
+.tags_shape{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    font-size: 0.875rem;
+    align-items: center;
+    justify-content: center;
+    margin-top: 12px;
+   
+}
+
+.tags_text{
+    border: #757575 1px solid;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    border-style: double;
+    color: #757575;
+    height: 0.875rem;
+    display: inline-block;
+    padding: 6px 12px;
+}
 .Social_Media_Icons{
     margin-top: 20px;
     align-items: center;
     display: flex;
     justify-content: center;
-
+    margin-top: 20px;
 }
 
 .Social_Media_Icons img{
-    max-width: 100%;
+    width: 48px;
+    height: 48px;
     height: auto;
     display: block;
     background: transparent;
+    padding-top: 20px;
 }
 li a{
     margin: 0px 20px;
@@ -70,21 +96,22 @@ a{
 }
 h1{
     font-family: "cormorant garamond", serif;
-    font-size: 40px;
+    font-size: 3.815rem;
     padding-bottom: 0px;
     margin-bottom: 10px;
     text-align: center;
+    font-weight: bolder;
 }
 h2{
-    font-size: 30px;
+    font-size: 2.488rem;
     margin: 0px;
-    color: #000000;
     text-align: center;
-   font-family: "cormorant garamond", serif;
-   font-weight: normal;
+    font-family: "cormorant garamond", serif;
+    font-weight: 700;
 }
+
 p{
-    font-size: 15px;
+    font-size: 1rem;
     margin: 0px;
     color: #000000;
     padding: 10px;
@@ -103,6 +130,7 @@ li:hover{
     padding: 20px;
     font-family: "caveat", cursive;
     transition: transform 0.2s ease;
+    opacity: none;
 }
 .arrow_text:hover{
   transform: translateY(-5px);
@@ -120,7 +148,9 @@ li:hover{
     margin-top: 60px;
     text-align: center;
 }
-
+p{
+    font-size: 1rem;
+}
 
 .image_DeepWithin{
     width: 750px;
@@ -131,8 +161,13 @@ li:hover{
     margin-top:120px;
     
 }
-
-
+#width_text{
+    width: 700px;
+}
+.image_Pippy2{
+    width: 750px;
+   margin-left: 20px;
+}
 .image_Pippy{
     width: 700px;
     height: auto;
@@ -174,6 +209,21 @@ h2{
     transform: translateY(40px);
 }
 
+
+.start_page p{
+  
+     line-height: 1.6;
+     font-family: 1.25rem;
+     opacity: 0.7;
+     padding-top: 8px;
+     font-family: 100;
+}
 html{
     scroll-behavior: smooth;
+}
+
+.font_bold{
+    opacity: 1;
+    
+    font-style: italic;
 }
