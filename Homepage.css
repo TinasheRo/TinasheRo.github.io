@@ -1,3 +1,21 @@
+
+:root{
+    --h1-font-size: 3.75rem;
+    --h2-font-size: 3rem;
+    --h3-font-size: 2.5rem;
+    --h4-font-size: 2rem;
+    --h5-font-size: 1.5rem;
+    --paragraph-lg-font-size:1.25rem;
+    --paragraph-md-font-size: 1rem;
+}
+
+:root{
+ 
+    --paragraph-lg-line-height:1.5rem;
+    --paragraph-md-line-height:1.25rem;
+
+}
+
 body{
     background-color:#f2f2f8;
     background-image:url("assets/beige-paper-1920x1080.png");
@@ -9,9 +27,10 @@ body{
 #subhead{
 
     margin-top: 15px;
-    font-size: 1.953rem;
-    font-weight:400;
+    font-size: var(--h4-font-size);
     font-family: "inter";
+    font-weight: lighter;
+
     
     margin-top: 0px;
     font-size: 20px;
@@ -105,7 +124,7 @@ a{
 }
 h1{
     font-family: "cormorant garamond", serif;
-    font-size: 3.815rem;
+    font-size: var(--h1-font-size);
 
     font-size: 3rem;
 
@@ -136,7 +155,7 @@ color: lch(60% 0 0 / 2);
 
 p{
 
-    font-size: 1rem;
+    font-size: var(--paragraph-lg-font-size);
     font-size: 14px;
 
     margin: 0px;
@@ -151,7 +170,7 @@ li:hover{
 }
 
 .arrow_text{
-    font-size: 18px;
+    font-size: var(--paragraph-md-font-size);
     margin: 0px;
     color: #000000;
     padding: 20px;
@@ -240,7 +259,6 @@ h2{
 .start_page p{
   
      line-height: 1.6;
-     font-family: 1.25rem;
      opacity: 0.7;
      padding-top: 8px;
      font-family: 100;
