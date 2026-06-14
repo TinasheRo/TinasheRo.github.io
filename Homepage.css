@@ -7,11 +7,21 @@ body{
     margin: 0px;
 }
 #subhead{
+<<<<<<< HEAD
     margin-top: 15px;
     font-size: 1.5rem;
     font-weight:normal;
     font-family: "inter";
     
+=======
+    margin-top: 0px;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.6;
+}
+.Social_Media_Icons{
+    margin-top: 100px;
+>>>>>>> cde6cd4150ee5016d7135a6275c5e20ea8f34725
 }
 
 
@@ -96,22 +106,44 @@ a{
 }
 h1{
     font-family: "cormorant garamond", serif;
+<<<<<<< HEAD
     font-size: 3.815rem;
+=======
+    font-size: 3rem;
+>>>>>>> cde6cd4150ee5016d7135a6275c5e20ea8f34725
     padding-bottom: 0px;
     margin-bottom: 10px;
     text-align: center;
     font-weight: bolder;
+<<<<<<< HEAD
+=======
+    line-height: 1.6;
+>>>>>>> cde6cd4150ee5016d7135a6275c5e20ea8f34725
 }
 h2{
     font-size: 2.488rem;
     margin: 0px;
     text-align: center;
     font-family: "cormorant garamond", serif;
+<<<<<<< HEAD
     font-weight: 700;
+=======
+    font-weight: normal;
+}
+
+#subheading2{
+color: lch(60% 0 0 / 2);
+     font-size: 1rem;
+
+>>>>>>> cde6cd4150ee5016d7135a6275c5e20ea8f34725
 }
 
 p{
+<<<<<<< HEAD
     font-size: 1rem;
+=======
+    font-size: 14px;
+>>>>>>> cde6cd4150ee5016d7135a6275c5e20ea8f34725
     margin: 0px;
     color: #000000;
     padding: 10px;
