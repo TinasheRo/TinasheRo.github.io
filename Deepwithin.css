@@ -223,7 +223,7 @@ font-style: italic;
 }
 .iterations_section h4 {
     margin-left: 30px;
-    font-size: var(--h4-font-size);
+    font-size: var(--paragraph-md-font-size);
     margin-top: 8px;
     margin-bottom: 0px;
 }
