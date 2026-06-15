@@ -28,7 +28,7 @@
     border: 1px solid rgba(0,0,0,0.1);
 }
 
-h1, h2, h5, p{
+h1, h2, h5, h4, p{
     text-align: left;
     margin-left: 20px;
 }
@@ -65,6 +65,8 @@ hr{
     margin-top: 40px;
 
 }
+
+
 
 .vid{
     width: 100%;
@@ -177,46 +179,72 @@ font-style: italic;
 
 .Competitor_Analysis p{
       margin-left: 30px;
+      padding: 0px;
 }
 .Competitor_Analysis h3{
       margin-left: 30px;
       font-size: var(--h3-font-size);
+      margin-top: 20px;
+      margin-bottom: 24px;
       font-family: "cormorant garamond", serif;
 }
 
 .Designprocess p{
     margin-left: 30px;
+    padding: 0px;
+    
 }
 .Designprocess h3{
     margin-left: 30px;
+    margin-top: 20px;
+    margin-bottom: 24px;
     font-size: var(--h3-font-size);
     font-family: "cormorant garamond", serif;
 }
 .iterations_section p{
     margin-left: 30px;
+    padding: 0px;
+    font-size: var(--paragraph-md-font-size);
 }
 
-.iterations_section h3{
+.iterations_sectio_homepage h3{
     margin-left: 30px;
     font-family: "cormorant garamond", serif;
     font-size: var(--h3-font-size);
+    margin-top: 0px;
+    margin-bottom: 24px;
 }
 
 .iterations_section h5{
     margin-left: 30px;
-    font-size: 35px;
+    font-size: var(--h5-font-size);
     margin-bottom: 0px;
+    
 }
-.iterations_section h4{
+.iterations_section h4 {
     margin-left: 30px;
     font-size: var(--h4-font-size);
-    margin-top: 5px;
+    margin-top: 8px;
+    margin-bottom: 0px;
+}
+
+.iterations_section h3{
+     margin-left: 30px;
+     font-size: var(--h3-font-size);
+     margin-top: 20px;
+     margin-bottom: 24px;
+}
+
+.iteration_container_homepage h4{
+    margin-left: 30px;
+    
+    margin-top: 5px; 
 }
 .iterations_section li{
     width: 500px;
     text-align: center;
     list-style: none;
-    margin-left: 30px;
+    
     margin-top: 30px;
     vertical-align: top ;
 }
@@ -225,13 +253,26 @@ margin-top: 30px;
 margin-left: 0px;
 max-width: 1000px;
 }
-.iteration_container_homepage{
+.iteration_container_homepage {
     display: flex;
-    flex-direction: row;
-    gap: 30px;
+    flex-direction: column;
+    gap: 32px;
     align-items: center;
+    justify-content: center;
     
 }
+
+ .iteration_section_h24{
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  align-items: flex-start;
+  margin-left: 30px;
+ }
+
+ .iteration_section_h24 h4{
+    font-size: var(--h4-font-size);
+ }
 
 .competiter_pic{
     width: 700px;
