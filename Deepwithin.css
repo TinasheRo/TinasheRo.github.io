@@ -10,6 +10,15 @@
     --paragraph-md-font-size: 1rem;
 }
 
+.Intro-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-self: center;
+    align-items: center;
+    margin-bottom: 48px;
+}
+
 :root{
  
     --paragraph-lg-line-height:1.5rem;
@@ -59,14 +68,21 @@ hr{
 #prototype_sec{
     width: 100%;
     display: block;
-    max-width: 400px;
+    max-width: 320px;
     margin-left: auto;
-    margin-right: auto;
+    margin-right: 50px;
     margin-top: 40px;
-
+border-radius: 20px;
 }
 
 
+
+.intro-section-text h5{
+    font-size: var(--h6-font-size);
+}
+.intro-section-text p{
+    width: 400px;
+}
 
 .vid{
     width: 100%;
@@ -80,10 +96,7 @@ hr{
    margin-left: 10px;
    
 }
-.Intro-container{
-  font-family: cordmorant garamond, serif;
- 
-}
+
 .image_deep2{
     width: 70%;
     margin-left: auto;
@@ -290,4 +303,12 @@ max-width: 1000px;
 span{
     font-weight: 800;
     font-size: 20px;
+}
+
+
+.methods-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-items: center;
 }
