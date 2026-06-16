@@ -16,7 +16,7 @@
     justify-content: center;
     align-self: center;
     align-items: center;
-    margin-bottom: 48px;
+    margin-bottom: 80px;
 }
 
 :root{
@@ -305,10 +305,62 @@ span{
     font-size: 20px;
 }
 
+.user-testing-container p{
+    text-align: left;
+    font-size: var(--paragraph-md-font-size);
+}
+.user-testing-container h4{
+    font-size: var(--h6-font-size);
+}
+
+.user-testing-container h3{
+ 
+    font-size: var(--h3-font-size);
+    margin: 0px;
+    margin-left: 30px;
+    
+
+}
 
 .methods-container{
     display: flex;
-    flex-direction: row;
+   
+   margin: 0 auto;
+   width: 100%;
+    gap: 28px;
+    border: 1px solid rgb(72, 72, 72);
+    border-radius: 10px;
+    background-color: #F8F8F8;
+     max-width: 700px;
+     margin-bottom: 32px;
+     margin-top: 24px;
+    
+}
+
+.methods-container h6{
+    font-size: var(--h6-font-size);
+}
+
+.methods h6 {
+    margin: 0px;
+    margin-bottom: 8px;
+   font-size: var(--h6-font-size);
+}
+
+.methods{
+    text-align: center;
+    flex: 1;
+    flex-direction: column;
+    margin-bottom: 32px;
+    margin-top: 32px;
+    display: flex;
     justify-content: center;
-    justify-items: center;
+    align-items: center;
+}
+.methods p{
+    font-size: var(--paragraph-md-font-size);
+}
+.methods h3{
+    margin:0px;
+    margin-bottom: 8px;
 }
