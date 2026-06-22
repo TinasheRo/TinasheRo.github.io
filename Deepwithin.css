@@ -265,6 +265,7 @@ font-style: italic;
 margin-top: 30px;
 margin-left: 0px;
 max-width: 1000px;
+border-radius: 10px;
 }
 .iteration_container_homepage {
     display: flex;
