@@ -225,6 +225,14 @@ font-style: italic;
     font-size: var(--h3-font-size);
     font-family: "cormorant garamond", serif;
 }
+
+.results_findings{
+    display: flex;
+    flex-direction: row;
+    max-height: 800px;
+    margin: 0px;
+    padding: 0px;
+}
 .iterations_section p{
     margin-left: 30px;
     padding: 0px;
