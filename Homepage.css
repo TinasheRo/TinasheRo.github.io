@@ -135,7 +135,7 @@ ul{
   display: flex;
   justify-content: flex-start; /* change from center or left to flex-start */
    align-self: flex-start; /* add this */
- margin-left: 85px;
+ margin-left: 0px;
  padding-top: 4px;
 }
 
@@ -315,7 +315,7 @@ h2{
 }
 
 .Featured_Image2{
-    margin-top: 100px;
+    margin-top: 64px;
 }
 
 @keyframes appear{
