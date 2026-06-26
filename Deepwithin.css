@@ -120,7 +120,7 @@ color: rgba(0, 0, 0, 0.698);
 font-style: italic;
 }
 .Problem_container {
-    margin-top: 40px;
+    margin-top: 100px;
 }
 .Problem_container h3{
     margin-left: 30px;
@@ -133,7 +133,7 @@ font-style: italic;
     margin-left: 30px;
 }
 .userpersona_container{
-    margin-top: 30px;
+    margin-top: 100px;
 }
 .userpersona_container h3{
     margin-left: 30px;
@@ -170,12 +170,22 @@ font-style: italic;
 }
 
 .Research_Finding{
-    margin-top: 60px;
+    margin-top: 100px;
+
+
 }
 .Research_Finding h3{
     margin-left: 35px;
     font-size: var(--h3-font-size);
     font-family: "cormorant garamond", serif;
+}
+
+.results_findings a{
+    padding: 0px;
+}
+
+.results_findings p{
+width: 500px;
 }
 .no1_container h4{
     margin-left: 30px;
@@ -197,7 +207,9 @@ font-style: italic;
   
 }
 
-
+.Competitor_Analysis{
+    margin-top: 100px;
+}
 
 .Competitor_Analysis p{
       margin-left: 30px;
@@ -211,7 +223,9 @@ font-style: italic;
       font-family: "cormorant garamond", serif;
 }
 
-
+.Designprocess{
+    margin-top: 100px;
+}
 
 .Designprocess p{
     margin-left: 30px;
@@ -232,6 +246,10 @@ font-style: italic;
     max-height: 800px;
     margin: 0px;
     padding: 0px;
+}
+
+.iterations_section{
+    margin-top: 100px;
 }
 .iterations_section p{
     margin-left: 30px;
@@ -295,6 +313,8 @@ border-radius: 10px;
     
 }
 
+
+
  .iteration_section_h24{
   display: flex;
   flex-direction: column;
@@ -306,6 +326,11 @@ border-radius: 10px;
  .iteration_section_h24 h4{
     font-size: var(--h4-font-size);
  }
+#fighfipphoto{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 .competiter_pic{
     width: 700px;
@@ -323,6 +348,16 @@ border-radius: 10px;
 span{
     font-weight: 800;
     font-size: 20px;
+}
+
+.HighFid-Prototype{
+    margin-top:100px;
+}
+.photo_descr{
+    text-align: center !important;
+}
+.user-testing-container{
+    margin-top: 100px;
 }
 
 .user-testing-container p{
@@ -379,10 +414,62 @@ span{
 }
 .methods p{
     font-size: var(--paragraph-md-font-size);
+    width:auto !important;
 }
 .methods h3{
     margin:0px;
     margin-bottom: 8px;
+}
+
+p{
+    width: 800px;
+}
+.results_container{
+    margin-top: 100px;
+}
+
+
+.results_findings {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-bottom: 24px;
+    width: 100%; /* keeps it within the parent */
+ 
+}
+
+.move_findings {
+    margin-right: 64px;
+    flex-shrink: 0; /* image stays fixed size */
+}
+
+.findings_user {
+    border: #222 1px solid;
+    padding: 16px 24px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;          /* takes up remaining space */
+    min-width: 0;     /* prevents overflow */
+    box-sizing: border-box;
+       background-color: #F8F8F8;
+}
+.findings_user h5{
+    margin: 0px;
+    margin-left: 24px;
+}
+#affinity {
+    padding: 0 30px;
+    max-width: 1200px; /* or whatever fits your page */
+}
+.findings_user h4 {
+    margin-left: 24px;
+}
+.findings_user p {
+    width: 100% !important;
+    max-width: 100%;
+    margin-left: 0;
+    padding: 0 24px;
+    box-sizing: border-box;
 }
 
 /* Nav progressive Bar*/
