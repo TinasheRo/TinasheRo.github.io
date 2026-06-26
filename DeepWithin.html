@@ -30,7 +30,11 @@
 </header>
 <body>
 
-    <div class="Intro-container">
+
+
+
+
+    <div id="overview" class="Intro-container">
         <div class="intro-section-text">
        <h3 id="smalldescr" >UX CASE STUDY</h3>
         <h1>Deep Within</h1>
@@ -54,10 +58,24 @@
        
     </div>
      <img class="image_DeepWithin image_deep2" src="deepwithin_assets/deepwithin_p.png" alt="">
-        <p class="photo_descr"> Prototype of Deep within: Uses AI therapist and calculates your mood throughout the app  </p>
+   <nav class="case-progress-nav" aria-label="Case study sections">
+  <a href="#overview" data-section="overview"><span></span><p>Overview</p></a>
+  <a href="#problem" data-section="problem"><span></span><p>Problem</p></a>
+  <a href="#competitors" data-section="competitors"><span></span><p>Competitors</p></a>
+  <a href="#personas" data-section="personas"><span></span><p>Personas</p></a>
+  <a href="#lowfi" data-section="lowfi"><span></span><p>Low-fi</p></a>
+  <a href="#highfi" data-section="highfi"><span></span><p>High-fi</p></a>
+  <a href="#testing" data-section="testing"><span></span><p>Testing</p></a>
+  <a href="#discovery" data-section="discovery"><span></span><p>Discovery</p></a>
+  <a href="#affinity" data-section="affinity"><span></span><p>Affinity Map</p></a>
+  <a href="#iterations" data-section="iterations"><span></span><p>Iterations</p></a>
+  <a href="#reflection" data-section="reflection"><span></span><p>Reflection</p></a>
+</nav>
+     <p class="photo_descr"> Prototype of Deep within: Uses AI therapist and calculates your mood throughout the app  </p>
 
 
-    <div class="Problem_container animation">
+
+    <div id="problem" class="Problem_container animation">
         <h4>01 - Problem Space</h4>
             <hr>
          <h2> Students are logging emotions, but never understanding them </h2>
@@ -82,7 +100,7 @@
 
 
         </div>
-        <div class="Competitor_Analysis">
+        <div id="competitors" class="Competitor_Analysis">
             <h4>02 - Competitor Analysis </h4>
             <hr>
             <h3> What already existed And What was missing.</h3>
@@ -96,7 +114,7 @@
             </p>
 
         </div>
-        <div class="userpersona_container animation">
+        <div id="personas" class="userpersona_container animation">
             <h4> 03 - User Personas</h4>
              <hr>
              <h2> Designing for real environments in real moments</h2>
@@ -107,7 +125,7 @@
 
             </div>
 
-            <div class="Competitor_Analysis">
+            <div id="lowfi" class="Competitor_Analysis">
             <h4>04 - Early Designs </h4>
             <hr>
             <h3> Prototypes to capture the user flow</h3>
@@ -120,13 +138,13 @@
     
             </div>
 
-            <div class="HighFid-Prototype">
+            <div id="highfi" class="HighFid-Prototype">
             <h4>05 - High Fidelity </h4>
             <hr>
             <img class="image_DeepWithin" src="deepwithin_assets/highfiprototype.png" alt="">
             <p class="photo_descr"> The final high fidelity prototype before usability review </p>
                 </div>
-            <div class="user-testing-container">
+            <div id="testing" class="user-testing-container">
                         <h4>06 - User Testing</h4>
                         <hr>
                         <h3>7 university students</h3> <br> <h3>Real words. Real reactions </h3>
@@ -172,7 +190,7 @@
 
 
                         </div>
-                            <div class="results_container">
+                            <div id="affinity" class="results_container">
                                 <h3>Results of the User Testing </h3>
                                 <div class="results_findings">
                                 <img class="image_DeepWithin" src="deepwithin_assets/Nav.png" alt="">
@@ -224,7 +242,7 @@
 
                             </div>
                 </div>
-             <div class="Research_Finding animation">
+             <div id="discovery" class="Research_Finding animation">
             <h4>02 - Reseach Discovery</h4>
             <hr>
             <p> Three key themes emerges through competitor analysis, app store reviews, and user discussion. Each theme become a design requirement.</p>
@@ -262,7 +280,7 @@
                 </div>
             </div>
                  </div>
-            <div class="iterations_section">
+            <div id="iterations" class="iterations_section">
             <h4>07 - Design Iteration</h4>
             <hr>
             <h3>How the app evolved through every decision</h3>
@@ -335,7 +353,7 @@
 
         </div>
 
-
+<script src="navprogressivebar.js"></script>
 
 
 

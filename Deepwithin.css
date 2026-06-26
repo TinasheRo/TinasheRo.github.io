@@ -384,3 +384,91 @@ span{
     margin:0px;
     margin-bottom: 8px;
 }
+
+/* Nav progressive Bar*/
+
+html {
+  scroll-behavior: smooth;
+}
+
+.case-progress-nav {
+  position: fixed;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1000;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+
+
+  padding: 0rem;
+  border-radius: 999px;
+ 
+  width: 30px;
+  overflow: hidden;
+  transition: width 0.3s ease, border-radius 0.3s ease;
+}
+
+.case-progress-nav:hover,
+.case-progress-nav:focus-within {
+  width: 190px;
+  border-radius: 24px;
+}
+
+.case-progress-nav a {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  text-decoration: none;
+  color: #222;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.case-progress-nav span {
+  width: 14px;
+  height: 14px;
+  min-width: 14px;
+  border-radius: 50%;
+  border: 1px solid #9caf94;
+  background: #d6d6d6;
+  display: inline-block;
+}
+
+.case-progress-nav p {
+  margin: 0;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.case-progress-nav:hover p,
+.case-progress-nav:focus-within p {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.case-progress-nav a.active span {
+  background: #8fad7f;
+  border-color: #8fad7f;
+}
+
+.case-progress-nav a.seen span {
+  background: #8fad7f;
+  border-color: #8fad7f;
+}
+
+.case-progress-nav a.seen span::after {
+  content: "✓";
+  color: white;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.case-progress-nav a.active p {
+  font-weight: 700;
+}
