@@ -1,0 +1,41 @@
+.play_video{
+    width: 350px;
+}
+
+.title_pg{
+    display: flex;
+    flex-direction: column;
+}
+.grid_col_rows {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+h1{
+    text-align: center;
+}
+.play_card {
+  width: 100%;
+}
+
+.play_video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+  border: 1px solid #222;
+}
+
+.play_card p {
+  margin-top: 0.8rem;
+  font-size: 1rem;
+}
+
+h1{
+    font-family: "Atkinson Hyperlegible Next";
+}
+
