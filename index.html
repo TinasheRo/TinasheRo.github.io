@@ -15,165 +15,163 @@
 <link rel="stylesheet" href="Homepage.css">
 <link rel="stylesheet" href="footer.css">
 </head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
 <header>
 
-<div>
-    <nav>
+    <div>
+    <nav aria-label="Main navigation">
         <ul>
-            <li><a href="#work_p">Work</a></li> 
+            <li><a href="#work_p">Work</a></li>
             <li><a href="AboutMe.html">About</a></li>
             <li><a href="play.html">Play</a></li>
-            <li><a href="Resume.pdf" target="_blank">Resume</a></li>
+            <li><a href="Resume.pdf" target="_blank" rel="noopener noreferrer">Resume <span class="sr-only">(opens in new tab)</span></a></li>
         </ul>
     </nav>
 </div>
 
 </header>
-<body>
 
         
  
     <div  class="Content_Container">
-<div class="top_imgs">
+<div class="top_imgs" aria-hidden="true">
     
     <div class="tooltip-wrap  duck">
         <img class="img-assets" src="assets_top_homepage/duck_YORK 1.png" alt="">
-        <span class="tooltip-text">University of York student</span>
+        <span class="tooltip-text" role="tooltip">University of York student</span>
     </div>
 
     <div class="tooltip-wrap dumbell ">
         <img class="img-assets " src="assets_top_homepage/dumbell_imh.png" alt="">
-        <span class="tooltip-text">I love going to the gym</span>
+        <span class="tooltip-text" role="tooltip">I love going to the gym</span>
     </div>
 
     <div class="tooltip-wrap spirited ">
         <img class="img-assets" src="assets_top_homepage/spiritedaway_img 1.png" alt="">
-        <span class="tooltip-text">Spirited Away is my favourite film</span>
+        <span class="tooltip-text" role="tooltip">Spirited Away is my favourite film</span>
     </div>
 
     <div class="tooltip-wrap hamilton">
         <img class="img-assets" src="assets_top_homepage/hamilition_ 1.png" alt="">
-        <span class="tooltip-text">Obsessed with Hamilton</span>
+        <span class="tooltip-text" role="tooltip">Obsessed with Hamilton</span>
     </div>
 
     <div class="tooltip-wrap deathnote">
         <img class="img-assets" src="assets_top_homepage/deathnote_img 1.png" alt="">
-        <span class="tooltip-text">Death Note fan</span>
+        <span class="tooltip-text" role="tooltip">Death Note fan</span>
     </div>
 
     <div class="tooltip-wrap palette">
         <img class="img-assets " src="assets_top_homepage/palette_paint.png" alt="">
-        <span class="tooltip-text">I love painting</span>
+        <span class="tooltip-text" role="tooltip">I love painting</span>
     </div>
 
     <div class="tooltip-wrap notebook">
         <img class="img-assets  " src="assets_top_homepage/hg-notebook-paper 1.png" alt="">
-        <span class="tooltip-text">I like to journal and write letters</span>
+        <span class="tooltip-text" role="tooltip">I like to journal and write letters</span>
     </div>
 
     <div class="tooltip-wrap pen">
         <img class="img-assets " src="assets_top_homepage/PEN 1.png" alt="">
-        <span class="tooltip-text">I like to journal and write letters</span>
+        <span class="tooltip-text" role="tooltip">I like to journal and write letters</span>
     </div>
 
 </div>
+        <main id="main-content">
         <div class="start_page">
-            <h1>Hi, I'm Roseanne Hwami <span> &#128075</span> </h1> 
-            <img src="assets_top_homepage/Line 15.svg" alt="">
-            <h3>UX Designer, anime lover and Hamilton fan creating digital experiences through research, interaction and storytelling.</h3>
-            <p>Currently in University of York studying Interactive Media Graduating in 2027.</p>
+            <h1>Hi, I'm Roseanne Hwami <span aria-label="waving hand emoji"> &#128075;</span></h1>
+            <img src="assets_top_homepage/Line 15.svg" alt="" role="presentation">
+            <h2 class="hero-subheading">UX Designer, anime lover and Hamilton fan creating digital experiences through research, interaction and storytelling.</h2>
+            <p>Currently at the University of York studying Interactive Media, graduating in 2027.</p>
             </div>
         <div class="Social_Media_Icons">
-            <a href="https://www.linkedin.com/in/roseannehwami">
-              <img src="assets_homepage/linkedin.svg" alt="" >
+            <a href="https://www.linkedin.com/in/roseannehwami" aria-label="Roseanne's LinkedIn profile">
+              <img src="assets_homepage/linkedin.svg" alt="">
             </a>
-            <a href="https://www.behance.net/roseannehwami12">
-              <img src="assets_homepage/behance.svg" alt="" >
+            <a href="https://www.behance.net/roseannehwami12" aria-label="Roseanne's Behance portfolio">
+              <img src="assets_homepage/behance.svg" alt="">
             </a>
-
-
         </div>
           <div class="view-work-div">
             <a href="#work_p">
-              <img src="assets_homepage/arrow 1.png" alt="" srcset="" id="arrow">
-            <p class="arrow_text"> View My Projects</p>
+              <img src="assets_homepage/arrow 1.png" alt="" role="presentation" id="arrow">
+            <p class="arrow_text">View My Projects</p>
             </a>
             </div>
        
           <!-- Project Card 1: Deep Within -->
-          <a href="DeepWithin.html">
-            <div id="work_p" class="project-card animation">
-              <img src="deepwithin_assets/deepwithin_p.png" alt="Deep Within project" class="project-img">
+          <a href="DeepWithin.html" aria-label="View Deep Within project — mood tracking and UX design">
+            <article id="work_p" class="project-card animation">
+              <img src="deepwithin_assets/deepwithin_p.png" alt="Deep Within app screens showing mood tracking interface" class="project-img">
               <div class="project-info project-info--green">
-                <div class="tags_shape">
-                  <p class="tags_text">Mood tracking</p>
-                  <p class="tags_text">Mobile experience</p>
-                  <p class="tags_text">UX design</p>
+                <div class="tags_shape" aria-label="Project tags">
+                  <span class="tags_text">Mood tracking</span>
+                  <span class="tags_text">Mobile experience</span>
+                  <span class="tags_text">UX design</span>
                 </div>
                 <h2>Deep Within</h2>
                 <p class="project-desc">Helping users build healthier reflection habits through mood tracking, meditation, and personalised support.</p>
               </div>
-            </div>
+            </article>
           </a>
 
 
           <!-- Project Card 2: Who Poisoned Pippy -->
-          <a href="WhoPosionedPippy.html">
-            <div class="project-card animation">
-              <img src="assets/image_pippy.png" alt="Who Poisoned Pippy project" class="project-img">
+          <a href="WhoPosionedPippy.html" aria-label="View Who Poisoned Pippy project — interactive mystery game">
+            <article class="project-card animation">
+              <img src="assets/image_pippy.png" alt="Who Poisoned Pippy mystery game interface" class="project-img">
               <div class="project-info project-info--grey">
-                <div  class="tags_shape">
-                  <p class="tags_text">Interactive Storytelling</p>
-                  <p class="tags_text">Team Collaboration</p>
-                  <p class="tags_text">Puzzle Design</p>
+                <div class="tags_shape" aria-label="Project tags">
+                  <span class="tags_text">Interactive Storytelling</span>
+                  <span class="tags_text">Team Collaboration</span>
+                  <span class="tags_text">Puzzle Design</span>
                 </div>
                 <h2>Who Poisoned Pippy?</h2>
                 <p class="project-desc">Designed a web based mystery game through iterative prototyping, team collaboration, and agile development practices.</p>
               </div>
-            </div>
+            </article>
           </a>
 
           <!-- Project Card 3: The Interface Is Lying To You -->
-          <a href="TheInterfaceIsLyingToYou.html">
-            <div class="project-card project-card--reverse animation">
-              <img src="assets/theinterfaceislyingtou.png" alt="The Interface Is Lying To You project" class="project-img">
+          <a href="TheInterfaceIsLyingToYou.html" aria-label="View The Interface Is Lying To You project — experimental UX">
+            <article class="project-card project-card--reverse animation">
+              <img src="assets/theinterfaceislyingtou.png" alt="Screenshot of The Interface Is Lying To You interactive web experience" class="project-img">
               <div class="project-info project-info--blue">
-                <div class="tags_shape">
-                  <p class="tags_text">Digital trust</p>
-                  <p class="tags_text">Web Design</p>
-                  <p class="tags_text">Experimental UX</p>
+                <div class="tags_shape" aria-label="Project tags">
+                  <span class="tags_text">Digital trust</span>
+                  <span class="tags_text">Web Design</span>
+                  <span class="tags_text">Experimental UX</span>
                 </div>
                 <h2>The Interface Is Lying To You</h2>
                 <p class="project-desc">Exploring how deceptive interface patterns influence user behaviour through an interactive web experience that challenges users' trust in digital systems.</p>
               </div>
-            </div>
+            </article>
           </a>
 
 
 
           <!-- Project Card 4: Nordic Muse -->
-          <a href="Projects/NordicMuse.html">
-            <div class="project-card project-card--reverse animation">
-
+          <a href="Projects/NordicMuse.html" aria-label="View Nordic Muse Redesign project — brand design case study (coming soon)">
+            <article class="project-card project-card--reverse animation">
               <div class="project-info project-info--blue">
-                <div class="tags_shape">
-                  <p class="tags_text">Brand design</p>
-                  <p class="tags_text">Case Study</p>
-                  <p class="tags_text">Redesign</p>
+                <div class="tags_shape" aria-label="Project tags">
+                  <span class="tags_text">Brand design</span>
+                  <span class="tags_text">Case Study</span>
+                  <span class="tags_text">Redesign</span>
                 </div>
                 <h2>Nordic Muse Redesign</h2>
                 <p class="project-desc">Coming soon...</p>
               </div>
-              <img src="assets_homepage/nordic_muse.png" alt="Nordic Muse project" class="project-img">
-            </div>
+              <img src="assets_homepage/nordic_muse.png" alt="Nordic Muse brand redesign preview" class="project-img">
+            </article>
           </a>
 
             </div>
-            </div>
-
- 
-    </div>
- <footer>
+        </main>
+ <footer role="contentinfo">
     <h2>Let's connect!</h2>
 
     <p>
@@ -182,11 +180,11 @@
 
     <div class="footer-links">
         <a href="mailto:roseannehwami@gmail.com">Email</a>
-        <a href="https://www.linkedin.com/in/roseannehwami">LinkedIn</a>
+        <a href="https://www.linkedin.com/in/roseannehwami" aria-label="LinkedIn profile (opens in new tab)" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     </div>
 
     <p class="copyright">
-        © 2026 Roseanne Hwami | Made with Github Pages and ❤️
+        &copy; 2026 Roseanne Hwami | Made with Github Pages and <span aria-label="love">❤️</span>
     </p>
 </footer>
 </body>
