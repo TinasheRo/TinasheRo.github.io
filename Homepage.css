@@ -1,4 +1,3 @@
-
 :root{
     --h1-font-size: 3.75rem;
     --h2-font-size: 3rem;
@@ -117,6 +116,7 @@ ul{
     align-items: center;
     justify-content: center;
     margin-top: 12px;
+    width: 400px;
    
 }
 
@@ -134,7 +134,7 @@ ul{
   margin-top: 4px;
   display: flex;
   justify-content: flex-start; /* change from center or left to flex-start */
-   align-self: flex-start; /* add this */
+   align-self: flex-start; 
  margin-left: 85px;
  padding-top: 4px;
 }
@@ -247,75 +247,98 @@ p{
     font-size: 1rem;
 }
 
-.image_DeepWithin{
-    width: 750px;
-    height: auto;
+/* ── Unified Project Cards ─────────────────────────────── */
+
+.project-card {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  width: 100%;
+  max-width: 1100px;
+  margin-top: 56px;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+  min-height: 360px;
 }
-.Featured_Image2{
-    display: flex;
-    flex-direction: row;
+
+.project-card--reverse {
+  flex-direction: row-reverse;
 }
-.Feature_image{
-    margin-top:0px;
-    display: flex;
-    flex-direction: row;
-    
+
+/* Image half */
+.project-img {
+  width: 55%;
+  object-fit: cover;
+  display: block;
+  flex-shrink: 0;
 }
-.feature_descr2{
-    display: flex;
+
+/* Text half */
+.project-info {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 36px;
+  box-sizing: border-box;
+  gap: 16px;
+  text-align: center;
+}
+
+.project-info--green { background-color: #daede3; }
+.project-info--blue  { background-color: #DCE3EF; }
+.project-info--grey  { background-color: #e6e6e6; }
+
+/* Card h2 — hierarchy: bigger than tags/desc, smaller than hero h1 */
+.project-info h2 {
+  font-family: "Fraunces", serif;
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.2;
+  text-align: center;
+}
+
+/* Card body text — clearly subordinate to title */
+.project-desc {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: #444;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  max-width: 340px;
+  opacity: 0.85;
+}
+
+/* Tags inside cards — smallest, topmost, lightest */
+.project-info .tags_shape {
+  margin-top: 0;
+}
+
+/* ── Responsive: stack on tablets / narrow desktops ────── */
+@media (max-width: 900px) {
+  .project-card,
+  .project-card--reverse {
     flex-direction: column;
-    justify-content: center;
-    background-color: #DCE3EF;
-    align-items: center;
-    height:360px;
-    border-radius: 25px;
-}
-#colour_change_pippy{
-    background-color: rgb(226, 226, 226);
-}
+  }
 
-.feature_descr{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #daede3;
-    border-radius: 25px;
-    transform: translateX(-20px);
-}
-#width_text{
-    width: 500px;
-}
-.image_Pippy2{
-  margin-right: 12px;
-   border-radius: 15px;
-   max-width: 650px;
-   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-.image_Pippy{
-    width: 700px;
-    height: auto;
-}
-.feature_container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    min-height: 100vh;
-    justify-content: center;
-    align-items: center;
-    margin-left: 30px;
-}
+  .project-img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+  }
 
-.feature_container h2{
- text-align: center;
-}
-h2{
-    margin-top: 20px;
-}
+  .project-info {
+    width: 100%;
+    padding: 28px 24px;
+  }
 
-.Featured_Image2{
-    margin-top: 64px;
+  .project-info h2 {
+    font-size: 1.6rem;
+  }
 }
 
 @keyframes appear{
