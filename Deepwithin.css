@@ -81,6 +81,10 @@ border-radius: 20px;
     margin-left: 30px;
 }
 
+#fighfipphoto{
+    width: 700px;
+}
+
 .prototypetext p{
    width:800px
 }
@@ -441,6 +445,7 @@ p{
 .move_findings {
     margin-right: 64px;
     flex-shrink: 0; /* image stays fixed size */
+    width: 650px;
 }
 
 .findings_user {
