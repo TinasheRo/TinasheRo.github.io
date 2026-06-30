@@ -86,10 +86,12 @@ footer p {
   max-width: 100%;
 }
 
-/* ── Give the two content sections actual layout ── */
+/* ── Give the content sections actual layout ── */
 
 .opportunity_container,
-.contribution_container {
+.contribution_container,
+.process_container,
+.designsystem_container {
   max-width: 1100px;
   margin: 0 auto 80px;
   padding: 0 5%;
@@ -97,20 +99,26 @@ footer p {
 }
 
 .opportunity_container h3,
-.contribution_container h3 {
+.contribution_container h3,
+.process_container h3,
+.designsystem_container h3 {
   font-family: "Cormorant Garamond", serif;
   font-size: var(--h3-font-size);
   margin-left: 0;
 }
 
 .opportunity_container hr,
-.contribution_container hr {
+.contribution_container hr,
+.process_container hr,
+.designsystem_container hr {
   margin-left: 0;
   width: 100%;
 }
 
 .opportunity_container h2,
-.contribution_container h2 {
+.contribution_container h2,
+.process_container h2,
+.designsystem_container h2 {
   max-width: 800px;
   line-height: 1.3;
   margin-left: 0;
@@ -119,13 +127,55 @@ footer p {
 }
 
 .opportunity_container p,
-.contribution_container p {
+.contribution_container p,
+.process_container p,
+.designsystem_container p {
   width: auto;
   max-width: 700px;
   margin-left: 0;
 }
 
-/* Closing quote line in each section, styled as a soft callout */
+.process_container ul,
+.designsystem_container ul {
+  display: block;
+  list-style: disc;
+  padding-left: 40px;
+  margin: 12px 20px 16px;
+}
+
+.process_container li,
+.designsystem_container li {
+  text-align: left;
+  margin-bottom: 8px;
+}
+
+.process_container .image_deep2,
+.designsystem_container .image_deep2 {
+  margin-top: 24px;
+  margin-bottom: 4px;
+}
+
+.process_container .photo_descr,
+.designsystem_container .photo_descr {
+  margin-bottom: 24px;
+}
+
+.process_container h4 {
+  margin-left: 0;
+  margin-top: 32px;
+  margin-bottom: 4px;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #595959;
+}
+
+.process_container li strong {
+  font-weight: 700;
+}
+
+/* Closing quote line — only the two intro sections end on a pull-quote;
+   the process/design-system sections end on a normal paragraph. */
 .opportunity_container > p:last-of-type,
 .contribution_container > p:last-of-type {
   font-family: "Caveat", cursive;
@@ -157,7 +207,9 @@ footer p {
   }
 
   .opportunity_container,
-  .contribution_container {
+  .contribution_container,
+  .process_container,
+  .designsystem_container {
     padding: 0 6%;
   }
 }

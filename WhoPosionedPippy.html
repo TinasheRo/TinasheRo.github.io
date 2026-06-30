@@ -56,13 +56,13 @@
      <video class="video_Pippy" controls src="assets/video_whopoisonedpippy.mp4"></video>
          </div>
     </div>
-         <img class="image_DeepWithin image_deep2" src="/" alt="Image of the final product">
-        <p class="photo_descr"> Final Web Development of Who Poisoned Pippy</p>
+         <img class="image_DeepWithin image_deep2" src="whopoisonedpip_assets/homepage_main_pip.gif" alt="Image of the final product of who poisoned pippy">
+        <p class="photo_descr"> Final website: Who Poisoned Pippy? </p>
     <div class="opportunity_container animation">
         <h3>01 - The Opportunity</h3>
             <hr>
          <h2> How might we create a mystery experience that feels engaging,
-            and accessiblw while encouraging active investigation </h2>
+            and Accessible while encouraging active investigation </h2>
             <p>Our challenge was to design an experience where players become investigators, piecing together evidence across multiple perspectives before reaching their own conclusion</p>
             <p>The project aim:</p>
          <ul>
@@ -72,24 +72,64 @@
             <li>Clear evidence discovery</li>
          </ul>
          
-         <p > "What would have helped me when i felt overwhelmed?" </p>
         </div>
 
         <div class="contribution_container animation">
         <h3>02 - Contribution</h3>
             <hr>
-         <h2>As UX and Interface Designer, I focus on: </h2>
+         <h2>My focus: </h2>
       
          <ul>
-            <li>Ux strategy and information architecture</li>
+            <li>information architecture</li>
             <li>Wireframe and interface design </li>
             <li>Design system creation in Figma </li>
             <li>Documentation and project management support </li>
             <li>Sprint planning and team coordination</li>
          </ul>
-         
-         <p > "What would have helped me when i felt overwhelmed?" </p>
+
         </div>
+
+        <div class="process_container animation">
+        <h3>03 - Process & Collaboration</h3>
+            <hr>
+         <h2>Running a four person team like a small agile studio</h2>
+            <p>As documentation lead, I worked alongside 4 peers to keep a 14-week project spanning visual art, writing, interface design and front-end development moving in parallel rather than stalling on a single critical path. We split the work into five sprints, letting design, scripting and development progress together instead of waiting on each other:</p>
+         <ul>
+            <li><strong>Sprint 1 — Planning & Concept (Weeks 4–5):</strong> evaluated five project concepts as a team, voted to combine a murder mystery with a comic-style story adaptation, and defined the cast and their relationships.</li>
+            <li><strong>Sprint 2 — Skeleton (Weeks 6–7):</strong> roles were formalised and I worked with a peer on paper prototypes and low-fidelity wireframes in Balsamiq, which we then carried into high-fidelity Figma prototypes covering the introduction page, perspective selection and case file.</li>
+            <li><strong>Sprint 3 — Narrative & Comic Production (Easter–Week 8):</strong> each of us scripted assigned chapters across both perspectives, covering scene description, dialogue and panel sequence.</li>
+            <li><strong>Sprint 4 — Integration (Weeks 9–11):</strong> the homepage, chapter layouts and perspective pages were built out in HTML/CSS/JS.</li>
+            <li><strong>Sprint 5 — Testing & Submission (Weeks 12–14):</strong> artwork, interface and development came together into a working build; I compiled the copyright appendix ahead of the 27 May deadline.</li>
+            <img class="image_deep2" src="whopoisonedpip_assets/explanation of the game.png" alt="explanation of the game design">
+            <img class="image_deep2" src="whopoisonedpip_assets/Case file -2.png" alt="case file design">
+         </ul>
+            <p>From Sprint 2 onwards, I maintained the team's shared task tracker in Google Sheets. Every task was assigned to a named team member, given a priority level and a weekly status — not started, in progress, completed or blocked — so anyone could see where the project stood at a glance and step in early if something was stuck.</p>
+         <img class="image_DeepWithin image_deep2" src="whopoisonedpip_assets/task_tracker.png" alt="Screenshot of the Google Sheets task tracker showing tasks assigned by team member, priority and status">
+         <p class="photo_descr">The task tracker I maintained to allocate and monitor workload across all five sprints</p>
+            <p>Alongside the tracker, I recorded the minutes for every weekly meeting, capturing decisions and action items so that choices made informally — over WhatsApp, in sub-meetings, or in the room — had one place the whole team could check back against.</p>
+            <h4>Reflection: working within developer capabilities</h4>
+            <p>A layout that looks correct in Figma doesn't automatically behave the same way once it's built on a framework like Bootstrap. We ran into this directly when Bootstrap's utility classes overrode the custom clamp() sizing on the back button, and again during testing when the case file wouldn't centre correctly in HTML/CSS. Adopting a 12-column grid early and carrying it consistently from wireframe, to Figma, to CSS reduced a lot of this friction — but it also meant accepting that some interface decisions had to be made with the developers' constraints in mind from the start, rather than handed over as a finished design afterwards. If I ran this process again, I'd bring development into the wireframing stage even earlier, so technical limits are part of the conversation from day one instead of something we discover during integration.</p>
+        </div>
+
+        <div class="designsystem_container animation">
+        <h3>04 - Design System</h3>
+            <hr>
+         <h2>Defining the visual language before a single line of code was written</h2>
+            <p>Before development began, I worked with the team to define the project's design system in Figma — colour, typography and core UI components — so that whoever was building or designing a page was working from the same reference rather than improvising individually.</p>
+            <p>We built the colour palette around four functional roles: a near-black background and dark panel colour for the noir tone fitting a murder mystery, off-white primary text for legibility without harsh contrast, and a single deep red accent (#C1121F) reserved for interactive elements, highlighted names and clues — teaching players to read red as "interactive" without needing instructions.</p>
+         <img class="image_DeepWithin image_deep2" src="whopoisonedpip_assets/Colour palette idea 2-2.png" alt="Screenshot of the colour palette and typography hierarchy defined in Figma">
+                  <img class="image_DeepWithin image_deep2" src="whopoisonedpip_assets/Typography.png" alt="Screenshot of the colour palette and typography hierarchy defined in Figma">
+         <p class="photo_descr">Colour palette and typography hierarchy I helped define in Figma</p>
+            <p>Typography followed the same logic: a three-level scale using Patrick Hand for headings to reinforce the handwritten comic aesthetic, and Valera Round for body text to keep longer passages legible. Base sizes were set in Figma as fixed pixel values, then translated into fluid clamp() values in CSS, preserving the proportional relationship between heading, subheading and body text across every screen size.</p>
+        </div>
+
+      <div class="Reflection_container2">
+        <h3>05 - Reflection</h3>
+        <hr>
+        
+      </div>
+
+
 
 <footer>
     <h2>Let's connect!</h2>
