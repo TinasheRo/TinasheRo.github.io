@@ -58,7 +58,7 @@
     </div>
          <img class="image_DeepWithin image_deep2" src="whopoisonedpip_assets/homepage_main_pip.gif" alt="Image of the final product of who poisoned pippy">
         <p class="photo_descr"> Final website: Who Poisoned Pippy? </p>
-    <div class="opportunity_container animation">
+    <div class="opportunity_container ">
         <h3>01 - The Opportunity</h3>
             <hr>
          <h2> How might we create a mystery experience that feels engaging,
@@ -74,7 +74,7 @@
          
         </div>
 
-        <div class="contribution_container animation">
+        <div class="contribution_container ">
         <h3>02 - Contribution</h3>
             <hr>
          <h2>My focus: </h2>
@@ -89,7 +89,7 @@
 
         </div>
 
-        <div class="process_container animation">
+        <div class="process_container ">
         <h3>03 - Process & Collaboration</h3>
             <hr>
          <h2>Running a four person team like a small agile studio</h2>
@@ -111,7 +111,7 @@
             <p>A layout that looks correct in Figma doesn't automatically behave the same way once it's built on a framework like Bootstrap. We ran into this directly when Bootstrap's utility classes overrode the custom clamp() sizing on the back button, and again during testing when the case file wouldn't centre correctly in HTML/CSS. Adopting a 12-column grid early and carrying it consistently from wireframe, to Figma, to CSS reduced a lot of this friction — but it also meant accepting that some interface decisions had to be made with the developers' constraints in mind from the start, rather than handed over as a finished design afterwards. If I ran this process again, I'd bring development into the wireframing stage even earlier, so technical limits are part of the conversation from day one instead of something we discover during integration.</p>
         </div>
 
-        <div class="designsystem_container animation">
+        <div class="designsystem ">
         <h3>04 - Design System</h3>
             <hr>
          <h2>Defining the visual language before a single line of code was written</h2>
@@ -123,11 +123,35 @@
             <p>Typography followed the same logic: a three-level scale using Patrick Hand for headings to reinforce the handwritten comic aesthetic, and Valera Round for body text to keep longer passages legible. Base sizes were set in Figma as fixed pixel values, then translated into fluid clamp() values in CSS, preserving the proportional relationship between heading, subheading and body text across every screen size.</p>
         </div>
 
-      <div class="Reflection_container2">
+ <div class="reflection_container ">
         <h3>05 - Reflection</h3>
-        <hr>
-        
-      </div>
+            <hr>
+         <h2>Designing for accessibility and feasibility, not just aesthetics</h2>
+            <p>The biggest lesson from this whole project came down to one feature: an animated gradient background that shifted as you scrolled, meant to make the comic panels feel moodier and more noir. 
+                We'd had it in mind from the start. It was on the moodboard, it was in the early Figma prototypes  but by the time we actually got into development, it just didn't hold up..</p>
+            <p>Part of it was that it was way harder to build than any of us expected. It kept showing up as a blocker in our scrum meetings, and it took a few sessions before it was even working properly 
+                across the pages. Something that looked like a nice little visual touch in Figma ended up eating a real chunk of dev time, and honestly, 
+                none of us had thought to flag that risk before we'd already locked the idea in.</p>
+            <p>The other problem was accessibility. When we actually tested it against WCAG 2.1, the gradient was dragging contrast down between the background and the comic text, and in some of the transition 
+                areas it dipped below what Success Criterion 1.4.5 asks for. The fact that it never stopped moving was also an issue under 2.2.2, which says moving content needs to be pausable. Once we'd hit both 
+                of those, too hard to build properly and not accessible, there wasn't really a case for keeping it. We dropped the animation and kept a static, scroll triggered version instead, 
+                which still gave us the mood shift without dragging contrast.</p>
+            <p>Looking back, the gradient wasn't really a one-off, it was the same story as the back button clashing with Bootstrap, and the case file not centring properly. Each time, something that looked done on paper turned into rework the moment it met actual code. 
+                If I did this again, I'd want developers in the room earlier, while we're still sketching ideas, not after they've already been designed and signed off on. 
+                Agree on a fallback before it's a problem, and actually say out loud when we're compromising, so swapping the animated gradient for a static one reads as a decision we made together, not as the design just losing.</p>
+            <p></p>
+                 <br>
+            <h4>Guerrilla testing at the Interactive Media showcase</h4>
+            <div class="flex_row">
+            <img class="showcase_img" src="whopoisonedpip_assets/whopoisonedpip_showcase.jpeg" alt="image of product in the Interactive Media Showcase">
+            <img class="image_DeepWithin image_deep2" src="whopoisonedpip_assets/verdict_pip.gif" alt="">
+            </div>
+
+            <p>Who Poisoned Pippy? was exhibited at the Interactive Media showcase, running on a public display for visitors to pick up and play without any instruction from us. Watching people interact with it in that setting turned into a kind of guerrilla testing but informal, unplanned usability observation on real visitors rather than recruited participants in a structured session.</p>
+            <p>The clearest pattern I noticed was that several players stalled on a section of the story that required them to scroll down to continue. There was no visual cue, no arrow, no partially cut-off panel, nothing, to suggest there was more content below, so a number of people assumed that screen was the end of the chapter and either stopped or gave up.</p>
+            <p>It's a small thing, but it's exactly the kind of issue that's invisible in a design file and only shows up once real people are interacting with the build on their own. If I revisited the page, I'd add a clear scroll indicator at any point where continuing the story depends on scrolling rather than clicking, even something as simple as a partially visible next panel or a subtle animated cue would have closed that gap.</p>
+         <p> "What would have helped: surfacing feasibility in the same meeting as the concept, and watching real people use it sooner." </p>
+        </div>
 
 
 
