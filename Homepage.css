@@ -108,6 +108,10 @@ ul{
     margin: 0px;
     
 }
+
+
+
+
 .tags_shape{
     display: flex;
     flex-direction: row;
@@ -213,10 +217,6 @@ p{
     text-align: center;
 }
 
-li:hover{
-   background-color: rgb(163, 178, 232);
-
-}
 
 .arrow_text{
     font-size: var(--paragraph-md-font-size);
@@ -475,11 +475,7 @@ html{
   border-radius: 4px;
 }
 
-/* Nav focus + hover parity */
-li:hover,
-li:focus-within {
-  background-color: rgb(163, 178, 232);
-}
+
 
 /* Project card link focus */
 a.project-link:focus-visible,
