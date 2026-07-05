@@ -8,10 +8,6 @@
   padding: 3rem 5% 4rem;
 }
 
-.reflection_container h3{
-  margin-left: 30px;
-}
-
 .intro-section-text {
   max-width: 620px;
 }
@@ -73,7 +69,9 @@
 /* Homepage.css's global `ul { display:flex; justify-content:end }` was meant
    for the nav only, but it also hits the bullet lists in these sections.
    Restore normal list behaviour here. */
+.overview_container ul,
 .opportunity_container ul,
+.research_container ul,
 .contribution_container ul {
   display: block;
   list-style: disc;
@@ -81,7 +79,9 @@
   margin: 12px 20px 16px;
 }
 
+.overview_container li,
 .opportunity_container li,
+.research_container li,
 .contribution_container li {
   text-align: left;
   margin-bottom: 8px;
@@ -100,53 +100,77 @@ footer p {
   max-width: 100%;
 }
 
-/* ── Give the content sections actual layout ── */
+/* ============================================
+   SECTION SYSTEM
+   Every content section below (Opportunity, Grounded in Research,
+   Contribution, Process, Design System, Reflection) shares one layout
+   and one headline/spacing pattern:
+     h4 (small numbered eyebrow) -> hr -> h2 (bold headline) -> p (grouped tight)
+   This mirrors the Deep Within case study's section rhythm: a fixed gap
+   separating this section from the one before it, and a tight gap pulling
+   the headline and its subtext into one visually grouped unit.
+   ============================================ */
 
+.overview_container,
 .opportunity_container,
+.research_container,
 .contribution_container,
 .process_container,
-.designsystem_container {
+.earlyprototypes_container,
+.designsystem_container,
+.reflection_container {
   max-width: 1100px;
   margin: 0 auto 80px;
   padding: 0 5%;
   box-sizing: border-box;
 }
 
-.opportunity_container h3,
-.contribution_container h3,
-.process_container h3,
-.designsystem_container h3 {
-  font-family: "Cormorant Garamond", serif;
-  font-size: var(--h3-font-size);
-  margin-left: 0;
-}
+/* Eyebrow labels ("01 - The Opportunity") are now plain h4 tags with no
+   size/font override, same as Deep Within — they inherit their look from
+   the shared h1–h5 reset in Deepwithin.css. */
 
+.overview_container hr,
 .opportunity_container hr,
+.research_container hr,
 .contribution_container hr,
 .process_container hr,
-.designsystem_container hr {
-  margin-left: 0;
+.earlyprototypes_container hr,
+.designsystem_container hr,
+.reflection_container hr {
+  margin: 20px 0 0 0;
   width: 100%;
 }
 
+/* Bold headline, consistent gap from the divider above, no gap of its own
+   below (the paragraph beneath supplies the tight grouping gap instead) */
+.overview_container h2,
 .opportunity_container h2,
+.research_container h2,
 .contribution_container h2,
 .process_container h2,
-.designsystem h2 {
+.earlyprototypes_container h2,
+.designsystem_container h2,
+.reflection_container h2 {
   max-width: 800px;
   line-height: 1.3;
+  font-weight: 800;
   margin-left: 0;
-  margin-top: 16px;
-  margin-bottom: 8px;
+  margin-top: 28px;
+  margin-bottom: 0;
 }
 
+.overview_container p,
 .opportunity_container p,
+.research_container p,
 .contribution_container p,
 .process_container p,
-.designsystem_container p {
+.earlyprototypes_container p,
+.designsystem_container p,
+.reflection_container p {
   width: auto;
   max-width: 700px;
   margin-left: 0;
+  margin-top: 10px;
 }
 
 .process_container ul,
@@ -164,17 +188,29 @@ footer p {
 }
 
 .process_container .image_deep2,
+.earlyprototypes_container .image_deep2,
 .designsystem_container .image_deep2 {
   margin-top: 24px;
   margin-bottom: 4px;
 }
 
 .process_container .photo_descr,
+.earlyprototypes_container .photo_descr,
 .designsystem_container .photo_descr {
   margin-bottom: 24px;
 }
 
-.process_container h4 {
+.process_container h4.subheading {
+  margin-left: 0;
+  margin-top: 32px;
+  margin-bottom: 4px;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #595959;
+}
+
+.reflection_container h4.subheading {
   margin-left: 0;
   margin-top: 32px;
   margin-bottom: 4px;
@@ -188,10 +224,15 @@ footer p {
   font-weight: 700;
 }
 
-/* Closing quote line — only the two intro sections end on a pull-quote;
-   the process/design-system sections end on a normal paragraph. */
+.research_container em {
+  font-style: italic;
+}
+
+/* Closing quote line — only the two intro sections and the final reflection
+   end on a pull-quote; the process/design-system sections end on a normal
+   paragraph. */
 .opportunity_container > p:last-of-type,
-.contribution_container > p:last-of-type {
+.reflection_container > p:last-of-type {
   font-family: "Caveat", cursive;
   font-size: 1.6rem;
   font-style: italic;
@@ -220,10 +261,14 @@ footer p {
     margin-left: 0;
   }
 
+  .overview_container,
   .opportunity_container,
+  .research_container,
   .contribution_container,
   .process_container,
-  .designsystem_container {
+  .earlyprototypes_container,
+  .designsystem_container,
+  .reflection_container {
     padding: 0 6%;
   }
 }

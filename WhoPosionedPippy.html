@@ -58,8 +58,23 @@
     </div>
          <img class="image_DeepWithin image_deep2" src="whopoisonedpip_assets/homepage_main_pip.gif" alt="Image of the final product of who poisoned pippy">
         <p class="photo_descr"> Final website: Who Poisoned Pippy? </p>
+
+    <div class="overview_container ">
+        <h4>Overview</h4>
+            <hr>
+         <h2>An interactive murder mystery, told from two sides</h2>
+            <p>Players investigate the death of Pippy, a small-town mouse, by exploring comic-panel scenes and hovering a magnifying glass tool over hidden clues to reveal them. Each discovery feeds a case file players build up and refer back to before naming a suspect.</p>
+            <p>The story splits into two playable perspectives — Madam Meowtrix (the cat) and Maximus Maxmillian (the dog) — each revealing different information about their relationship to Pippy and their possible motive, while deliberately withholding the rest. Reading only one side isn't enough to solve the case.</p>
+         <ul>
+            <li>Two-perspective narrative structure</li>
+            <li>Comic-panel interface with hover-to-reveal clues</li>
+            <li>A running case file players build as they investigate</li>
+            <li>Runs entirely in-browser, no installation required</li>
+         </ul>
+        </div>
+
     <div class="opportunity_container ">
-        <h3>01 - The Opportunity</h3>
+        <h4>01 - The Opportunity</h4>
             <hr>
          <h2> How might we create a mystery experience that feels engaging,
             and Accessible while encouraging active investigation </h2>
@@ -74,8 +89,17 @@
          
         </div>
 
+        <div class="research_container ">
+        <h4>02 - Grounded in Research</h4>
+            <hr>
+         <h2>Why interactive narrative, and why two perspectives</h2>
+            <p>Before we designed a single screen, we grounded the concept in Murray's (1997) framework for what makes digital narrative compelling: agency, immersion and transformation. Who Poisoned Pippy was built to hit all three — players choose which clues to examine (agency), inhabit a suspect's perspective through scripted dialogue and scene composition (immersion), and revise their read of events as the second perspective reveals new information (transformation).</p>
+            <p>The two-perspective structure was our direct answer to what Murray calls an "encyclopedic" experience — one where no single viewpoint is sufficient, and the full picture only emerges once both accounts have been weighed against each other, mirroring how real investigations actually work.</p>
+            <p>Two existing titles shaped how far we took that idea. <em>The Boat</em> (SBS &amp; The Pixel Hunt, 2015) told its entire story as scrolling comic panels in a browser, which is why we committed to a single chapter-by-chapter structure that stops players from skipping ahead. <em>Duck Detective: The Secret Salami</em> (Happy Broccoli Games, 2024) showed how short, character-specific dialogue can carry personality, motive and unreliability without long exposition — the model we followed for how each suspect speaks.</p>
+        </div>
+
         <div class="contribution_container ">
-        <h3>02 - Contribution</h3>
+        <h4>03 - Contribution</h4>
             <hr>
          <h2>My focus: </h2>
       
@@ -90,7 +114,7 @@
         </div>
 
         <div class="process_container ">
-        <h3>03 - Process & Collaboration</h3>
+        <h4>04 - Process & Collaboration</h4>
             <hr>
          <h2>Running a four person team like a small agile studio</h2>
             <p>As documentation lead, I worked alongside 4 peers to keep a 14-week project spanning visual art, writing, interface design and front-end development moving in parallel rather than stalling on a single critical path. We split the work into five sprints, letting design, scripting and development progress together instead of waiting on each other:</p>
@@ -107,12 +131,31 @@
          <img class="image_DeepWithin image_deep2" src="whopoisonedpip_assets/task_tracker.png" alt="Screenshot of the Google Sheets task tracker showing tasks assigned by team member, priority and status">
          <p class="photo_descr">The task tracker I maintained to allocate and monitor workload across all five sprints</p>
             <p>Alongside the tracker, I recorded the minutes for every weekly meeting, capturing decisions and action items so that choices made informally — over WhatsApp, in sub-meetings, or in the room — had one place the whole team could check back against.</p>
-            <h4>Reflection: working within developer capabilities</h4>
+            <h4 class="subheading">Reflection: working within developer capabilities</h4>
             <p>A layout that looks correct in Figma doesn't automatically behave the same way once it's built on a framework like Bootstrap. We ran into this directly when Bootstrap's utility classes overrode the custom clamp() sizing on the back button, and again during testing when the case file wouldn't centre correctly in HTML/CSS. Adopting a 12-column grid early and carrying it consistently from wireframe, to Figma, to CSS reduced a lot of this friction — but it also meant accepting that some interface decisions had to be made with the developers' constraints in mind from the start, rather than handed over as a finished design afterwards. If I ran this process again, I'd bring development into the wireframing stage even earlier, so technical limits are part of the conversation from day one instead of something we discover during integration.</p>
         </div>
 
-        <div class="designsystem ">
-        <h3>04 - Design System</h3>
+        <div class="earlyprototypes_container ">
+        <h4>05 - Early Prototypes</h4>
+            <hr>
+         <h2>From napkin sketches to interface wireframes</h2>
+            <p>Before a single wireframe reached Figma, we mapped Pippy, Meowtrix and Maximillian's relationships and motives by hand — who lied to whom, who had reason to want Pippy gone. That informal character map became the reference every later chapter script had to stay consistent with.</p>
+         <img class="image_DeepWithin image_deep2" src="whopoisonedpip_assets/relationship_pip.png" alt="Hand-drawn notes mapping character relationships and motives">
+         <p class="photo_descr">Character relationship notes from an early team meeting</p>
+
+            <p>The website layout went through the same low-tech-first approach: paper sketches of the homepage, chapter view and case file, refined into low-fidelity wireframes in Balsamiq before anything was built in Figma. A 12-column grid was adopted at this stage and carried through into the final HTML/CSS, cutting down on translation errors later.</p>
+         <!-- TODO: replace with your actual asset path, e.g. whopoisonedpip_assets/paper_and_balsamiq_wireframes.png -->
+         <img class="image_DeepWithin image_deep2" src="whopoisonedpip_assets/balsamiq_1.png" alt="Paper prototypes and low-fidelity Balsamiq wireframes of the website layout">
+         <p class="photo_descr">Paper prototypes and early Balsamiq wireframes of the site layout</p>
+
+            <p>Character art followed the same arc. Early rough sketches of Meowtrix and Maximillian went through several passes before landing on the final noir-styled designs used throughout the comic.</p>
+         <!-- TODO: replace with your actual asset path, e.g. whopoisonedpip_assets/character_sketches_before_after.png -->
+         <img class="image_DeepWithin image_deep2" src="whopoisonedpip_assets/REPLACE_character_sketches_before_after.png" alt="Character sketches showing initial rough designs compared to the final versions">
+         <p class="photo_descr">Character sketches: initial designs compared to the final versions</p>
+        </div>
+
+        <div class="designsystem_container ">
+        <h4>06 - Design System</h4>
             <hr>
          <h2>Defining the visual language before a single line of code was written</h2>
             <p>Before development began, I worked with the team to define the project's design system in Figma — colour, typography and core UI components — so that whoever was building or designing a page was working from the same reference rather than improvising individually.</p>
@@ -124,7 +167,7 @@
         </div>
 
  <div class="reflection_container ">
-        <h3>05 - Reflection</h3>
+        <h4>07 - Reflection</h4>
             <hr>
          <h2>Designing for accessibility and feasibility, not just aesthetics</h2>
             <p>The biggest lesson from this whole project came down to one feature: an animated gradient background that shifted as you scrolled, meant to make the comic panels feel moodier and more noir. 
@@ -141,7 +184,7 @@
                 Agree on a fallback before it's a problem, and actually say out loud when we're compromising, so swapping the animated gradient for a static one reads as a decision we made together, not as the design just losing.</p>
             <p></p>
                  <br>
-            <h4>Guerrilla testing at the Interactive Media showcase</h4>
+            <h4 class="subheading">Guerrilla testing at the Interactive Media showcase</h4>
             <div class="flex_row">
             <img class="showcase_img" src="whopoisonedpip_assets/whopoisonedpip_showcase.jpeg" alt="image of product in the Interactive Media Showcase">
             <img class="image_DeepWithin image_deep2" src="whopoisonedpip_assets/verdict_pip.gif" alt="">
