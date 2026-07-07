@@ -610,7 +610,16 @@ html {
   background: #8fad7f;
   border-color: #8fad7f;
 }
+.data_img{
+    width: 100%;
+    max-width: 860px;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 42px;
+    margin-top: 48px;
+    padding-bottom: 20px;
 
+}
 .case-progress-nav a.seen span::after {
   content: "✓";
   color: white;
