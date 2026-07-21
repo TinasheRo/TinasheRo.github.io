@@ -64,16 +64,16 @@
             <hr>
          <h2>An interactive murder mystery, told from two sides</h2>
             <p>Players investigate the death of Pippy, a small-town mouse, by exploring comic-panel scenes and hovering a magnifying glass tool over hidden clues to reveal them. Each discovery feeds a case file players build up and refer back to before naming a suspect.</p>
-            <p>The story splits into two playable perspectives — Madam Meowtrix (the cat) and Maximus Maxmillian (the dog) — each revealing different information about their relationship to Pippy and their possible motive, while deliberately withholding the rest. Reading only one side isn't enough to solve the case.</p>
+            <p>The story splits into two playable perspectives  Madam Meowtrix (the cat) and Maximus Maxmillian (the dog), each revealing different information about their relationship to Pippy and their possible motive, while deliberately withholding the rest. Reading only one side isn't enough to solve the case.</p>
          <ul>
-            <li>Two-perspective narrative structure</li>
-            <li>Comic-panel interface with hover-to-reveal clues</li>
+            <li>Two perspective narrative structure</li>
+            <li>Comic panel interface with hover-to-reveal clues</li>
             <li>A running case file players build as they investigate</li>
             <li>Runs entirely in-browser, no installation required</li>
          </ul>
         </div>
 
-    <div class="opportunity_container ">
+    <div class="opportunity_container">
         <h4>01 - The Opportunity</h4>
             <hr>
          <h2> How might we create a mystery experience that feels engaging,
@@ -86,16 +86,17 @@
             <li>Accessible interaction design</li>
             <li>Clear evidence discovery</li>
          </ul>
-         
+         <img src="whopoisonedpip_assets/Formative_Flowchart.drawio.png" alt="Formative flowchart">
+         <p class="photo_descr">Image shows the formative flowchart for the project.</p>
         </div>
 
         <div class="research_container ">
         <h4>02 - Grounded in Research</h4>
             <hr>
          <h2>Why interactive narrative, and why two perspectives</h2>
-            <p>Before we designed a single screen, we grounded the concept in Murray's (1997) framework for what makes digital narrative compelling: agency, immersion and transformation. Who Poisoned Pippy was built to hit all three — players choose which clues to examine (agency), inhabit a suspect's perspective through scripted dialogue and scene composition (immersion), and revise their read of events as the second perspective reveals new information (transformation).</p>
-            <p>The two-perspective structure was our direct answer to what Murray calls an "encyclopedic" experience — one where no single viewpoint is sufficient, and the full picture only emerges once both accounts have been weighed against each other, mirroring how real investigations actually work.</p>
-            <p>Two existing titles shaped how far we took that idea. <em>The Boat</em> (SBS &amp; The Pixel Hunt, 2015) told its entire story as scrolling comic panels in a browser, which is why we committed to a single chapter-by-chapter structure that stops players from skipping ahead. <em>Duck Detective: The Secret Salami</em> (Happy Broccoli Games, 2024) showed how short, character-specific dialogue can carry personality, motive and unreliability without long exposition — the model we followed for how each suspect speaks.</p>
+            <p>Before we designed a single screen, we grounded the concept in Murray's (1997) framework for what makes digital narrative compelling: agency, immersion and transformation. Who Poisoned Pippy was built to hit all three, players choose which clues to examine (agency), inhabit a suspect's perspective through scripted dialogue and scene composition (immersion), and revise their read of events as the second perspective reveals new information (transformation).</p>
+            <p>The two-perspective structure was our direct answer to what Murray calls an "encyclopedic" experience, one where no single viewpoint is sufficient, and the full picture only emerges once both accounts have been weighed against each other, mirroring how real investigations actually work.</p>
+            <p>Two existing titles shaped how far we took that idea. <em>The Boat</em> (SBS &amp; The Pixel Hunt, 2015) told its entire story as scrolling comic panels in a browser, which is why we committed to a single chapter-by-chapter structure that stops players from skipping ahead. <em>Duck Detective: The Secret Salami</em> (Happy Broccoli Games, 2024) showed how short, character-specific dialogue can carry personality, motive and unreliability without long exposition, the model we followed for how each suspect speaks.</p>
         </div>
 
         <div class="contribution_container ">
@@ -127,19 +128,19 @@
             <img class="image_deep2" src="whopoisonedpip_assets/explanation of the game.png" alt="explanation of the game design">
             <img class="image_deep2" src="whopoisonedpip_assets/Case file -2.png" alt="case file design">
          </ul>
-            <p>From Sprint 2 onwards, I maintained the team's shared task tracker in Google Sheets. Every task was assigned to a named team member, given a priority level and a weekly status — not started, in progress, completed or blocked — so anyone could see where the project stood at a glance and step in early if something was stuck.</p>
+            <p>From Sprint 2 onwards, I maintained the team's shared task tracker in Google Sheets. Every task was assigned to a named team member, given a priority level and a weekly status including: not started, in progress, completed or blocked. So anyone could see where the project stood at a glance and step in early if something was stuck.</p>
          <img class="image_DeepWithin image_deep2" src="whopoisonedpip_assets/task_tracker.png" alt="Screenshot of the Google Sheets task tracker showing tasks assigned by team member, priority and status">
          <p class="photo_descr">The task tracker I maintained to allocate and monitor workload across all five sprints</p>
-            <p>Alongside the tracker, I recorded the minutes for every weekly meeting, capturing decisions and action items so that choices made informally — over WhatsApp, in sub-meetings, or in the room — had one place the whole team could check back against.</p>
+            <p>Alongside the tracker, I recorded the minutes for every weekly meeting, capturing decisions and action items so that choices made informally, over WhatsApp, in sub-meetings, or in the room, had one place the whole team could check back against.</p>
             <h4 class="subheading">Reflection: working within developer capabilities</h4>
-            <p>A layout that looks correct in Figma doesn't automatically behave the same way once it's built on a framework like Bootstrap. We ran into this directly when Bootstrap's utility classes overrode the custom clamp() sizing on the back button, and again during testing when the case file wouldn't centre correctly in HTML/CSS. Adopting a 12-column grid early and carrying it consistently from wireframe, to Figma, to CSS reduced a lot of this friction — but it also meant accepting that some interface decisions had to be made with the developers' constraints in mind from the start, rather than handed over as a finished design afterwards. If I ran this process again, I'd bring development into the wireframing stage even earlier, so technical limits are part of the conversation from day one instead of something we discover during integration.</p>
+            <p>A layout that looks correct in Figma doesn't automatically behave the same way once it's built on a framework like Bootstrap. We ran into this directly when Bootstrap's utility classes overrode the custom clamp() sizing on the back button, and again during testing when the case file wouldn't centre correctly in HTML/CSS. Adopting a 12-column grid early and carrying it consistently from wireframe, to Figma, to CSS reduced a lot of this friction, but it also meant accepting that some interface decisions had to be made with the developers' constraints in mind from the start, rather than handed over as a finished design afterwards. If I ran this process again, I'd bring development into the wireframing stage even earlier, so technical limits are part of the conversation from day one instead of something we discover during integration.</p>
         </div>
 
         <div class="earlyprototypes_container ">
         <h4>05 - Early Prototypes</h4>
             <hr>
-         <h2>From napkin sketches to interface wireframes</h2>
-            <p>Before a single wireframe reached Figma, we mapped Pippy, Meowtrix and Maximillian's relationships and motives by hand — who lied to whom, who had reason to want Pippy gone. That informal character map became the reference every later chapter script had to stay consistent with.</p>
+         <h2>From paper sketches to interface wireframes</h2>
+            <p>Before a single wireframe reached Figma, we mapped Pippy, Meowtrix and Maximillian's relationships and motives by hand, who lied to whom, who had reason to want Pippy gone. That informal character map became the reference every later chapter script had to stay consistent with.</p>
          <img class="image_DeepWithin image_deep2" src="whopoisonedpip_assets/relationship_pip.png" alt="Hand-drawn notes mapping character relationships and motives">
          <p class="photo_descr">Character relationship notes from an early team meeting</p>
 
@@ -155,12 +156,12 @@
         <h4>06 - Design System</h4>
             <hr>
          <h2>Defining the visual language before a single line of code was written</h2>
-            <p>Before development began, I worked with the team to define the project's design system in Figma — colour, typography and core UI components — so that whoever was building or designing a page was working from the same reference rather than improvising individually.</p>
-            <p>We built the colour palette around four functional roles: a near-black background and dark panel colour for the noir tone fitting a murder mystery, off-white primary text for legibility without harsh contrast, and a single deep red accent (#C1121F) reserved for interactive elements, highlighted names and clues — teaching players to read red as "interactive" without needing instructions.</p>
+            <p>Before development began, I worked with the team to define the project's design system in Figma, colour, typography and core UI components so that whoever was building or designing a page was working from the same reference rather than improvising individually.</p>
+            <p>We built the colour palette around four functional roles: a near black background and dark panel colour for the noir tone fitting a murder mystery, off-white primary text for legibility without harsh contrast, and a single deep red accent (#C1121F) reserved for interactive elements, highlighted names and clues, teaching players to read red as "interactive" without needing instructions.</p>
          <img class="image_DeepWithin image_deep2" src="whopoisonedpip_assets/Colour palette idea 2-2.png" alt="Screenshot of the colour palette and typography hierarchy defined in Figma">
                   <img class="image_DeepWithin image_deep2" src="whopoisonedpip_assets/Typography.png" alt="Screenshot of the colour palette and typography hierarchy defined in Figma">
          <p class="photo_descr">Colour palette and typography hierarchy I helped define in Figma</p>
-            <p>Typography followed the same logic: a three-level scale using Patrick Hand for headings to reinforce the handwritten comic aesthetic, and Valera Round for body text to keep longer passages legible. Base sizes were set in Figma as fixed pixel values, then translated into fluid clamp() values in CSS, preserving the proportional relationship between heading, subheading and body text across every screen size.</p>
+            <p>Typography followed the same logic: a three level scale using Patrick Hand for headings to reinforce the handwritten comic aesthetic, and Valera Round for body text to keep longer passages legible. Base sizes were set in Figma as fixed pixel values, then translated into fluid clamp() values in CSS, preserving the proportional relationship between heading, subheading and body text across every screen size.</p>
         </div>
 
  <div class="reflection_container ">

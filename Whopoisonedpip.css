@@ -233,10 +233,9 @@ footer p {
    paragraph. */
 .opportunity_container > p:last-of-type,
 .reflection_container > p:last-of-type {
-  font-family: "Caveat", cursive;
+ 
   font-size: 1.6rem;
   font-style: italic;
-  color: #595959;
   margin-top: 24px;
 }
 
