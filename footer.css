@@ -5,16 +5,15 @@ footer{
     height: auto;
     border-top: 1px solid rgba(0,0,0,.1);
     background-color: #f8f8f8;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cg fill='%23c1c1c1' fill-opacity='0.17'%3E%3Cpolygon fill-rule='evenodd' points='8 4 12 6 8 8 6 12 4 8 0 6 4 4 6 0 8 4'/%3E%3C/g%3E%3C/svg%3E");
     text-align: left;
-   
+ 
 }
 
 footer h2{
     font-family: "Cormorant Garamond", serif;
     font-size: 2rem;
     font-weight: 700;
-    margin: 20px 0 10px;
+    margin: 0 0 8px 0;
     text-align: left;
     padding-left: 8px;
   
@@ -23,17 +22,17 @@ footer h2{
 footer p{
     
     font-size: 1.1rem;
-    line-height: 1.6;
+    line-height: 1.4;
     margin: 0;
     transform: none; /* important */
     text-align: left;
 }
 
 .footer-links{
-    margin-top: 10px;
+    margin-top: 8px;
     display: flex;
-    justify-content: left;
-    gap: 30px;
+    justify-content: flex-start;
+    gap: 16px;
     text-align: left;
     padding-left: 2px;
 }
@@ -51,7 +50,7 @@ footer p{
 }
 
 .copyright{
-    margin-top: 20px;
+    margin-top: 10px;
     font-size: 0.9rem;
     opacity: 0.7;
     text-align: left;

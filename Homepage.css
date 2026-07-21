@@ -188,10 +188,10 @@ a{
 .start_page h1 {
   font-size: var(--h1-font-size);
   font-family: "Fraunces";
-  margin-top: 60px; /* add this */
+  margin-top: 60px; 
   margin-bottom: 30px;
   font-weight: bolder;
-  text-align: left; /* keep left */
+  text-align: left; 
   line-height: 1.6;
 }
 h2{
@@ -383,6 +383,9 @@ p{
      padding: 0px;
      text-align: left;
      font-family: 100;
+}
+.start_page span{
+   color: #595959;
 }
 
 .start_page h3{
