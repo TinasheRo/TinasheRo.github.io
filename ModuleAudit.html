@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nordic Muse Redesign Case Study</title>
+    <title>Deep Within</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
@@ -12,20 +13,411 @@
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="Homepage.css">
 <link rel="stylesheet" href="footer.css">
+<link rel="stylesheet" href="Deepwithin.css">
 
 </head>
 <header>
-
 <div>
     <nav>
         <ul>
             <li><a href="index.html">Work</a></li> 
             <li><a href="AboutMe.html">About</a></li>
-            <li><a href="play.html"></a>Play</li>
+            <li><a href="play.html">Play</a></li>
             <li><a href="Resume.pdf" target="_blank">Resume</a></li>
         </ul>
     </nav>
 </div>
+</header>
+<body>
+
+
+
+
+
+    <div id="overview" class="Intro-container">
+        <div class="intro-section-text">
+       <h3 id="smalldescr" >UX & FRONT END DEVELOPMENT</h3>
+        <h1>The Student Resource Directory</h1>
+        <p>Helping Interactive Media students stop hunting for the tools they need  and start using them</p>
+
+
+        <h5>Role</h5>
+        <p>Auditor, UX Designer & Front-End Developer</p>
+        <hr>
+        <h5>Duration</h5>
+        <p>2 months</p>
+            <hr>
+        <h5>Tools</h5>
+        <p>Figma, Google Sheets, GitHub Pages, GitHub, Chrome DevTools, VS Code</p>
+
+        </div>
+         <!--add video here soon -->
+    <div>
+
+     <video id="prototype_sec" controls src="assets/video.mp4"></video>
+    </div>
+       
+    </div>
+     <img class="image_DeepWithin image_deep2" src="/" alt="Student directory final design (figma  motion )">
+   <nav class="case-progress-nav" aria-label="Case study sections">
+  <a href="#overview" data-section="overview"><span></span><p>Overview</p></a>
+  <a href="#problem" data-section="problem"><span></span><p>Problem</p></a>
+  <a href="#competitors" data-section="competitors"><span></span><p>Competitors</p></a>
+  <a href="#personas" data-section="personas"><span></span><p>Personas</p></a>
+  <a href="#lowfi" data-section="lowfi"><span></span><p>Low-fi</p></a>
+  <a href="#highfi" data-section="highfi"><span></span><p>High-fi</p></a>
+  <a href="#testing" data-section="testing"><span></span><p>Testing</p></a>
+    <a href="#affinity" data-section="affinity"><span></span><p>Affinity Map</p></a>
+  <a href="#discovery" data-section="discovery"><span></span><p>Discovery</p></a>
+  <a href="#iterations" data-section="iterations"><span></span><p>Iterations</p></a>
+  <a href="#reflection" data-section="reflection"><span></span><p>Reflection</p></a>
+</nav>
+     <p class="photo_descr">Final look: The central directory for Interactive Media students </p>
+
+
+
+    <div id="problem" class="Problem_container animation">
+        <h4>01 - Problem Space</h4>
+            <hr>
+         <h2>The problem in one sentence
+ </h2>
+         <ul>
+            <li>Interactive Media students were spending more time hunting for software and hardware information than actually learning how to use it.
+</li>
+            <li>Every module had its own page. Every page organised things differently. If you were a first year student trying to figure out what to install before your first practical session, or a returning student trying to dig up a tutorial from two terms ago, there was no single place to look,  just a scavenger hunt across modules.</li>
+            <li>That scavenger hunt was the actual project brief, even though nobody wrote it down that way. My job was to turn "everything is scattered everywhere" into something a student could open, search, and immediately understand. </li>
+         </ul>
+         
+         <p > "What software would i need for creative coding?" </p>
+        </div>
+
+            <div  class="Designprocess animation">
+        <h4>02 - The goal requirements </h4>
+            <hr>
+        <h3>Requirements before design</h3>
+                <img class="requirements_images" src="module_audit_assets/Screenshot 2026-07-26 at 18.07.50.png" alt="Requirements Image 1">
+                                <p class="photo_descr">This shows the functional requirement for the project </p>
+                <img class="requirements_images" src="module_audit_assets/Screenshot 2026-07-26 at 18.13.24.png" alt="non-Requirements Image 2">
+                                <p class="photo_descr">This shows the non-functional requirement for the project </p>
+                <p>Before designing the interface, I defined what the directory needed to do (functional requirements) and the standards it needed to meet (non-functional requirements), turning the audit into a concrete brief I could design against.  </p>
+        </div>
+    
+
+        <div class="Designprocess"> 
+            <h4>02 - Design process</h4>
+            <hr>
+            <h3>A human centred process from day one</h3>
+           
+            <p>The project followed a design thinking process.
+                research informed personas, personas shaped wireframes, wireframes revealed usability issues, issues drove iteration.
+            </p>
+            <img class="designprocess_image" src="deepwithin_assets/design_process_image.svg" alt="Design_process_image ">
+
+
+        </div>
+
+        
+
+
+        <div id="competitors" class="Competitor_Analysis">
+            <h4>03 - Competitor Analysis </h4>
+            <hr>
+            <h3> What already existed And What was missing.</h3>
+            <p>Headspace, Widgetable, Calm was analysed to understand the competitive landscape.
+                The opportunity was clear: nobody combined mood tracking, sleep data, jorunaling and contextual AI 
+                support in a single flow
+            </p>
+            <img class="competiter_pic" src="deepwithin_assets/competiter analysis_apps.svg" alt="competitor_analysis_image">
+
+        </div>
+        <div id="personas" class="userpersona_container animation">
+            <h4> 04 - Proto -User Personas</h4>
+             <hr>
+             <h2> Designing for real environments in real moments</h2>
+             <p>Three personas were built to keep design decisions grounded in human needs and no assumptions.</p>
+              <div class="persona-group">
+                <img class="persona" src="deepwithin_assets/aish_persona.png" alt="Aish_persona">
+                <img class="persona" src="deepwithin_assets/david_persona.png" alt="David_Persona">
+                <img class="persona" src="deepwithin_assets/mary_persona.png" alt="Mary_Persona">
+              </div>
+
+            </div>
+
+            <div id="lowfi" class="Competitor_Analysis">
+            <h4>05 - Early Designs </h4>
+            <hr>
+            <h3> Prototypes to capture the user flow</h3>
+            <p>Across the low fidelity phase, the concept evolved from a feature heavy wellness app into a more focused reflection experience. This laid the foundation for the first high-fidelity
+               prototype, which I then tested with users.
+            </p>
+            
+            <img class="low_prototype1" src="deepwithin_assets/protoype1.png" alt="competitor_analysis_image">
+            <img class="low_prototype1" src="deepwithin_assets/Lowfiprototype_iteration.png" alt="">
+    
+            </div>
+
+            <div id="highfi" class="HighFid-Prototype">
+            <h4>06 - High Fidelity </h4>
+            <hr>
+            <img id="fighfipphoto"  src="deepwithin_assets/highfiprototype.png" alt="">
+            <p class="photo_descr"> The final high fidelity prototype before usability review </p>
+                </div>
+            <div id="testing" class="user-testing-container">
+                        <h4>07 - User Testing</h4>
+                        <hr>
+                        <h3>7 university students</h3> <br> <h3>Real words. Real reactions </h3>
+                        
+                        <p> After completeing the first protoype. I recruited 7 university students to test it using a think aloud protocol - users will navigate the app freely while speaking their thoughts out loud. I sat with each participant an noted exactly what they said as they moved through the screens. No leading questions. No guidance. Just their honest, unflitered reactions.</p>
+                       
+                        <div class="methods-container">
+                            <div  class="methods">
+                                <h3>7</h3>
+                                <p> Participants</p>
+                            </div>
+                            <div  class="methods"> 
+                                <h3> 3 </h3>
+                                <p>Tasks Set</p>
+                            </div>
+                            <div  class="methods">
+                                <h3>3 </h3>
+                                <p>Key Issues Found</p>
+                            </div>
+                            <div  class="methods">
+                                <h3>Think aloud </h3>
+                                <p>Method</p>
+
+                            </div>
+                        </div>
+                        
+                        <div class="methods-container">
+                            <div class="methods" >
+
+                                <h6>Log a mood</h6>
+                                <p>Task 1 </p>
+                            </div>
+                            <div  class="methods">
+ 
+                                <h6>Find past moods</h6>
+                                <p>Task 2</p>                               
+                            </div>
+                            <div  class="methods">
+
+                                <h6>Find music last for 10 mins </h6>
+                                <p>Task 3 </p>
+                            </div>
+
+
+                        </div>
+                            <div id="affinity" class="results_container">
+                                <h3>Results of the User Testing </h3>
+                                <img class="data_img" src="deepwithin_assets/percentage_deep.png" alt="Percentage of users who found each feature difficult to use">
+                                <div class="results_findings">
+                                <img class="image_DeepWithin move_findings" src="deepwithin_assets/Nav.png" alt="">
+                                <div class="findings_user">
+                                    <h4>Discoverability & navigation</h4>
+                                    <h5>What participants struggled on</h5>
+                                    <p>Users were unsure where to log moods, access history, or return to the journal from the home screen</p>
+                                    <h5>Evidence</h5>
+                                    <p>5/7 participants hesitated or clicked around before finding the right entry point</p>
+                                </div>
+                                </div>
+                                <div class="results_findings">
+                                 <img class="image_DeepWithin move_findings" src="deepwithin_assets/Content_vis.png" alt="">   
+                                 <div class="findings_user"> 
+                                    <h4>Content Discovery</h4>
+                                    <h5>What participants struggled on</h5>
+                                    <p>Users wanted session duration visible before opening meditations and found content hard to scan</p>
+                                    <h5>Evidence</h5>
+                                    <p>Participants wanted to know length and type of session at a glance</p>   
+                                    
+
+                                 </div>   
+                         
+                                </div>
+                                <div class="results_findings">
+                                <img class="image_DeepWithin move_findings" src="deepwithin_assets/DATAVIS.png" alt="">   
+                                <div class="findings_user">
+                                    <h4>Data visualisation</h4>
+                                    <h5>What participants struggled on</h5>
+                                    <p>Users wanted trends and graphs rather than isolated entries, so they could understand emotional patterns over time</p>
+                                    <h5>Evidence</h5>
+                                    <p>Several participants said they expected a graph or clearer progress view</p>  
+                                </div>
+                                    
+                                </div>
+                                <div class="results_findings">
+                                 <img class="image_DeepWithin move_findings" src="deepwithin_assets/feedback.png" alt=""> 
+                                 <div class="findings_user">
+                                    <h4>Feedback & System Status </h4>
+                                    <h5>What participants struggled on</h5>
+                                    <p>Users wanted confirmation that their mood had been saved and what would happen next after submission</p>
+                                    <h5>Evidence</h5>
+                                    <p>Multiple participants expected a success state or clearer transition after logging</p>   
+                                 </div>
+       
+
+                                </div>
+
+
+
+
+                            </div>
+                </div>
+             <div id="discovery" class="Research_Finding animation">
+            <h4>08 - Reseach Discovery</h4>
+            <hr>
+            <p> Three key themes emerges through user testing of the old prototype. Each theme become a design requirement.</p>
+
+            <div class="no1_container">
+                <div >
+                    <h1>01</h1>
+                </div>
+                <div>
+                    <h4>Improve Navigation & Feature Discoverability</h4>
+                    <p>Users struggled to locate key features such as mood logging, mood history, and
+                     the journal, highlighting the need for clearer navigation and more discoverable entry points.
+                    </p>
+                </div>
+            </div>
+            <div class="no1_container">
+                <div >
+                    <h1>02</h1>
+                </div>
+                <div>
+                    <h4>Enhance Emotional Progress Visualisation</h4>
+                    <p>Users wanted to view mood trends and emotional patterns over time through 
+                    graphs and summaries rather than isolated mood entries.
+                    </p>
+                </div>
+            </div>
+
+                   <div class="no1_container animation">
+                <div >
+                    <h1>03</h1>
+                </div>
+                <div>
+                    <h4>Strengthen System Status & User Confidence </h4>
+                    <p>Users expected clearer confirmation after completing actions and more contextual information (e.g., meditation duration) to feel confident using the app.
+                    </p>
+                </div>
+            </div>
+                 </div>
+            <div id="iterations" class="iterations_section">
+            <h4>07 - Design Iteration</h4>
+            <hr>
+            <h3>How the app evolved through every decision</h3>
+           
+            <p>Every iteration was a reponse to something learned - from user research,
+                from testing, from asking "does this actually solve the design requirement?"
+                Here is the story of those changes:
+            </p>
+            <div class="iteration_section_h24">
+            <h5> 01 </h5>
+           
+            <h4>Navigation and feature discovery iteration</h4>
+            </div>
+
+          
+            <div class="iteration_container_homepage">
+
+                <ul>
+              
+                <li> <span>The old version</span> <br>The old version did not have any visual hierarchy and the background was distracting for users & lack of information hierarchy 
+                <br>
+                <img class="image_iteration" src="deepwithin_assets/iteration_homepage.gif" alt="choco">
+            </li>
+                <li>
+                    <span>The new version</span> <br> The mood journal becomes it own full page. Stress level, sleep quality, and AI insight are immediately visible.
+                <br>
+                <img class="image_iteration" src="deepwithin_assets/5stepprocess-new.gif" alt="choco">
+                </li>
+                 </ul>
+                   </div>
+
+
+                         <div class="iteration_section_h24">
+                            <h5> 02 </h5>
+                             <h4>Emotional progress visual iteration</h4>
+                         </div>
+                
+                 <div class="iteration_container_homepage"> 
+                     <ul>
+                    <li> <span>The old version</span> <br>The orginial prototype shows that the visual hierachy was weak and overwhelmed the users. 
+                            <br>
+                <img class="image_iteration" src="deepwithin_assets/emotional_progress.gif" alt="Old version of the iteration">
+                             </li>
+                         <li>
+                    <span>The new version</span> <br> The new prototype shows clear Information architecture, easy access for users to look at old entries and log in check ins. 
+                         <br>
+                     <img  class="image_iteration  " src="deepwithin_assets/emotional_progress_2.gif" alt="New version of the iteration">
+                             </li>
+                         </ul>
+                               </div>
+
+                         <div class="iteration_section_h24">
+                            <h5> 03 </h5>
+                             <h4>Strengthens system status feedback & user confidence </h4>
+                         </div>
+                
+                 <div class="iteration_container_homepage"> 
+                     <ul>
+                    <li> <span>The old version</span> <br>The orginial protoype confused users as the system status failed to ensure their check is logged in the system.
+                            <br>
+                <img class="image_iteration" src="deepwithin_assets/systemstatus_start.gif" alt="Old version of the iteration">
+                             </li>
+                         <li>
+                    <span>The new version</span> <br> The loading progress ensures users data of their check in is being processed and get confirmation in the end.
+                         <br>
+                     <img  class="image_iteration  " src="deepwithin_assets/systemstatus_new.gif" alt="New version of the iteration">
+                             </li>
+                         </ul>
+                               </div>
+
+
+                <div id="reflection" class="reflection">
+                    <h4>09 - Reflection</h4>
+                    <hr>
+                    <h3>What I learnt from this project  </h3>
+                    <p>This project taught me that good UX design comes from validating ideas with users rather than designing based on assumptions. While I had a clear vision for Deep Within, usability testing uncovered issues around navigation,
+                     emotional progress tracking, and system feedback that I hadn't anticipated. Watching participants interact with the prototype showed me the value of observing real behaviour instead of relying on what I thought users would do.
+                    </p><br>
+                    <p>It also changed how I approach iteration. Rather than making visual improvements for the sake of aesthetics, every design decision became grounded in user feedback and linked
+                         back to a specific design requirement. This experience reinforced that UX is an iterative process where research, testing, and design continuously inform one another.
+                    </p>
+                    <h3>What I'll do next?</h3>
+                    <p>Although the redesign addressed the main usability issues, I wouldn't consider the project finished without testing it again. I'd recruit another group of participants to validate the changes, measure Task Success Rate across the core user journeys, and use the System Usability Scale (SUS) to understand how users perceived the overall experience.
+                         This would help identify any remaining pain points and see any impacts my iterations had before moving into development.</p>
+                    <h3>Constraints I faced</h3>
+                    <p>The limitation of my project was that the particpiant sample did not fully represent the target audience. 
+                        While the app was designed for both univeristy students and older adults seeking emotional wellbeing support,
+                        all seven participants were univeristy students. This limits the generalisability of the findings, as older users may have 
+                        different needs, behaviours, and accessibility requirements. For future research i would make sure i recurit participants form both User
+                        groups to improve the validity of the design decisions. 
+                    </p>
+                </div>
+
+
+                
+            
+          
+            
+            <ul>
+
+            <p> 
+            </p>
+
+                </div>    
+       
+
+           
+
+
+        </div>
+
+<script src="navprogressivebar.js"></script>
+
+
+
 
 
 
@@ -47,8 +439,6 @@
     </p>
 </footer>
 
-</header>
-<body>
- 
+
 </body>
 </html>
