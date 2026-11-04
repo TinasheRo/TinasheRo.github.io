@@ -1,0 +1,114 @@
+:root {
+  --paper: #e7e0cb;
+  --ink: #31010f;
+  --berry: #9a1840;
+  --sun: #facc3b;
+  --fire: #c71d1c;
+  --pomegranate: #e6481b;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'DM Sans', Arial, sans-serif;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; min-width: 320px; background: var(--paper); color: var(--ink); font-family: var(--sans); }
+a { color: inherit; text-decoration: none; }
+a:focus-visible { outline: 2px solid var(--berry); outline-offset: 4px; }
+ul { list-style: none; margin: 0; padding: 0; }
+h1, h2, h3, p { margin: 0; }
+.wrap { width: min(1320px, calc(100% - 48px)); margin-inline: auto; }
+
+/* header */
+.site-header { display: flex; align-items: center; justify-content: space-between; padding-block: 24px; }
+.brand { font-weight: 600; display: flex; align-items: center; gap: 8px; font-family: var(--serif); font-size: 21px; }
+.brand-mark { width: 23px; height: auto; }
+.nav { display: flex; gap: 28px; font-size: 14px; }
+.nav a:hover { color: var(--berry); }
+
+/* hero */
+.hero-bg { position: relative; isolation: isolate; }
+.hero-blur { position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; object-fit: fill; pointer-events: none; }
+.hero { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 40px; padding-block: 56px 150px; }
+.hero h1 { max-width: 520px; font-family: var(--serif); font-size: clamp(34px, 3.6vw, 44px); font-weight: 600; line-height: 1.12; letter-spacing: -0.02em; }
+.hero p { font-size: clamp(17px, 1.7vw, 20px); line-height: 1.12; }
+
+/* work */
+.work { padding-bottom: 96px; scroll-margin-top: 32px; }
+.work h2 { margin-bottom: 24px; font-family: var(--serif); font-size: 26px; font-weight: 600; }
+.cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 48px 24px; }
+.card-media { position: relative; display: block; height: clamp(280px, 28vw, 380px); overflow: hidden; border: 1px solid rgb(49 1 15 / 60%); border-radius: 6px; }
+.card-media { transition: background 0.3s, border-color 0.3s, box-shadow 0.3s; }
+.card-media img { width: 100%; height: 100%; padding: 56px 24px 24px; object-fit: contain; transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1); }
+.card-cta { position: absolute; right: 16px; bottom: 16px; display: none; align-items: center; min-height: 40px; padding: 8px 18px; border-radius: 999px; background: var(--sun); color: var(--ink); font-size: 13px; font-weight: 600; }
+.card-cta .arrow { display: inline-block; transition: transform 0.25s; }
+.badge { position: absolute; top: 12px; left: 12px; display: grid; place-items: center; width: 28px; height: 28px; border: 1px solid rgb(49 1 15 / 40%); border-radius: 50%; font-size: 10px; }
+.badge { transition: background 0.2s, border-color 0.2s; }
+.card-media:hover .badge, .card-media:focus-visible .badge { background: var(--berry); border-color: var(--berry); color: var(--paper); }
+.card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-top: 12px; }
+.card-head h3 { font-family: var(--serif); font-size: 32px; font-weight: 600; }
+.tags { font-size: 12px; color: var(--berry); text-align: right; }
+.read-badge { position: absolute; top: 12px; right: 12px; display: inline-flex; align-items: center; min-height: 28px; padding: 4px 12px; border: 1px solid rgb(49 1 15 / 40%); border-radius: 999px; font-size: 11px; font-weight: 600; transition: background 0.2s, border-color 0.2s; }
+.card-media:hover .read-badge, .card-media:focus-visible .read-badge { background: var(--berry); border-color: var(--berry); color: var(--paper); }
+.card-text { margin-top: 4px; font-size: 15px; line-height: 1.6; color: var(--berry); }
+
+/* hover: cards respond to the pointer */
+@media (hover: hover) {
+  .card-cta { display: inline-flex; opacity: 0; transform: translateY(10px); transition: opacity 0.25s, transform 0.25s; }
+  .cards li:hover .card-media, .card-media:focus-visible { background: rgb(154 24 64 / 9%); border-color: var(--ink); box-shadow: 6px 6px 0 var(--ink); }
+  .cards li:hover .card-media img, .card-media:focus-visible img { transform: scale(1.05); }
+  .cards li:hover .card-cta, .card-media:focus-visible .card-cta { opacity: 1; transform: none; }
+  .cards li:hover .card-cta .arrow { transform: translateX(4px); }
+  .card-head h3 { background: linear-gradient(var(--berry), var(--berry)) 0 100% / 0 2px no-repeat; transition: background-size 0.3s, color 0.2s; }
+  .cards li:hover .card-head h3 { background-size: 100% 2px; color: var(--berry); }
+}
+
+/* footer */
+.site-footer { padding-block: 64px; background: var(--ink); color: var(--paper); }
+.site-footer h2 { font-family: var(--serif); font-size: clamp(44px, 6vw, 64px); font-weight: 600; }
+.site-footer p { margin-top: 12px; font-size: 14px; }
+.pills { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+.pill { font-weight: 600; display: inline-flex; align-items: center; min-height: 44px; padding: 8px 20px; border-radius: 999px; background: var(--sun); color: var(--ink); font-family: var(--serif); font-size: 18px; transition: background 0.2s; }
+.pill:hover { background: #fff; }
+
+@media (max-width: 860px) {
+    .cards { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .nav { gap: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .card-media img, .card-cta, .card-cta .arrow, .card-head h3 { transition: none; }
+  .cards li:hover .card-media img, .card-media:focus-visible img { transform: none; }
+}
+
+/* little flourish from the brand sheet */
+.flourish { display: inline-block; width: 0.42em; height: 0.42em; margin-left: 0.08em; vertical-align: 0.7em; color: var(--sun); }
+.hero h1 em { font-style: italic; }
+/* shared footer (footer.js) */
+.footer-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; }
+.footer-pills { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+.footer-rose { flex: none; width: 64px; height: auto; }
+
+/* password modal */
+.modal-backdrop { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 24px; background: rgb(49 1 15 / 55%); }
+.modal { width: min(480px, 100%); padding: 32px; border-radius: 6px; background: var(--paper); box-shadow: 0 24px 60px rgb(0 0 0 / 30%); }
+.modal-top { display: flex; align-items: center; justify-content: space-between; }
+.modal-eyebrow { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+.modal-x { display: grid; place-items: center; width: 32px; height: 32px; margin: -6px -6px 0 0; border: 0; background: none; color: var(--ink); font-size: 24px; line-height: 1; cursor: pointer; }
+.modal-x:hover { color: var(--berry); }
+.modal h2 { margin-top: 28px; font-family: var(--serif); font-size: 42px; font-weight: 600; line-height: 1.1; }
+.modal-text { margin-top: 16px; font-size: 16px; line-height: 1.6; }
+.modal form { margin-top: 24px; }
+.modal label { display: block; margin-bottom: 8px; font-size: 13px; font-weight: 600; }
+.pw-field { display: flex; align-items: center; border: 1px solid rgb(49 1 15 / 45%); background: transparent; }
+.pw-field:focus-within { border-color: var(--ink); outline: 2px solid var(--berry); outline-offset: 2px; }
+.pw-field.bad { border-color: var(--fire); }
+.pw-field input { flex: 1; min-width: 0; padding: 14px 16px; border: 0; background: none; color: var(--ink); font: 400 16px var(--sans); outline: none; }
+.pw-field input::placeholder { color: rgb(49 1 15 / 55%); }
+.pw-show { padding: 14px 16px; border: 0; background: none; color: var(--ink); font: 600 13px var(--sans); cursor: pointer; }
+.pw-err { margin-top: 8px; font-size: 13px; color: var(--fire); }
+.pw-go { width: 100%; min-height: 48px; margin-top: 20px; border: 0; border-radius: 999px; background: var(--sun); color: var(--ink); font: 600 14px var(--sans); cursor: pointer; transition: background 0.2s; }
+.pw-go:hover { background: #ffd95e; }
+.modal-help { margin-top: 20px; text-align: center; font-size: 13px; }
+.modal-help a { text-decoration: underline; text-underline-offset: 3px; }
+.modal-help a:hover { color: var(--berry); }
