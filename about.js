@@ -99,8 +99,8 @@ function Approach() {
       h('p', { className: 'eyebrow' }, '01 / My approach'),
       h('h2', null, 'People first. Possibilities next.'),
       h('div', { className: 'two' },
-        h('p', null, 'I’m a Product Designer who enjoys transforming complex problems into intuitive digital experiences. My work combines user research, interaction design and front-end development to bridge the gap between understanding users and building solutions that make a real difference.'),
-        h('p', null, 'Beyond designing interfaces, I love bringing ideas to life through storytelling and communication. I’m currently helping the LDN Research Trust grow its presence on LinkedIn and TikTok, using content to raise awareness, connect with new audiences and support fundraising efforts. Whether I’m designing an interface or creating a campaign, my goal is always the same: understand people first and create experiences that leave a lasting impact.'))));
+        h('p', null, 'I’m a Product Designer who enjoys turning messy data and complex workflows into clear, meaningful experiences. I bring together marketing, UX/UI design and front-end development to connect what people need with solutions that make a real difference'),
+        h('p', null, 'My design philosophy grew from studying Psychology at A level: understand people first, then design around what they need. I bring that curiosity to my role as Lead UX Designer for Foxlove Revenue, turning user insights into clear, useful experiences. As a Marketing Assistant at the University of York, I use storytelling to connect with prospective students and make information more engaging.'))));
 }
 
 function Experience() {
