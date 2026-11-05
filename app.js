@@ -3,6 +3,7 @@ const h = React.createElement;
 const NAV = [
   { label: 'Work', href: '#work' },
   { label: 'About', href: 'about.html' },
+  { label: 'Play', href: 'play.html' },
   { label: 'Email', href: 'mailto:roseannehwami@gmail.com' },
   { label: 'Resume', href: 'Roseanne_Hwami_CV.pdf', external: true },
 ];
