@@ -92,15 +92,6 @@ function useActive() {
   return active;
 }
 
-function SiteHeader() {
-  const links = [['Work', 'index.html#work'], ['About', 'about.html'], ['Email', 'mailto:roseannehwami@gmail.com'], ['Resume', 'Roseanne_Hwami_CV.pdf']];
-  return h('header', { className: 'cs-header wrap' },
-    h('a', { className: 'brand', href: 'index.html', 'aria-label': 'Rose + Anne, home' },
-      h('img', { className: 'brand-mark', src: 'assets/Brand__rose.svg', alt: '', width: 23, height: 23 }), 'Rose + Anne'),
-    h('nav', { className: 'nav', 'aria-label': 'Main' },
-      links.map(([l, href]) => h('a', { key: l, href, ...(l === 'Resume' && { target: '_blank', rel: 'noreferrer' }) }, l))));
-}
-
 function SubNav({ active }) {
   const [pct, setPct] = useState(0);
   useEffect(() => {
@@ -308,7 +299,7 @@ function App() {
   const active = useActive();
   return h(Zoom.Provider, { value: setZoom },
     h('div', { className: 'dw' },
-      h(SiteHeader), h(SubNav, { active }),
+      h(SubNav, { active }),
       h('main', null, h(Hero), h(Problem), h(Research), h(Prototypes), h(Testing), h(Findings), h(Iterations), h(Video), h(Reflection)),
       h(SiteFooter)),
     h(Lightbox, { item: zoom, onClose: () => setZoom(null) }));
