@@ -10,7 +10,7 @@ const SECTIONS = [
   { id: 'prototyping', nav: '03 / Prototyping', label: 'Low-fi prototypes' },
   { id: 'hifi', nav: '04 / High-Fidelity', label: 'High-fidelity & branding' },
   { id: 'requirements', nav: '05 / Requirements', label: 'FR & NFR requirements' },
-  { id: 'video', nav: '06 / Video demonstration', label: 'Video demonstration' },
+  { id: 'impact', nav: '06 / Impact', label: 'Impact & results' },
   { id: 'reflection', nav: '07 / Reflection', label: 'Reflection' },
 ];
 
@@ -68,7 +68,7 @@ function useActive() {
 }
 
 function SiteHeader() {
-  const links = [['Work', 'index.html#work'], ['About', 'about.html'], ['Email', 'mailto:roseannehwami@gmail.com'], ['Resume', 'Resume6.pdf']];
+  const links = [['Work', 'index.html#work'], ['About', 'about.html'], ['Play', 'play.html'], ['Resume', 'Roseanne_Hwami_CV.pdf']];
   return h('header', { className: 'cs-header wrap' },
     h('a', { className: 'brand', href: 'index.html', 'aria-label': 'Rose + Anne, home' },
       h('img', { className: 'brand-mark', src: 'assets/Brand__rose.svg', alt: '', width: 23, height: 23 }), 'Rose + Anne'),
@@ -94,7 +94,7 @@ function SubNav({ active }) {
 function Hero() {
   const meta = [
     ['Timeline', ['2 months']],
-    ['Team', ['Solo project']],
+    ['Team', ['Pair project: two students, work split evenly', 'Weekly progress meetings with managers']],
     ['Role', ['UX Design: Information Architecture, Prototyping', 'Development: Front-end, GitHub Pages', 'Research: Content Audit']],
     ['Tools used', ['Figma', 'Google Sheets', 'GitHub Pages', 'VS Code', 'Chrome DevTools']],
   ];
@@ -108,7 +108,7 @@ function Hero() {
     h('dl', { className: 'meta' }, meta.map(([k, v]) => h('div', { key: k }, h('dt', null, k), v.map((line) => h('dd', { key: line }, line))))),
     h('div', { className: 'intro' },
       h('p', { className: 'eyebrow' }, 'The project'),
-      h('p', null, 'A central resource directory for Interactive Media students at the University of York. The work moved from auditing scattered module content to designing a clearer information architecture, prototyping the experience and preparing requirements for development.')));
+      h('p', null, 'A central resource directory for Interactive Media students at the University of York. Over two months, two students took the work from auditing scattered module content to a clearer information architecture, a prototype and a live site, meeting managers every week to show progress. 60 unique users and 328 visits followed in the first two months after launch.')));
 }
 
 function Requirements() {
@@ -125,33 +125,43 @@ function Requirements() {
     h('div', { className: 'req-grid' + (f === 'all' ? '' : ' single') },
       f !== 'nfr' && panel('Functional requirements', 'What the directory needs to do', 'FR', FR),
       f !== 'fr' && panel('Non-functional requirements', 'How the directory should work', 'NFR', NFR)),
+    h('div', { className: 'pair' },
+      h('div', null, h('h3', null, 'Where it got difficult'), h('p', null, 'At first I struggled to work in Bootstrap in a way that would scale. Building one module page was straightforward, but keeping every page consistent as more modules were added was not.')),
+      h('div', null, h('h3', null, 'How I solved it'), h('p', null, 'I researched how Bootstrap projects are structured, started from existing templates and tweaked them to fit the directory. That gave us one reusable layout for every module.'))),
+    h('p', { className: 'lede', style: { marginTop: 32, marginBottom: 0 } }, 'We achieved all of the requirements, including the scalable structure that lets new modules be added without redesigning the template.'),
     h('p', { className: 'fig', style: { marginTop: 14, fontSize: 11, color: 'var(--berry)' } }, 'Project requirements transcribed from the original planning sheets, shown below.'),
     h('div', { className: 'compare', style: { marginTop: 32 } },
       h(Fig, { src: RD + 'requirements-functional.png', alt: 'Original planning sheet listing functional requirements FR1 to FR9', label: 'Add ' + RD + 'requirements-functional.png', caption: 'Original planning sheet · Functional requirements.' }),
       h(Fig, { src: RD + 'requirements-non-functional.png', alt: 'Original planning sheet listing non-functional requirements NFR1 to NFR8', label: 'Add ' + RD + 'requirements-non-functional.png', caption: 'Original planning sheet · Non-functional requirements.' })));
 }
 
-function Video() {
-  const [ok, setOk] = useState(true);
-  return h(Sec, { id: 'video' },
-    h('h2', null, 'Video demonstration'),
-    h('p', { className: 'lede' }, 'A walkthrough of the directory’s year tabs, module navigation and resource listings.'),
-    ok ? h('video', { className: 'video', controls: true, preload: 'metadata', onError: () => setOk(false) }, h('source', { src: 'assets/demo.mp4', type: 'video/mp4' }))
-       : h('div', { className: 'video' }, 'Demonstration recording to be added'),
-    !ok && h('p', { className: 'fig', style: { marginTop: 10, fontSize: 11, color: 'var(--berry)' } }, 'Video space reserved for the project demonstration.'));
+function Impact() {
+  const stats = [['60', 'unique users', 'Students who visited the directory.'], ['328', 'visits in two months', 'Visits in the first two months after launch.'], ['12+', 'modules in one place', 'Software, hardware and resources gathered into a single structure.']];
+  return h(Sec, { id: 'impact' },
+    h('h2', null, 'Real students, using it.'),
+    h('p', { className: 'lede' }, 'The directory went live for Interactive Media students at the University of York and was used from the start.'),
+    h('div', { className: 'impact' }, stats.map(([n, l, d]) =>
+      h('div', { className: 'stat', key: l }, h('b', null, n), l, h('p', null, d)))),
+    h('blockquote', { className: 'quote-light' },
+      '“A well designed, smooth resource.” “It is all working as expected, and no issues so far!”',
+      h('cite', null, 'Feedback from University of York staff after handover')),
+    h('div', { className: 'pair' },
+      h('div', null, h('h3', null, 'Less hunting'), h('p', null, 'Students can check what software and hardware a module needs in one place, instead of opening each module page to find out.')),
+      h('div', null, h('h3', null, 'Easy to extend'), h('p', null, 'Because every module uses the same template, staff can add new modules without redesigning anything.'))));
 }
 
 function Page() {
   return h(React.Fragment, null,
     h(Hero),
     h(Sec, { id: 'problem', dark: true },
+      h('h2', { className: 'prob-h' }, '“Interactive Media students were spending more time hunting for software and hardware information than actually learning how to use it.”'),
+      h('p', { className: 'prob-cite' }, '— Lecturer from IM department'),
+      h('p', { className: 'prob-p' }, 'Every module had its own page, and every page organised things differently. First-year students needed to know what to install before a practical; returning students needed to find tutorials from earlier terms.'),
+      h('hr', { className: 'prob-rule' }),
       h('p', { className: 'kicker' }, 'The everyday question'),
       h('p', { className: 'big-q' }, '“What software would I need for creative coding?”'),
-      h('h3', { className: 'less' }, 'Less searching. More learning.'),
-      h('div', { className: 'two' },
-        h('p', null, 'Every module had its own page, and every page organised things differently. First-year students needed to know what to install before a practical; returning students needed to find tutorials from earlier terms.'),
-        h('p', null, 'There was no single place to look. My job was to turn “everything is scattered everywhere” into something a student could open, search and immediately understand.')),
-      h('blockquote', { className: 'pull' }, '“Interactive Media students were spending more time hunting for software and hardware information than actually learning how to use it.”', h('cite', null, '— Lecturer from IM department'))),
+      h('hr', { className: 'prob-rule' }),
+      h('p', { className: 'prob-end' }, 'There was no single place to look. My job was to turn “everything is scattered everywhere” into something a student could open, search and immediately understand.')),
     h(Sec, { id: 'discovery' },
       h('h2', null, 'From scattered resources to a structured system.'),
       h('p', { className: 'lede' }, 'To understand the existing experience, I audited 12+ Interactive Media modules and investigated how students accessed software, hardware and learning resources.'),
@@ -190,14 +200,14 @@ function Page() {
           ['Module context', 'A module title and clear labels establish which resources the page relates to.'],
           ['Clear guidance', 'The page points to the VLE for games and explicitly states when no software or hardware is required.']].map(Mini)))),
     h(Requirements),
-    h(Video),
+    h(Impact),
     h(Sec, { id: 'reflection' },
       h('h2', null, 'Reflection'),
-      h('p', { className: 'lede' }, 'The project brought content auditing, information architecture and prototyping into one workflow. The key lesson was to make course structure visible and make the route to each resource clear.'),
+      h('p', { className: 'lede' }, 'We had two months to deliver this, and I wish we had more time. Even so, I’m happy with what we built and how far it went.'),
       h('div', { className: 'cols3' }, [
-        ['Start with the content', 'Auditing the existing module resources provided the foundation for a clearer information architecture.'],
-        ['Make structure visible', 'Visible year tabs, grouped modules and recognisable actions reduced the friction in the initial prototype.'],
-        ['Define the handoff', 'Functional and non-functional requirements made the intended behaviour and quality expectations explicit before development.']].map(Mini))));
+        ['Two people, two months', 'This wasn’t a solo project. I worked with another student, we split the work evenly, and we met our managers every week to show our progress and agree what came next.'],
+        ['What I wish we’d had', 'Time for real testing. I’d have liked to run methods such as think-aloud sessions, watching students use the directory, but the time crunch meant we couldn’t.'],
+        ['What I’m proud of', 'We took the product all the way from gathering information, to information architecture, to design and development. Students are using it, and we met every requirement.']].map(Mini))));
 }
 
 function Lightbox({ item, onClose }) {

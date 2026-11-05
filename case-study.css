@@ -156,3 +156,33 @@ html { scroll-padding-top: 80px; }
 .panel li span { font-size: 12px; }
 .video { font-size: 22px; }
 @media (max-width: 860px) { .sec { padding-block: 64px; } .stage { padding: 16px; } .pull { padding: 28px; } }
+/* impact */
+.impact { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.quote-light { margin: 48px 0 0; padding: 4px 0 4px 28px; border-left: 3px solid var(--berry); font-family: var(--serif); font-size: clamp(24px, 3vw, 36px); line-height: 1.25; }
+.quote-light cite { display: block; margin-top: 14px; font-family: var(--sans); font-size: 13px; font-style: normal; color: var(--berry); }
+@media (max-width: 860px) { .impact { grid-template-columns: 1fr; } }
+
+/* problem space: smaller and calmer */
+#problem.sec { padding-block: 80px; }
+#problem .kicker { margin-bottom: 14px; font-size: 11px; }
+#problem .big-q { max-width: 720px; margin-bottom: 56px; font-size: clamp(28px, 3.8vw, 46px); line-height: 1.15; }
+#problem h3.less { margin-bottom: 16px; font-size: clamp(22px, 2.4vw, 30px); }
+#problem .two { grid-template-columns: 1fr; gap: 14px; max-width: 640px; font-size: 15px; line-height: 1.7; color: rgb(231 224 203 / 85%); }
+#problem .pull { max-width: 720px; margin-top: 48px; padding: 4px 0 4px 24px; background: none; border-left: 2px solid var(--sun); font-size: clamp(18px, 2vw, 24px); line-height: 1.4; }
+#problem .pull cite { margin-top: 10px; font-size: 12px; }
+
+/* problem space: one centred column */
+#problem .wrap { text-align: center; }
+#problem .eyebrow, #problem .kicker { text-align: center; }
+#problem .big-q { margin-inline: auto; }
+#problem h3.less { text-align: center; }
+#problem .two { margin-inline: auto; max-width: 620px; text-align: center; }
+#problem .pull { margin-inline: auto; padding: 32px 0 0; border-left: 0; border-top: 1px solid rgb(231 224 203 / 25%); text-align: center; }
+#problem .pull cite { text-align: center; }
+
+/* problem space: headline, rule, question, rule, closing line */
+#problem .prob-h { max-width: 860px; margin: 0 auto 14px; font-size: clamp(26px, 3.4vw, 42px); line-height: 1.2; text-align: center; }
+#problem .prob-cite { margin-bottom: 28px; font-size: 12px; color: var(--sun); }
+#problem .prob-p, #problem .prob-end { max-width: 620px; margin-inline: auto; font-size: 15px; line-height: 1.7; color: rgb(231 224 203 / 85%); }
+#problem .prob-rule { max-width: 860px; margin: 48px auto; border: 0; border-top: 1px solid rgb(231 224 203 / 25%); }
+#problem .big-q { margin-bottom: 0; }

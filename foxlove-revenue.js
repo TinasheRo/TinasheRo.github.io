@@ -2,109 +2,119 @@ const { useState, useEffect, useRef, createContext, useContext } = React;
 const h = React.createElement;
 const FX = 'foxlove_assets/';
 const Zoom = createContext(() => {});
-const DemoCtx = createContext({ focus: 0, setFocus: () => {} });
 const reduced = () => !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
 const scrollToId = (id) => { const el = document.getElementById(id); el && el.scrollIntoView({ behavior: reduced() ? 'auto' : 'smooth', block: 'start' }); };
 
 const SECTIONS = [
   { id: 'overview', nav: 'Overview' },
-  { id: 'problem', nav: '01 / Problem', num: '01', label: 'Problem space' },
-  { id: 'research', nav: '02 / Research', num: '02', label: 'Research & discovery' },
-  { id: 'design', nav: '03 / Design', num: '03', label: 'Interaction design' },
-  { id: 'handoff', nav: '04 / Handoff', num: '04', label: 'Agile MVP & engineering handoff' },
-  { id: 'decisions', nav: '05 / Decisions', num: '05', label: 'Design decisions' },
-  { id: 'prototype', nav: '06 / Prototype', num: '06', label: 'Prototype' },
+  { id: 'context', nav: '01 / Context', num: '01', label: 'Context & brief' },
+  { id: 'process', nav: '02 / Process', num: '02', label: 'Design process' },
+  { id: 'research', nav: '03 / Research', num: '03', label: 'Discovery research' },
+  { id: 'requirements', nav: '04 / Requirements', num: '04', label: 'Requirements & structure' },
+  { id: 'handoff', nav: '05 / Handoff', num: '05', label: 'Communicating the design' },
+  { id: 'impact', nav: '06 / Impact', num: '06', label: 'Impact of the process' },
   { id: 'reflection', nav: '07 / Reflection', num: '07', label: 'Reflection' },
 ];
 
 const STEPS = [
-  ['Listen', 'Qualitative interviews'],
+  ['Listen', 'Semi-structured interviews'],
   ['Cluster', 'Affinity mapping'],
-  ['Define', 'Friction themes'],
+  ['Recognise', 'Patterns across people'],
   ['Translate', 'Design implications'],
-  ['Prioritise', 'MVP focus'],
+  ['Prioritise', 'Key features'],
+];
+
+const PHASES = [
+  { label: 'Understand', sub: 'Start with the business and the people.',
+    did: 'I worked with the founder to understand the commercial goal, then studied the storyboard, context and personas she shared to see who the product was for and where it fitted into their day.',
+    methods: ['Stakeholder conversations', 'Storyboard review', 'Persona review'],
+    out: 'A shared picture of the problem, and a list of questions I could not yet answer.' },
+  { label: 'Question', sub: 'Personas give a starting point, not proof.',
+    did: 'I used the personas to map likely frustrations from the context I had. These were informed guesses, so I treated them as assumptions to test rather than facts to build on.',
+    methods: ['Persona-based frustration mapping', 'Assumptions log'],
+    out: 'A set of assumptions to confirm or challenge with real people.' },
+  { label: 'Interview', sub: 'Ask people about their real days.',
+    did: 'I shortlisted candidates by role, then interviewed 12 people across the three target audiences. Semi-structured, open-ended questions covered their daily lives, frustrations and motivations, and each session included a prototype walkthrough to capture reactions.',
+    methods: ['Recruitment shortlist', 'Semi-structured interviews', 'Prototype walkthroughs'],
+    out: 'Detailed first-hand accounts of what frustrates and motivates each group.' },
+  { label: 'Synthesise', sub: 'Turn conversations into patterns.',
+    did: 'I logged every answer in a structured database, compared participants side by side, and used a colour-coded affinity board to cluster what people said, recognise patterns and see which features mattered most.',
+    methods: ['Q&A database', 'Comparison matrix', 'Affinity mapping', 'Feature prioritisation'],
+    out: 'Four themes, each paired with design implications.' },
+  { label: 'Define', sub: 'Turn priorities into scope and structure.',
+    did: 'I wrote functional and non-functional requirements, each linked back to its source in the research, then shaped the information architecture and the paths people would take through the product.',
+    methods: ['Source-grounded requirements', 'Information architecture', 'User flows'],
+    out: 'A clear, traceable scope for the MVP.' },
+  { label: 'Design', sub: 'Make it concrete enough to build.',
+    did: 'I created high-fidelity wireframes alongside user flows, and used them to communicate with the founder and the developer so everyone stayed aligned as the MVP took shape.',
+    methods: ['High-fidelity wireframes', 'User flows', 'Design handoff'],
+    out: 'Designs the founder could react to and the developer could build from.' },
+];
+
+const METHODS = [
+  { g: 'Understand', name: 'Persona-based frustration mapping', why: 'It gave me a starting point from the context the founder provided. I kept the output as assumptions to test, because it was not yet evidence.' },
+  { g: 'Discover', name: 'Recruitment shortlist', why: 'Shortlisting by role, and tracking outreach and NDA status in one place, helped make sure the interviews covered the right audiences.' },
+  { g: 'Discover', name: 'Semi-structured interviews', why: 'Open questions with room to follow up gave me rich, detailed data about frustrations, motivations and daily life, which assumptions alone could not.' },
+  { g: 'Synthesise', name: 'Structured Q&A database', why: 'Keeping every answer next to its design implication meant nothing was lost between the conversation and the design.' },
+  { g: 'Synthesise', name: 'Comparison matrix', why: 'It let me compare reactions, needs and concerns across different kinds of participants side by side.' },
+  { g: 'Synthesise', name: 'Colour-coded affinity mapping', why: 'Clustering what people said made patterns visible, and colour kept what people said separate from what I interpreted.' },
+  { g: 'Define', name: 'Source-grounded requirements', why: 'Linking each requirement to the interview or session it came from made every decision traceable and easier to defend.' },
+  { g: 'Define', name: 'Information architecture and user flows', why: 'They showed how people would move through the product before I committed to screens.' },
+  { g: 'Design', name: 'High-fidelity wireframes', why: 'They gave the founder and the developer something concrete to react to, discuss and build from.' },
+];
+const GROUPS = ['All', 'Understand', 'Discover', 'Synthesise', 'Define', 'Design'];
+
+const EVIDENCE = [
+  ['Signal and quote', 'What a participant said, kept in their own words as raw evidence.'],
+  ['Design requirement', 'What the product needs to do in response, written so it can be built and tested.'],
+  ['Emotional goal', 'How the experience should make someone feel, such as protected, focused or in control.'],
+  ['Design trigger', 'The specific design cue that would create that feeling.'],
 ];
 
 const THEMES = [
   { title: 'Trust & candid feedback',
     heard: 'Formal settings can inhibit honesty. Candid signals may surface in lower-pressure, psychologically safe moments.',
-    response: 'Lightweight entry with an optional anonymity choice.' },
+    response: 'A lightweight, low-pressure way to contribute, with privacy choices.' },
   { title: 'Tool fatigue & context',
     heard: 'Delivery staff may lack context on sales targets and resist complex, multi-field workflows.',
-    response: 'A single-input card without setup or dropdown navigation.' },
+    response: 'A simple, single-step way to capture a note.' },
   { title: 'Psychological safety',
     heard: 'Sales commissions and targets can feel misaligned with engineering work.',
-    response: 'Focus on recognition and visible project impact.' },
+    response: 'A focus on recognition and visible impact.' },
   { title: 'Noise control & scale',
     heard: 'Account managers need more than a raw stream of notes from many contributors.',
-    response: 'AI-assisted sanitising, categorising and clustering.' },
+    response: 'Support for sorting and grouping notes so account managers see patterns.' },
 ];
 
-const FEATURES = [
-  ['Make voice easy to find', 'A high-visibility “Tap to Record” action sits beside typing, supporting hands-free notes between client meetings. In the concept, the action uses a brand purple pill (#4F46E5).'],
-  ['Start with a universal prompt', 'Instead of asking people to choose from a long list of scenarios first, the default asks for any key observation, feedback, or signal. Selecting a category then reveals more targeted guidance.'],
-  ['Show what AI will share', 'A live “What Your AM Will See” preview makes redaction visible as a contributor writes or speaks. Client names, personal identifiers, and financial figures are sanitised in the proposed experience.'],
-  ['Put identity choice in the contributor’s hands', 'An explicit anonymity toggle lets people choose whether to attach their name to a note.'],
+const REQS = {
+  functional: [
+    ['Fast capture', 'A simple way to log an observation without navigating forms.', 'Theme 02'],
+    ['Clear privacy controls', 'People can see and control what is shared.', 'Themes 01 and 03'],
+    ['Recognition for contributors', 'Contributors see the value of what they share, without monetary pressure.', 'Theme 03'],
+    ['Organised summaries', 'Account managers see patterns, not a raw stream of notes.', 'Theme 04'],
+  ],
+  nonfunctional: [
+    ['Security and anonymity', 'Sensitive input is protected, and contributors can stay anonymous.', 'Themes 01 and 03'],
+    ['Usability and speed', 'A fast, uncluttered experience that works well on mobile.', 'Theme 02'],
+    ['Integration', 'Valuable on its own first, with lightweight links to existing tools.', 'Theme 04'],
+    ['Scalability', 'The experience stays readable as more people contribute.', 'Theme 04'],
+  ],
+};
+
+const AUDIENCES = [
+  { k: 'Founder', need: 'A clear picture of the product direction that she could react to, and confidence that it reflected what users had said.',
+    gave: ['High-fidelity wireframes', 'User flows', 'Requirements tied to research themes'] },
+  { k: 'Developer', need: 'Unambiguous designs to build from, with states and spacing spelled out and a sense of what to build first.',
+    gave: ['Wireframes with defined states', 'Layout and spacing guidance', 'A prioritised build order'] },
 ];
 
-const UNIVERSAL = 'Share any key observation, feedback or signal.';
-const CATS = [
-  { id: 'positive', label: 'Positive feedback', title: 'Positive feedback', helper: 'What did the client appreciate?' },
-  { id: 'concern', label: 'Concern', title: 'Concern', helper: 'What worried them, and what prompted it?' },
-  { id: 'scope', label: 'Scope change', title: 'Scope change', helper: 'What is changing, and who raised it?' },
-  { id: 'budget', label: 'Budget', title: 'Budget', helper: 'What did you hear about budget or spend?' },
-  { id: 'competitor', label: 'Competitor', title: 'Competitor activity', helper: 'Who else is in the conversation?' },
-];
-const EXAMPLES = [
-  ['Budget note', 'The Acme team said their budget of £250k may be cut next quarter. They asked us to email finance@acme.com.'],
-  ['Good news', 'Globex are loving the new release. They mentioned a competitor demo last week.'],
-];
-const VOICE = 'They are comparing us with another supplier and want faster delivery on the Initech project.';
-const SEED = [
-  { id: 's1', cat: 'Budget', from: 'Anonymous', parts: [{ t: 'Their finance lead hinted that spend for next year is under review.' }], sample: true },
-  { id: 's2', cat: 'Positive feedback', from: 'Delivery team', parts: [{ t: 'The client team said the last release made their reporting much faster.' }], sample: true },
-  { id: 's3', cat: 'Competitor', from: 'Anonymous', parts: [{ t: 'A rival vendor was mentioned during the planning call.' }], sample: true },
-];
+const STATS = [[12, 'Interviews', 'from a shortlist of 44 candidates'], [19, 'Q&A entries', 'logged in a structured database'], [16, 'Insight cards', 'across four affinity themes'], [33, 'Requirements', 'each linked to a source']];
 
-const STATES = [
-  { label: 'Default load', title: '“Log an Observation”', text: 'Universal helper copy, prominent voice action, and a single card ready for a note.', head: 'Log an Observation', helper: UNIVERSAL, chip: null, draft: '' },
-  { label: 'Category active', title: '“Positive Feedback”', text: 'Selected tag uses soft indigo (#EEF2FF); the header and helper copy update to match.', head: 'Positive feedback', helper: 'What did the client appreciate?', chip: 'Positive feedback', draft: '' },
-  { label: 'Reset', title: 'Remove selected chip', text: 'Restore the universal helper sentence while retaining any draft text.', head: 'Log an Observation', helper: UNIVERSAL, chip: null, draft: 'The last release made reporting much faster…' },
+const IMPACT = [
+  ['For users', 'Designed around real frustrations', 'Interviews replaced assumptions with evidence, and every requirement was linked to a source, so decisions could be traced back to what people said about their working lives.'],
+  ['For the team', 'A shared picture to build from', 'Wireframes, flows and traceable requirements gave the founder something to react to and the developer something to build from.'],
+  ['For the business', 'A focused MVP scope', 'Prioritised findings helped an early-stage team decide what mattered first, rather than working from a long list of possibilities.'],
 ];
-
-const VIEWPORTS = [
-  { name: 'Desktop', range: 'Above 1440px', pad: 48, w: 1440 },
-  { name: 'Laptop', range: '1024–1439px', pad: 32, w: 1280 },
-  { name: 'Tablet', range: '768–1023px', pad: 24, w: 768 },
-  { name: 'Mobile', range: 'Below 767px', pad: 16, w: 375 },
-];
-
-const DECISIONS = [
-  { title: 'Keep the entry point open', focus: 1, friction: 'Starting with category selection adds a decision before someone can share a thought.',
-    response: 'Use a universal prompt first, then reveal category-specific guidance progressively.',
-    before: 'Category choices shown upfront', after: 'Open observation card with optional categories' },
-  { title: 'Make AI behaviour legible', focus: 2, friction: 'Invisible redaction could make contributors uncertain about what is being shared.',
-    response: 'Preview the sanitised note in the contributor’s flow so the transformation is visible.',
-    before: 'Text entered, processing unclear', after: '“What Your AM Will See” live preview' },
-  { title: 'Make privacy a choice', focus: 3, friction: 'Contributors need control over whether a signal is attributed to them.',
-    response: 'Place an explicit anonymity setting within the same simple capture experience.',
-    before: 'Identity behaviour not visible', after: 'Clear identity toggle and confirmation' },
-];
-
-/* ---------- helpers ---------- */
-const REDACT = /([\w.+-]+@[\w-]+(?:\.[\w-]+)+)|(\+?\d[\d\s().-]{7,}\d)|([£$€]\s?\d[\d,]*(?:\.\d+)?\s?(?:k|m|bn|million|billion)?)|\b(Acme|Globex|Initech|Contoso|Northwind)\b/gi;
-function redact(text) {
-  const parts = []; let last = 0; let count = 0; let m;
-  REDACT.lastIndex = 0;
-  while ((m = REDACT.exec(text))) {
-    if (m.index > last) parts.push({ t: text.slice(last, m.index) });
-    parts.push({ t: m[0], r: m[1] ? 'email' : m[2] ? 'contact number' : m[3] ? 'figure' : 'client' });
-    count++; last = m.index + m[0].length;
-  }
-  if (last < text.length) parts.push({ t: text.slice(last) });
-  return { parts, count };
-}
-const renderParts = (parts) => parts.map((p, i) => p.r ? h('mark', { key: i, className: 'redact', title: 'Removed: ' + p.r }, '[' + p.r + ']') : p.t);
 
 function useInView() {
   const ref = useRef(null);
@@ -118,6 +128,20 @@ function useInView() {
     return () => io.disconnect();
   }, []);
   return [ref, seen];
+}
+
+function CountUp({ to }) {
+  const [ref, seen] = useInView();
+  const [n, setN] = useState(0);
+  useEffect(() => {
+    if (!seen) return;
+    if (reduced()) { setN(to); return; }
+    let raf, t0;
+    const step = (t) => { t0 = t0 || t; const k = Math.min(1, (t - t0) / 900); setN(Math.round(to * (1 - Math.pow(1 - k, 3)))); if (k < 1) raf = requestAnimationFrame(step); };
+    raf = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(raf);
+  }, [seen]);
+  return h('b', { ref }, n);
 }
 
 function Fig({ src, alt, caption, label }) {
@@ -171,15 +195,6 @@ function useActive() {
   return active;
 }
 
-function SiteHeader() {
-  const links = [['Work', 'index.html#work'], ['About', 'about.html'], ['Email', 'mailto:roseannehwami@gmail.com'], ['Resume', 'Roseanne_Hwami_CV.pdf']];
-  return h('header', { className: 'cs-header wrap' },
-    h('a', { className: 'brand', href: 'index.html', 'aria-label': 'Rose + Anne, home' },
-      h('img', { className: 'brand-mark', src: 'assets/Brand__rose.svg', alt: '', width: 23, height: 23 }), 'Rose + Anne'),
-    h('nav', { className: 'nav', 'aria-label': 'Main' },
-      links.map(([l, href]) => h('a', { key: l, href, ...(l === 'Resume' && { target: '_blank', rel: 'noreferrer' }) }, l))));
-}
-
 function SubNav({ active }) {
   const [pct, setPct] = useState(0);
   useEffect(() => {
@@ -198,43 +213,72 @@ function SubNav({ active }) {
 /* ---------- sections ---------- */
 function Hero() {
   const meta = [
-    ['Role', ['Lead UX Designer']],
-    ['Tools used', ['Prototyping · design documentation · agile collaboration']],
-    ['Project', ['Confidential enterprise product · MVP']],
+    ['Role', ['UX researcher & product designer (sole designer)']],
+    ['Methods', ['Interviews · affinity mapping · requirements · wireframes']],
+    ['Context', ['Early-stage B2B SaaS · MVP']],
   ];
   return h('div', { id: 'overview', className: 'wrap' },
     h('div', { className: 'cs-hero' },
-      h('div', { className: 'pills' }, h('span', { className: 'tag' }, 'UX research & design'), h('span', { className: 'tag' }, 'AI-powered B2B'), h('span', { className: 'tag hot' }, 'Case study')),
+      h('div', { className: 'pills' }, h('span', { className: 'tag' }, 'Foxlove'), h('span', { className: 'tag' }, 'UX research & design'), h('span', { className: 'tag hot' }, 'Client work')),
       h('h1', null, 'Account Intelligence'),
       h('div', { className: 'stage' },
-        h('div', { className: 'stage-top' }, h('span', null, 'Quick signals from the people closest to the client'), h('span', null, 'Confidential enterprise product · MVP')),
-        h(Fig, { src: FX + 'hero-signin.png', alt: 'Sign-in screen of the product with the line “Turn what you notice into what you win!”', label: 'Add ' + FX + 'hero-signin.png',
-          caption: 'A confidential enterprise product concept exploring how frontline observations can support account teams. Project details have been generalised to respect an NDA.' }))),
+        h('div', { className: 'stage-top' }, h('span', null, 'Quick signals from the people closest to the client'), h('span', null, 'Early-stage B2B SaaS · MVP')),
+        h(Fig, { src: FX + 'hero-signin.png', alt: 'Foxlove sign-in screen with the line “Turn what you notice into what you win!”', label: 'Add ' + FX + 'hero-signin.png',
+          caption: 'Foxlove sign-in screen. Project details have been generalised.' }))),
     h('dl', { className: 'meta' }, meta.map(([k, v]) => h('div', { key: k }, h('dt', null, k), v.map((line) => h('dd', { key: line }, line))))),
     h('div', { className: 'intro' },
       h('p', { className: 'eyebrow' }, 'The project'),
-      h('p', null, 'Design an account intelligence layer that helps delivery teams share useful client signals in under 15 seconds, while giving account managers a clearer view of risks and opportunities. The experience needed to fit naturally into busy workdays and protect the trust of the people contributing.')));
+      h('p', null, 'Design an account intelligence layer that helps delivery teams share useful client signals quickly, while giving account managers a clearer view of risks and opportunities. As the sole designer, I led the research and design, from understanding the business to wireframes the developer could build from.')));
 }
 
-function Problem() {
-  return h(Sec, { id: 'problem', dark: true },
-    h('h2', { style: { marginTop: 24 } }, 'Valuable client signals rarely make it into the CRM.'),
-    h('p', { className: 'lede' }, 'The people closest to client work notice changes in sentiment, scope, budgets, and competitor activity. Those observations often surface in informal conversations, while formal CRM tools can feel slow, complex, and disconnected from delivery work.'),
-    h('div', { style: { margin: '40px 0', borderTop: '1px solid rgb(231 224 203 / 20%)' } }),
+function Context() {
+  const line = { borderTop: '1px solid rgb(231 224 203 / 20%)' };
+  return h(Sec, { id: 'context', dark: true },
+    h('h2', { style: { marginTop: 24 } }, 'Valuable client knowledge rarely reaches the people who need it.'),
+    h('p', { className: 'lede' }, 'Foxlove is an early-stage B2B SaaS product exploring an account intelligence layer for consulting and technology teams. The people closest to client work notice shifts in sentiment, scope, budgets and competitor activity, but that knowledge rarely makes it into formal tools.'),
+    h('h3', { className: 'h3' }, 'Where I started'),
+    h('p', { className: 'lede', style: { marginBottom: 20 } }, 'Before designing anything, I needed to understand the business and the people it was for. The founder gave me three starting points.'),
+    h('div', { className: 'ctx' },
+      [['The storyboard', 'The founder’s picture of how the product would fit into someone’s working day.'], ['The context', 'The business goals and the reasoning behind the idea.'], ['The personas', 'Early profiles of the three audiences the product needed to serve.']].map(([k, t], i) =>
+        h('div', { key: k }, h('span', { className: 'n' }, '0' + (i + 1)), h('strong', null, k), h('p', null, t)))),
+    h('div', { style: { ...line, margin: '40px 0' } }),
     h('p', { className: 'kicker', style: { textAlign: 'left' } }, 'The design question'),
     h('p', { className: 'big-q', style: { textAlign: 'left', margin: '0 0 40px', maxWidth: 900 } }, '“How might we make sharing a useful account signal feel quick, safe, and worth doing?”'),
-    h('div', { className: 'two', style: { borderTop: '1px solid rgb(231 224 203 / 20%)', paddingTop: 32 } },
-      h('p', null, 'Technical teams can experience tool fatigue when asked to navigate sales-focused systems and complete multi-field forms. Account managers, meanwhile, may lack visibility into emerging risks or expansion opportunities until they appear in a formal update.'),
-      h('p', null, 'The MVP focused on a simple exchange: make contribution lightweight for delivery staff, then use AI to organise and redact information so account teams can work with clearer, more relevant insights.')));
+    h('div', { className: 'two', style: { ...line, paddingTop: 32 } },
+      h('p', null, 'Technical teams can experience tool fatigue when asked to use sales-focused systems and complete multi-field forms. Account managers, meanwhile, may not see emerging risks or opportunities until they reach a formal update.'),
+      h('p', null, 'The personas gave me a first view of these frustrations, but they were based on context and assumption. I needed to hear from real people before deciding what to build.')));
+}
+
+function Process() {
+  const [ph, setPh] = useState(0);
+  const [grp, setGrp] = useState('All');
+  const p = PHASES[ph];
+  const list = grp === 'All' ? METHODS : METHODS.filter((m) => m.g === grp);
+  return h(Sec, { id: 'process' },
+    h('h2', null, 'A research-led process, moving at startup speed.'),
+    h('p', { className: 'lede' }, 'I started with the business and the people it was for, tested my assumptions through real conversations, and only then defined and designed. In an early-stage startup these phases moved quickly and overlapped. Choose a phase to see what I did.'),
+    h(Tabs, { label: 'Design process phases', prefix: 'ph-tab-', panelId: 'ph-panel', value: ph, onChange: setPh, items: PHASES.map((x, i) => ({ label: x.label, num: '0' + (i + 1) })) }),
+    h('div', { key: ph, id: 'ph-panel', role: 'tabpanel', 'aria-labelledby': 'ph-tab-' + ph, className: 'phase swap' },
+      h('span', { className: 'big', 'aria-hidden': 'true' }, '0' + (ph + 1)),
+      h('h3', null, p.sub),
+      h('div', { className: 'col' }, h('p', { className: 'label' }, 'What I did'), h('p', null, p.did)),
+      h('div', { className: 'col' }, h('p', { className: 'label' }, 'Methods'), h('ul', null, p.methods.map((m) => h('li', { key: m }, m)))),
+      h('div', { className: 'col' }, h('p', { className: 'label' }, 'What it produced'), h('p', null, p.out))),
+    h('h3', { className: 'h3' }, 'Why these methods.'),
+    h('p', { className: 'lede', style: { marginBottom: 20 } }, 'Each method answered a specific question. Filter by phase to see what I chose and why.'),
+    h(Seg, { label: 'Filter methods by phase', items: GROUPS.map((g) => [g, g]), value: grp, onChange: setGrp }),
+    h('div', { key: grp, className: 'methods swap' },
+      list.map((m) => h('div', { key: m.name, className: 'mcard' }, h('span', { className: 'g' }, m.g), h('h4', null, m.name), h('p', null, m.why)))));
 }
 
 function Research() {
   const [tab, setTab] = useState(0);
+  const [ev, setEv] = useState(0);
   const t = THEMES[tab];
   const [stepsRef, stepsSeen] = useInView();
   return h(Sec, { id: 'research' },
-    h('h2', null, 'Designing around four human needs.'),
-    h('p', { className: 'lede' }, 'Semi-structured interviews with technical architects, account executives, and practice leaders helped uncover why earlier internal logging tools had struggled. Affinity mapping brought the findings into four themes.'),
+    h('h2', null, 'Twelve conversations. Four themes.'),
+    h('p', { className: 'lede' }, 'The personas gave me assumptions about frustrations. To test them, I interviewed 12 people across the three target audiences. Semi-structured, open-ended questions let me understand their daily lives, frustrations and motivations in their own words, and a prototype walkthrough in each session captured their reactions. I then used affinity mapping to recognise patterns across what they said.'),
     h('div', { ref: stepsRef, className: stepsSeen ? 'in' : '' },
       h('ol', { className: 'steps' }, STEPS.map(([n, s], i) => h('li', { key: n, style: { '--i': i } }, h('span', { className: 'n' }, '0' + (i + 1)), h('h3', null, n), h('p', null, s))))),
     h('h3', { className: 'h3' }, 'Four themes. Four design responses.'),
@@ -248,213 +292,77 @@ function Research() {
     h('div', { className: 'takeaway' },
       h('p', { className: 'label' }, 'Core research takeaway'),
       h('h3', null, 'Entry friction can overwhelm intent.'),
-      h('p', null, 'When sharing a signal requires multiple fields or dropdowns, people have more reason to abandon it. Speed and psychological safety shaped the foundation of the experience.')),
-    h('h3', { className: 'h3' }, 'The people behind the signals.'),
+      h('p', null, 'When sharing a signal means filling in several fields or dropdowns, people have more reason to abandon it. Speed and psychological safety shaped the foundation of the experience. Concerns about adoption, incentives and trust in the data also came up repeatedly, across all three audiences.')),
+    h('div', { className: 'crit' },
+      h('p', { className: 'label' }, 'A limit I acknowledged'),
+      h('h3', null, 'Twelve people cannot speak for three audiences.'),
+      h('p', null, 'With three target audiences, I could not generalise from 12 interviews. Even so, the patterns gave the team a clear set of priorities to start from, and I treated them as priorities to build on and validate, not as conclusions that applied to everyone.')),
+    h('h3', { className: 'h3' }, 'How each insight was structured.'),
+    h('p', { className: 'lede', style: { marginBottom: 20 } }, 'On the affinity board, every theme followed the same chain, so a quote could be traced all the way to a design cue.'),
+    h(Seg, { label: 'Insight structure', items: EVIDENCE.map((x, n) => [n, x[0]]), value: ev, onChange: setEv }),
+    h('div', { key: ev, className: 'imp swap' }, h('h4', null, EVIDENCE[ev][0]), h('p', null, EVIDENCE[ev][1])),
+    h('h3', { className: 'h3' }, 'The research in practice.'),
     h('div', { className: 'pair', style: { marginTop: 20 } },
-      h(Fig, { src: FX + 'research-delivery.png', alt: 'Anonymised research artefact: delivery consultant or technical architect', label: 'Add ' + FX + 'research-delivery.png' }),
-      h(Fig, { src: FX + 'research-account.png', alt: 'Anonymised research artefact: account executive or practice leader', label: 'Add ' + FX + 'research-account.png' })),
-    h('p', { className: 'note' }, 'Anonymised research evidence.'));
+      h(Fig, { src: FX + 'research-interviews.png', alt: 'Anonymised view of a video interview session', label: 'Add ' + FX + 'research-interviews.png', caption: 'Interview sessions · participants anonymised' }),
+      h(Fig, { src: FX + 'research-affinity.png', alt: 'Anonymised affinity map of interview findings', label: 'Add ' + FX + 'research-affinity.png', caption: 'Affinity mapping · details anonymised' })));
 }
 
-/* ----- interactive concept: observation box ----- */
-function ObservationBox({ onSubmit }) {
-  const { focus } = useContext(DemoCtx);
-  const [text, setText] = useState('');
-  const [catId, setCatId] = useState(null);
-  const [anon, setAnon] = useState(false);
-  const [rec, setRec] = useState(false);
-  const [done, setDone] = useState(null);
-  const t0 = useRef(0);
-  const tm = useRef(0);
-  useEffect(() => () => clearTimeout(tm.current), []);
-  const cat = CATS.find((c) => c.id === catId);
-  const { parts, count } = redact(text);
-  const hasText = text.trim().length > 0;
-
-  const type = (v) => { if (v && !t0.current) t0.current = Date.now(); if (!v) t0.current = 0; setText(v); };
-  const record = () => {
-    if (rec) return;
-    setRec(true);
-    if (!t0.current) t0.current = Date.now();
-    tm.current = setTimeout(() => { setText((t) => (t.trim() ? t.trim() + ' ' : '') + VOICE); setRec(false); }, reduced() ? 700 : 2200);
-  };
-  const submit = () => {
-    const secs = t0.current ? Math.max(1, Math.round((Date.now() - t0.current) / 1000)) : null;
-    const r = redact(text.trim());
-    onSubmit({ id: 'm' + Date.now(), cat: cat ? cat.label : 'Uncategorised', from: anon ? 'Anonymous' : 'You', parts: r.parts, mine: true });
-    setDone({ secs, count: r.count, anon });
-  };
-  const again = () => { setText(''); setCatId(null); setDone(null); t0.current = 0; };
-
-  const form = h('div', { className: 'd-card' },
-    h('div', { className: 'd-prompt' },
-      h('h4', null, cat ? cat.title : 'Log an Observation'),
-      h('p', { className: 'd-helper' }, cat ? cat.helper : UNIVERSAL)),
-    h('div', { className: 'd-chips', role: 'group', 'aria-label': 'Optional category' },
-      CATS.map((c) => h('button', { key: c.id, type: 'button', className: 'd-chip' + (catId === c.id ? ' on' : ''), 'aria-pressed': catId === c.id, onClick: () => setCatId(catId === c.id ? null : c.id) }, c.label + (catId === c.id ? ' ×' : '')))),
-    h('label', { className: 'sr', htmlFor: 'd-text', style: { position: 'absolute', left: -9999 } }, 'Your observation'),
-    h('textarea', { id: 'd-text', className: 'd-text', value: text, placeholder: 'Type a note, or tap Record…', onChange: (e) => type(e.target.value) }),
-    h('div', { className: 'd-examples' }, 'Try an example:',
-      EXAMPLES.map(([l, v]) => h('button', { key: l, type: 'button', className: 'd-ex', onClick: () => setText(v) }, l))),
-    h('div', { className: 'd-row' },
-      h('button', { type: 'button', className: 'd-voice' + (rec ? ' rec' : ''), onClick: record, 'aria-live': 'polite' }, h('span', { className: 'dot' }), rec ? 'Listening…' : 'Tap to Record'),
-      h('button', { type: 'button', role: 'switch', 'aria-checked': anon, className: 'd-switch', onClick: () => setAnon(!anon) }, h('span', { className: 'track' }), 'Share anonymously')),
-    h('div', { className: 'd-row' },
-      h('span', { className: 'd-foot' }, 'Voice is simulated in this demo.'),
-      h('button', { type: 'button', className: 'd-submit', disabled: !hasText || rec, onClick: submit }, 'Submit signal')));
-
-  const preview = h('div', { className: 'd-preview' },
-    h('h5', null, '✦ What your AM will see'),
-    hasText
-      ? h(React.Fragment, null,
-          h('div', { className: 'd-meta' },
-            h('span', null, 'From: ' + (anon ? 'Anonymous' : 'You')),
-            cat && h('span', { className: 'd-tag' }, cat.label),
-            count > 0 && h('span', null, count + (count > 1 ? ' details' : ' detail') + ' removed')),
-          h('p', { className: 'd-note' }, renderParts(parts)))
-      : h('p', { className: 'd-empty' }, 'Start typing, or tap Record. Your note appears here with sensitive details removed.'));
-
-  const success = h('div', { className: 'd-card d-done', role: 'status' },
-    h('span', { className: 'tick', 'aria-hidden': 'true' }, '✓'),
-    h('h4', null, 'Signal sent'),
-    h('p', null, (done && done.secs ? 'Logged in ' + done.secs + 's' + (done.secs <= 15 ? ' — inside the 15-second goal. ' : ' — the goal is 15s or less. ') : '') +
-      (done && done.count ? done.count + (done.count > 1 ? ' details were' : ' detail was') + ' removed. ' : '') +
-      'Sent ' + (done && done.anon ? 'anonymously' : 'with your name') + ' to the account manager view.'),
-    h('div', { className: 'acts' },
-      h('button', { type: 'button', className: 'd-ghost', onClick: () => scrollToId('am-view') }, 'See it in the AM view ↓'),
-      h('button', { type: 'button', className: 'd-ghost', onClick: again }, 'Log another')));
-
-  return h('div', { className: 'demo', 'data-focus': focus },
-    h('div', { className: 'demo-top' }, h('span', { className: 'live' }, 'Concept demo · try it'), h('span', null, 'Contributor view')),
-    done ? success : form,
-    !done && preview,
-    h('p', { className: 'd-foot' }, 'Redaction here uses simple sample rules: emails, phone numbers, money figures and a few sample client names.'));
-}
-
-function AccountView({ signals, onClear, hasMine }) {
-  const [filter, setFilter] = useState('All');
-  const cats = Array.from(new Set(signals.map((s) => s.cat)));
-  useEffect(() => { if (filter !== 'All' && !cats.includes(filter)) setFilter('All'); });
-  const counts = cats.map((c) => [c, signals.filter((s) => s.cat === c).length]);
-  const max = Math.max(1, ...counts.map((x) => x[1]));
-  const shown = filter === 'All' ? signals : signals.filter((s) => s.cat === filter);
-  return h('div', { id: 'am-view', className: 'am' },
-    h('div', null,
-      h('h4', null, 'Clustered signals'),
-      h('button', { type: 'button', className: 'cl' + (filter === 'All' ? ' on' : ''), 'aria-pressed': filter === 'All', onClick: () => setFilter('All') }, h('span', null, 'All signals'), h('span', null, signals.length)),
-      counts.map(([c, n]) => h('button', { key: c, type: 'button', className: 'cl' + (filter === c ? ' on' : ''), 'aria-pressed': filter === c, onClick: () => setFilter(c) },
-        h('span', null, c), h('span', null, n), h('span', { className: 'bar' }, h('i', { style: { width: (n / max) * 100 + '%' } })))),
-      hasMine && h('p', { className: 'am-actions' }, h('button', { type: 'button', className: 'link-btn', onClick: onClear }, 'Clear my notes'))),
-    h('div', null,
-      h('h4', null, 'Account manager view' + (filter === 'All' ? '' : ' · ' + filter)),
-      shown.map((s) => h('div', { key: s.id, className: 'sig swap' + (s.mine ? ' mine' : '') },
-        h('div', { className: 'meta2' }, h('span', { className: 'tagx' }, s.cat), h('span', null, s.from), s.mine && h('span', null, 'Your note'), s.sample && h('span', null, 'Sample data')),
-        h('div', null, renderParts(s.parts))))));
-}
-
-function Design() {
-  const { focus, setFocus } = useContext(DemoCtx);
-  const [mine, setMine] = useState([]);
-  const signals = mine.concat(SEED);
-  return h(Sec, { id: 'design' },
-    h('h2', null, 'A 15-second entry experience.'),
-    h('p', { className: 'lede' }, 'The central design challenge was rethinking how informal client knowledge enters an enterprise system. The Generic Observation Box gives contributors one clear place to capture a signal, with support for voice, privacy, and helpful AI processing.'),
-    h('div', { className: 'design-grid' },
-      h('div', { className: 'features' },
-        FEATURES.map(([t, d], i) => h('button', { key: t, type: 'button', className: 'feat' + (focus === i ? ' on' : ''), 'aria-pressed': focus === i, onMouseEnter: () => setFocus(i), onFocus: () => setFocus(i), onClick: () => setFocus(i) },
-          h('span', { className: 'n' }, '0' + (i + 1)), h('span', null, h('h3', null, t), h('p', null, d))))),
-      h('div', { className: 'demo-col' }, h(ObservationBox, { onSubmit: (s) => setMine((m) => [s].concat(m)) }))),
-    h('h3', { className: 'h3' }, 'From one note to a clearer account view.'),
-    h('p', { className: 'lede', style: { marginBottom: 0 } }, 'Notes you submit above land here, grouped for the account manager. Pick a cluster to filter. Two rows are sample data.'),
-    h(AccountView, { signals, hasMine: mine.length > 0, onClear: () => setMine([]) }));
-}
-
-function MiniBox({ s }) {
-  return h('div', { className: 'mini swap', key: s.label },
-    h('h5', null, s.head),
-    h('p', { className: 'help' }, s.helper),
-    h('div', { className: 'box' }, s.draft),
-    h('div', { className: 'chips' }, ['Positive feedback', 'Concern', 'Budget'].map((c) => h('span', { key: c, className: 'chip' + (s.chip === c ? ' on' : '') }, c + (s.chip === c ? ' ×' : '')))),
-    h('span', { className: 'rec' }, 'Tap to Record'));
+function Requirements() {
+  const [kind, setKind] = useState('functional');
+  return h(Sec, { id: 'requirements' },
+    h('h2', null, 'From findings to a buildable scope.'),
+    h('p', { className: 'lede' }, 'With priorities clear, I wrote functional and non-functional requirements that traced back to the research, then mapped how people would move through the product.'),
+    h(Seg, { label: 'Requirement type', items: [['functional', 'Functional'], ['nonfunctional', 'Non-functional']], value: kind, onChange: setKind }),
+    h('ul', { key: kind, className: 'reqs swap' }, REQS[kind].map(([t, d, th]) => h('li', { key: t }, h('div', null, h('h4', null, t), h('p', null, d)), h('span', { className: 'trace' }, th)))),
+    h('p', { className: 'note' }, 'Simplified examples. In total I documented 23 functional and 10 non-functional requirements, each linked to its source.'),
+    h('h3', { className: 'h3' }, 'Structure and flow.'),
+    h('p', { className: 'lede', style: { marginBottom: 20 } }, 'The information architecture and user flows showed how people would move through the product before I committed to screens.'),
+    h('div', { className: 'pair' },
+      h(Fig, { src: FX + 'ia.png', alt: 'Simplified information architecture for the product', label: 'Add ' + FX + 'ia.png', caption: 'Information architecture' }),
+      h(Fig, { src: FX + 'user-flow.png', alt: 'Simplified user flow for logging a signal', label: 'Add ' + FX + 'user-flow.png', caption: 'User flow' })),
+    h('p', { className: 'note' }, 'Simplified project artefacts.'));
 }
 
 function Handoff() {
-  const [st, setSt] = useState(0);
-  const [vp, setVp] = useState(0);
-  const s = STATES[st];
-  const v = VIEWPORTS[vp];
+  const [who, setWho] = useState(0);
+  const a = AUDIENCES[who];
   return h(Sec, { id: 'handoff', dark: true },
-    h('h2', null, 'Design clarity helped the team move from concept to build.'),
-    h('p', { className: 'lede' }, 'In a fast-moving product environment, the experience needed to be clear enough to build and flexible enough to learn from. I collaborated with engineering on interaction states, shared design guidance, and an initial delivery backlog. Company-specific context and implementation details have been generalised to respect confidentiality.'),
-    h('h3', { className: 'h3' }, 'Component states'),
-    h('p', { className: 'lede', style: { marginBottom: 20 } }, 'The entry experience was documented so default, active, and reset states were clear to the team.'),
-    h(Seg, { label: 'Component state', items: STATES.map((x, i) => [i, x.label]), value: st, onChange: setSt }),
-    h('div', { className: 'states' },
-      h('div', { key: st, className: 'swap' }, h('h4', null, s.label + ' · ' + s.title), h('p', null, s.text)),
-      h(MiniBox, { s })),
-    h('h3', { className: 'h3' }, 'Responsive layout tokens'),
-    h('p', { className: 'lede', style: { marginBottom: 20 } }, 'Choose a viewport to see its horizontal padding drawn to scale.'),
-    h('div', { className: 'tok-wrap' },
-      h('div', null,
-        h('div', { className: 'tok-head' }, h('span', null, 'Viewport'), h('span', null, 'Width'), h('span', null, 'Padding')),
-        h('ul', { className: 'tok-list' }, VIEWPORTS.map((x, i) => h('li', { key: x.name },
-          h('button', { type: 'button', className: 'rowbtn' + (vp === i ? ' on' : ''), 'aria-pressed': vp === i, onClick: () => setVp(i) }, h('span', null, x.name), h('span', null, x.range), h('span', null, x.pad + 'px · 8pt grid')))))),
-      h('div', { className: 'vp' },
-        h('div', { className: 'vp-frame', style: { width: (v.w / 1440) * 100 + '%', paddingInline: (v.pad / v.w) * 100 + '%' } },
-          h('div', { className: 'vp-content' }, h('i'), h('i'), h('i'))),
-        h('p', { className: 'vp-cap' }, v.name + ' · ' + v.pad + 'px padding each side (shown at ' + v.w + 'px wide)'))),
+    h('h2', null, 'Wireframes and flows became a shared language.'),
+    h('p', { className: 'lede' }, 'As the only designer in a fast-moving team, I used high-fidelity wireframes and user flows to keep the founder and the developer aligned. Each of them needed something different from the design.'),
+    h(Seg, { label: 'Who the design was for', items: AUDIENCES.map((x, i) => [i, x.k]), value: who, onChange: setWho }),
+    h('div', { key: who, className: 'aud swap' },
+      h('div', null, h('p', { className: 'label' }, 'What they needed'), h('p', null, a.need)),
+      h('div', null, h('p', { className: 'label' }, 'What I gave them'), h('ul', null, a.gave.map((g) => h('li', { key: g }, g))))),
     h('h3', { className: 'h3' }, 'Initial delivery priorities'),
     h('div', { className: 'prio' },
-      [['P0 · FR-01', 'Generic Observation Box: input, voice, redaction preview, anonymity'], ['P1 · UI-02', 'Standard horizontal padding and container margins'], ['P2 · UI-03', 'Typography and color tokens, including purple and slate']].map(([k, t]) => h('div', { key: k }, h('strong', null, k), h('span', null, t)))),
-    h('div', { className: 'pair', style: { marginTop: 32 } },
-      h(Fig, { src: FX + 'handoff-spec.png', alt: 'Excerpt from the design spec and component states', label: 'Add ' + FX + 'handoff-spec.png' }),
-      h(Fig, { src: FX + 'handoff-backlog.png', alt: 'Excerpt from the delivery backlog', label: 'Add ' + FX + 'handoff-backlog.png' })),
-    h('p', { className: 'note' }, 'Redacted project artefacts.'));
+      [['P0', 'The core experience that tests the main idea'], ['P1', 'Layout and spacing foundations'], ['P2', 'Typography and colour tokens']].map(([k, t]) => h('div', { key: k }, h('strong', null, k), h('span', null, t)))),
+    h('div', { style: { marginTop: 32 } },
+      h(Fig, { src: FX + 'wireframes-hifi.png', alt: 'Selected high-fidelity wireframes', label: 'Add ' + FX + 'wireframes-hifi.png', caption: 'Selected wireframes · details limited' })));
 }
 
-function Decisions() {
-  const { setFocus } = useContext(DemoCtx);
-  const [tab, setTab] = useState(0);
-  const [view, setView] = useState('both');
-  const d = DECISIONS[tab];
-  const n = tab + 1;
-  const tryIt = () => { setFocus(d.focus); scrollToId('design'); };
-  return h(Sec, { id: 'decisions' },
-    h('h2', null, 'Small decisions support a more trusted workflow.'),
-    h('p', { className: 'lede', style: { marginBottom: 0 } }, 'These are the principles that connect the research to the proposed interface.'),
-    h(Tabs, { label: 'Design decisions', prefix: 'dec-tab-', panelId: 'dec-panel', value: tab, onChange: (i) => { setTab(i); }, items: DECISIONS.map((x, i) => ({ label: x.title, num: '0' + (i + 1) })) }),
-    h('div', { id: 'dec-panel', role: 'tabpanel', 'aria-labelledby': 'dec-tab-' + tab },
-      h(Seg, { label: 'Compare directions', items: [['before', 'Earlier'], ['after', 'Refined'], ['both', 'Side by side']], value: view, onChange: setView }),
-      h('div', { key: tab + view, className: 'dec-grid swap' },
-        view !== 'after' && h('div', null, h('p', { className: 'label' }, 'The friction'), h('p', null, d.friction)),
-        view !== 'before' && h('div', null, h('p', { className: 'label' }, 'Design response'), h('p', null, d.response))),
-      h('div', { key: 'i' + tab + view, className: 'dec-imgs swap' + (view === 'both' ? '' : ' one') },
-        view !== 'after' && h(Fig, { src: FX + 'decision-' + n + '-before.png', alt: 'Earlier exploration: ' + d.before, label: 'Add ' + FX + 'decision-' + n + '-before.png', caption: 'Earlier exploration · ' + d.before }),
-        view !== 'before' && h(Fig, { src: FX + 'decision-' + n + '-after.png', alt: 'Refined direction: ' + d.after, label: 'Add ' + FX + 'decision-' + n + '-after.png', caption: 'Refined direction · ' + d.after })),
-      h('p', { style: { marginTop: 20 } }, h('button', { type: 'button', className: 'link-btn', onClick: tryIt }, 'Try this in the live demo ↑'))));
-}
-
-function Video() {
-  const [ok, setOk] = useState(true);
-  return h(Sec, { id: 'prototype' },
-    h('h2', null, 'Show the flow in context.'),
-    h('p', { className: 'lede' }, 'A walkthrough of the capture flow: record an observation, inspect the redaction preview, choose attribution and submit.'),
-    ok ? h('video', { className: 'video', controls: true, preload: 'metadata', onError: () => setOk(false) }, h('source', { src: FX + 'prototype.mp4', type: 'video/mp4' }))
-       : h('div', { className: 'video' }, 'Prototype walkthrough to be added'),
-    !ok && h('p', { className: 'note' }, 'Space reserved for the prototype walkthrough.'));
+function Impact() {
+  const [i, setI] = useState(0);
+  const m = IMPACT[i];
+  return h(Sec, { id: 'impact' },
+    h('h2', null, 'What the process made possible.'),
+    h('p', { className: 'lede' }, 'A few numbers describe the research behind the design. The rest of the impact is about how the process helped people make better decisions.'),
+    h('div', { className: 'stats' }, STATS.map(([n, k, t]) => h('div', { key: k }, h(CountUp, { to: n }), h('strong', null, k), h('span', null, t)))),
+    h('h3', { className: 'h3' }, 'Impact of the process.'),
+    h(Seg, { label: 'Who benefited', items: IMPACT.map((x, n) => [n, x[0]]), value: i, onChange: setI }),
+    h('div', { key: i, className: 'imp swap' }, h('h4', null, m[1]), h('p', null, m[2])));
 }
 
 function Reflection() {
   return h(Sec, { id: 'reflection' },
     h('div', { className: 'refl' },
-      h('h2', null, 'Good handoff is part of the user experience.'),
-      h('p', null, 'This is a working prototype, and the design is expected to change through continued iteration and feedback. The screens are a point in an ongoing process, not a finished answer. In an agile MVP, design intent needs to stay clear while the team learns and adjusts the experience.'),
+      h('h2', null, 'Learning to design quickly without losing the research.'),
+      h('p', null, 'In an early-stage startup, priorities and information change fast. This project taught me to adapt and design quickly, working in short cycles while keeping decisions grounded in what users told me.'),
       h('h3', null, 'What I learnt.'),
-      h('p', null, 'Clear communication with developers is a core UX skill. Interaction guidance, prototypes, and prioritised work help translate research into an experience the team can build and revise. As feedback arrives, assumptions and design decisions need to be revisited; states and edge cases will evolve alongside the product.'),
+      h('p', null, 'Moving quickly does not mean skipping research. The interviews gave me something real to design from, and made conversations with the founder and developer easier. Clear flows and wireframes mattered as much as polished screens, because they were how the whole team understood the design.'),
       h('h3', null, 'What I would explore next.'),
-      h('p', null, 'Next, I will continue iterating on the prototype with feedback, checking whether the experience feels clear, useful, and appropriate in context. I expect the interaction details and priorities to evolve as the team learns.'),
+      h('p', null, 'I would test the designs with more participants from each of the three audiences, so findings can be compared across groups rather than read as one pool of opinions.'),
       h('h3', null, 'Constraints I faced.'),
-      h('p', null, 'This case study intentionally omits identifying company information and confidential operational details. Project context has been generalised to respect an NDA. Any future research or outcome claims should be included only when cleared for sharing and supported by evidence.')));
+      h('p', null, 'Twelve interviews across three audiences is a small sample, so I treated the findings as priorities to validate. Project details have been generalised to respect confidentiality.')));
 }
 
 function Lightbox({ item, onClose }) {
@@ -487,14 +395,13 @@ function Footer() {
 
 function App() {
   const [zoom, setZoom] = useState(null);
-  const [focus, setFocus] = useState(0);
   const active = useActive();
   return h(Zoom.Provider, { value: setZoom },
-    h(DemoCtx.Provider, { value: { focus, setFocus } },
+    h(React.Fragment, null,
       h('div', { className: 'fx' },
-        h(SiteHeader), h(SubNav, { active }),
-        h('main', null, h(Hero), h(Problem), h(Research), h(Design), h(Handoff), h(Decisions), h(Video), h(Reflection)),
-        h(Footer)),
+        h(SubNav, { active }),
+        h('main', null, h(Hero), h(Context), h(Process), h(Research), h(Requirements), h(Handoff), h(Impact), h(Reflection)),
+        h(typeof SiteFooter === 'function' ? SiteFooter : Footer)),
       h(Lightbox, { item: zoom, onClose: () => setZoom(null) })));
 }
 
