@@ -1,0 +1,22 @@
+/* Hero blur blobs: small, faint, and moved by JavaScript (drift + cursor attraction) in app.js.
+   Colour is #9A1840. */
+.hero-bg { position: relative; }
+.hero-bg .hero { position: relative; z-index: 1; }
+
+.blobs { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+.blobs i {
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 50%;
+  background: rgb(154 24 64 / 22%);   /* raise for stronger colour, lower for fainter */
+  filter: blur(80px);                 /* raise for softer, lower for tighter */
+  will-change: transform;
+}
+.blobs i:nth-child(1) { width: 200px; height: 130px; }
+.blobs i:nth-child(2) { width: 230px; height: 140px; }
+.blobs i:nth-child(3) { width: 170px; height: 110px; opacity: 0.8; }
+
+@media (max-width: 700px) {
+  .blobs i:nth-child(3) { display: none; }
+}
