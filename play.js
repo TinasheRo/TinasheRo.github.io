@@ -29,12 +29,17 @@ const DESIGNS = [
   { srcs: M('interface-homepage.gif', 'theinterface.gif'), alt: 'The game’s homepage in motion, with the Macintosh-style window on a textured blue desktop', caption: 'Final homepage · The live build in motion.' },
 ];
 
+const REVIEWS = [
+  { user: 'strahinja0019', stars: 5, text: 'Nice playing around with the text/ actual ui' },
+  { user: 'VerzatileDev', stars: 5, text: 'Quite a funny and interesting project III tell you that :D' },
+];
+
 const PROJECTS = [
   { id: 'interface', kind: 'Game', title: 'The Interface Is Lying To You', tools: 'HTML · CSS · JavaScript · Figma', cover: M('interface-homepage.gif', 'theinterface.gif'), span: 4, h: '360px',
     blurb: 'A deception game that challenges how we blindly trust digital interfaces.',
     desc: 'A web-based deception game that challenges how we blindly trust digital interfaces. Inspired by early Macintosh aesthetics and anti-game design.',
     video: M('Sequence 01_06.mp4', 'Sequence 01_6.mp4', 'Sequence_01_06.mp4', 'Sequence_01_6.mp4', 'Seqence 01_06.mp4'), alt: 'Screen recording of The Interface Is Lying To You being played',
-    role: 'Designer and Developer', duration: '14 weeks', itch: 'https://roseannehwami.itch.io/the-interface-is-lying-to-you', stats: '53 plays · 1,866 impressions · Two 5★ reviews' },
+    role: 'Designer and Developer', duration: '14 weeks', itch: 'https://roseannehwami.itch.io/the-interface-is-lying-to-you', stats: '82 plays · 146 views · 4.2★ average from 5 ratings · Saved in 6 collections' },
   { id: 'maze', kind: 'Game', title: 'Maze Runner', tools: 'p5.js · JavaScript', cover: A + 'play-maze.jpg', video: M('play-maze.mp4', '02.12.2025_21.56.52_REC-2.mp4', '02_12_2025_21_56_52_REC-2.mp4'), alt: 'Screen recording of the maze game', span: 2, h: '360px',
     blurb: 'Collect the coins before time runs out. Press R to restart.' },
   { id: 'scarborough', kind: 'Motion', title: 'Scarborough Trip Edit', tools: 'Adobe Premiere Pro', cover: A + 'play-scarborough.jpg', video: M('play-scarborough.mp4', '1080p 23.98.MP4', '1080p_23_98.MP4', '1080p 23.98.mp4', '1080p_23_98.mp4'), alt: 'Edited video of a trip to Scarborough', span: 2, h: '240px',
@@ -108,6 +113,13 @@ function InterfaceBody({ p, onZoom }) {
       h('a', { className: 'pl-play', href: p.itch, target: '_blank', rel: 'noreferrer' }, 'Play the game ↗')),
     h('dl', { className: 'pl-facts' },
       [['Role', p.role], ['Duration', p.duration], ['Tools', p.tools]].map(([t, d]) => h('div', { key: t }, h('dt', null, t), h('dd', null, d)))),
+    h('div', { className: 'pl-reviews' },
+      h('h3', null, 'What players said'),
+      h('div', { className: 'pl-review-list' }, REVIEWS.map((r) =>
+        h('figure', { key: r.user, className: 'pl-review' },
+          h('div', { className: 'stars', role: 'img', 'aria-label': r.stars + ' out of 5 stars' }, '★'.repeat(r.stars) + '☆'.repeat(5 - r.stars)),
+          h('blockquote', null, '“' + r.text + '”'),
+          h('figcaption', null, '— ' + r.user))))),
     h('div', { className: 'pl-tabs', role: 'tablist' }, tabs.map(([t], i) =>
       h('button', { key: t, role: 'tab', className: 'pl-tab', 'aria-selected': tab === i, onClick: () => setTab(i) }, t))),
     h('div', { className: 'pl-shots' }, shots.map((s) =>
