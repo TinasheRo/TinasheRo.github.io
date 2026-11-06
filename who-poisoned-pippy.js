@@ -109,6 +109,10 @@ function Mystery() {
       verdict && h('p', { className: 'verdict' }, verdict)));
 }
 
+const Glance = (items, note) => h(React.Fragment, null,
+  h('div', { className: 'glance' }, items.map(([b, l]) => h('div', { key: l }, h('b', null, b), h('span', null, l)))),
+  note && h('p', { className: 'note glance-note' }, note));
+
 function Palette() {
   const [msg, setMsg] = useState('');
   const copy = (hex) => {
@@ -167,7 +171,8 @@ function App() {
           [['Role', 'Interface Designer & Product Management support'], ['Duration', '14 weeks'], ['Tools', 'Figma · Balsamiq · Google Sheets'], ['Format', 'Browser-based interactive narrative']]
             .map(([t, d]) => h('div', { key: t }, h('dt', null, t), h('dd', null, d)))),
         h('div', { className: 'project-row' }, h('p', { className: 'eyebrow' }, 'The project'),
-          h('p', { className: 'lede' }, 'An interactive mystery experience where players investigate clues, interpret evidence and uncover the truth behind Pippy’s poisoning.'))),
+          h('p', { className: 'lede' }, 'I co-led the website design and layout alongside a team of four, taking responsibility for project documentation and collaborating through Agile methodologies. Together, we created an interactive mystery experience where players investigate clues, interpret evidence and uncover the truth behind Pippy’s poisoning, balancing visual design, usability and gameplay to keep it engaging and intuitive.')),
+        Glance([['78%', 'final project mark'], ['On time', 'delivered by the 27 May deadline'], ['5', 'Agile sprints across 14 weeks, with a team of four'], ['Public', 'played by visitors at the Interactive Media Showcase']])),
 
       h(Section, { id: 'opportunity', label: '01 · The opportunity', title: 'How might we make mystery feel engaging and accessible?',
         sub: 'Create an experience where players become investigators, piecing together evidence across multiple perspectives before reaching their own conclusion.' },

@@ -211,6 +211,10 @@ function SubNav({ active }) {
 }
 
 /* ---------- sections ---------- */
+const Glance = (items, note) => h(React.Fragment, null,
+  h('div', { className: 'glance' }, items.map(([b, l]) => h('div', { key: l }, h('b', null, b), h('span', null, l)))),
+  note && h('p', { className: 'note glance-note' }, note));
+
 function Hero() {
   const meta = [
     ['Role', ['UX researcher & product designer (sole designer)']],
@@ -228,7 +232,8 @@ function Hero() {
     h('dl', { className: 'meta' }, meta.map(([k, v]) => h('div', { key: k }, h('dt', null, k), v.map((line) => h('dd', { key: line }, line))))),
     h('div', { className: 'intro' },
       h('p', { className: 'eyebrow' }, 'The project'),
-      h('p', null, 'Design an account intelligence layer that helps delivery teams share useful client signals quickly, while giving account managers a clearer view of risks and opportunities. As the sole designer, I led the research and design, from understanding the business to wireframes the developer could build from.')));
+      h('p', null, 'I led the design and the end-to-end research of an AI account intelligence layer that helps delivery teams share useful client signals quickly, while giving account managers a clearer view of risks and opportunities. As the sole designer, I led the research and design, from understanding the business to wireframes the developer could build from.')),
+    Glance([['12', 'interviews across three audiences, from a shortlist of 44'], ['4', 'research themes, each turned into a design response'], ['33', 'requirements, every one linked to its research source'], ['P0–P2', 'prioritised build order handed to the developer']]));
 }
 
 function Context() {

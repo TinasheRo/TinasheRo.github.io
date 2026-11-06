@@ -107,6 +107,10 @@ function SubNav({ active }) {
     h('div', { className: 'bar', style: { width: pct + '%' } }));
 }
 
+const Glance = (items, note) => h(React.Fragment, null,
+  h('div', { className: 'glance' }, items.map(([b, l]) => h('div', { key: l }, h('b', null, b), h('span', null, l)))),
+  note && h('p', { className: 'note glance-note' }, note));
+
 function Hero() {
   const meta = [
     ['Role', ['UX research & UI design']],
@@ -124,7 +128,8 @@ function Hero() {
     h('dl', { className: 'meta' }, meta.map(([k, v]) => h('div', { key: k }, h('dt', null, k), v.map((line) => h('dd', { key: line }, line))))),
     h('div', { className: 'intro' },
       h('p', { className: 'eyebrow' }, 'The project'),
-      h('p', null, 'Helping users build healthier reflection habits through AI-powered insights and wellbeing support. Deep Within connects mood tracking, sleep data, journalling and contextual guidance in one experience.')));
+      h('p', null, 'I led the design of an AI-powered mental wellbeing app, combining mood tracking, personalised AI guidance and wellbeing resources to help users better understand their emotions. Through think-aloud usability testing with 7 students, I identified 3 key usability issues and refined the navigation and interactions, making key features easier to discover and the overall experience more intuitive.')),
+    Glance([['7', 'students tested the prototype using think-aloud'], ['71%', 'struggled to find key features like mood logging, which the new home screen now surfaces'], ['3', 'usability issues found, each fixed in its own design iteration'], ['86%', 'wanted visual progress, now met by a weekly overview with AI insight']], 'Figures come from think-aloud testing of the original prototype. The redesign has not yet been re-tested.'));
 }
 
 function Problem() {
@@ -245,7 +250,7 @@ function PhoneFig({ f, alt }) {
 function Iterations() {
   return h(Sec, { id: 'iterations' },
     h('h2', null, 'How the app evolved through every decision.'),
-    h('p', { className: 'lede' }, 'Every iteration was a response to something learned — from user research, from testing, and from asking “does this actually solve the design requirement?” Here is the story of those changes:'),
+    h('p', { className: 'lede' }, 'Every iteration was a response to something learned — from user research, from testing, and from asking “does this actually solve the design requirement?” Testing with 7 students surfaced 3 key issues, and each one led to a redesign: clearer navigation for the 71% who struggled to find features, a weekly overview for the 86% who wanted visual progress, and a confirmation state for the 57% who expected feedback after logging a mood. Here is the story of those changes:'),
     ITERATIONS.map((it) => h('article', { key: it.n, className: 'it' },
       h('p', { className: 'it-num' }, it.n),
       h('h3', { className: 'it-title' }, it.title + ' iteration'),

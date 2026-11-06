@@ -186,3 +186,9 @@ html { scroll-padding-top: 80px; }
 #problem .prob-p, #problem .prob-end { max-width: 620px; margin-inline: auto; font-size: 15px; line-height: 1.7; color: rgb(231 224 203 / 85%); }
 #problem .prob-rule { max-width: 860px; margin: 48px auto; border: 0; border-top: 1px solid rgb(231 224 203 / 25%); }
 #problem .big-q { margin-bottom: 0; }
+/* impact highlights under the project intro */
+.glance { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 28px; padding-bottom: 8px; }
+.glance > div { padding-top: 16px; border-top: 1px solid rgb(49 1 15 / 30%); }
+.glance b { display: block; font-family: var(--serif); font-size: clamp(38px, 4.6vw, 58px); font-weight: 500; line-height: 1; color: var(--berry); }
+.glance span { display: block; margin-top: 10px; font-size: 14px; line-height: 1.5; }
+.glance-note { margin: 16px 0 0; }

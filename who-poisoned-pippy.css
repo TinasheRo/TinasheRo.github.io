@@ -113,3 +113,9 @@
 }
 
 .demo-video { display: block; width: 100%; margin-top: 32px; border: 1px solid rgb(49 1 15 / 40%); border-radius: 6px; background: #000; }
+
+/* impact highlights under the project intro */
+.glance { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 28px; margin-top: 48px; }
+.glance > div { padding-top: 16px; border-top: 1px solid rgb(49 1 15 / 30%); }
+.glance b { display: block; font-family: var(--serif); font-size: clamp(38px, 4.6vw, 58px); font-weight: 500; line-height: 1; color: var(--berry); }
+.glance span { display: block; margin-top: 10px; font-size: 14px; line-height: 1.5; }

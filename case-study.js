@@ -91,6 +91,10 @@ function SubNav({ active }) {
     h('div', { className: 'bar', style: { width: pct + '%' } }));
 }
 
+const Glance = (items, note) => h(React.Fragment, null,
+  h('div', { className: 'glance' }, items.map(([b, l]) => h('div', { key: l }, h('b', null, b), h('span', null, l)))),
+  note && h('p', { className: 'note glance-note' }, note));
+
 function Hero() {
   const meta = [
     ['Timeline', ['2 months']],
@@ -108,7 +112,8 @@ function Hero() {
     h('dl', { className: 'meta' }, meta.map(([k, v]) => h('div', { key: k }, h('dt', null, k), v.map((line) => h('dd', { key: line }, line))))),
     h('div', { className: 'intro' },
       h('p', { className: 'eyebrow' }, 'The project'),
-      h('p', null, 'A central resource directory for Interactive Media students at the University of York. Over two months, two students took the work from auditing scattered module content to a clearer information architecture, a prototype and a live site, meeting managers every week to show progress. 60 unique users and 328 visits followed in the first two months after launch.')));
+      h('p', null, 'I co-led the concept, design and development of a central resource directory for Interactive Media students and staff at the University of York, making tools and resources easier to find and giving everyone a clear overview in one place. In two months we took it from auditing scattered module content to a live site, and it led to 60 unique users and 328 visits in the first two months after launch.')),
+    Glance([['60', 'unique users in the first two months'], ['328', 'visits in the first two months after launch'], ['12+', 'modules brought into one structure'], ['All', 'functional and non-functional requirements met']]));
 }
 
 function Requirements() {
