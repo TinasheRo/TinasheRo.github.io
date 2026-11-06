@@ -74,7 +74,11 @@ function Header() {
 }
 
 function Hero() {
-  return h('section', { id: 'overview', className: 'wrap about-hero' },
+  const blobs = React.useRef(null);
+  useHeroBlobs(blobs);
+  return h('div', { className: 'blob-bg' },
+    h('div', { className: 'blobs', ref: blobs, 'aria-hidden': 'true' }, h('i'), h('i'), h('i')),
+    h('section', { id: 'overview', className: 'wrap about-hero' },
     h('div', null,
       h('p', { className: 'eyebrow' }, 'About me / In full bloom'),
       h('h1', null, 'Meet Roseanne', h('svg', { className: 'flourish', viewBox: '0 0 24 24', fill: 'currentColor', 'aria-hidden': 'true' },
@@ -90,7 +94,7 @@ function Hero() {
           if (i < PHOTOS.length) { e.currentTarget.dataset.try = i; e.currentTarget.src = PHOTOS[i]; }
         },
       }),
-      h('figcaption', null, 'The tools are ingredients. People come first.')));
+      h('figcaption', null, 'The tools are ingredients. People come first.'))));
 }
 
 function Approach() {
