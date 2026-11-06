@@ -17,12 +17,12 @@ const EXPERIENCE = [
 ];
 
 const TOOLS = [
-  { name: 'Adobe Creative Suite', time: '2 years', text: 'Experience using Photoshop and Adobe Premiere Pro.', href: '#' },
-  { name: 'Figma', time: '3+ years', text: 'Experience designing in Figma.', href: 'index.html#work' },
-  { name: 'Front End Development', time: '1 year', text: 'Using Visual Studio Code, including HTML, CSS and JS.', href: 'index.html#work' },
-  { name: 'Blender', time: '2+ years', text: 'Experience using Blender.', href: '#' },
-  { name: 'Content Creation', time: '7 months', text: 'Experience in content creation.', href: '#' },
-  { name: 'Marketing', time: '3 months', text: 'Experience in digital marketing.', href: '#' },
+  { name: 'Adobe Creative Suite', time: '2 years', text: 'Experience using Photoshop and Adobe Premiere Pro.' },
+  { name: 'Figma', time: '3+ years', text: 'Experience designing in Figma.' },
+  { name: 'Front End Development', time: '1 year', text: 'Using Visual Studio Code, including HTML, CSS and JS.' },
+  { name: 'Blender', time: '2+ years', text: 'Experience using Blender.' },
+  { name: 'Marketing', time: '3 months', text: 'Experience in digital marketing.' },
+  { name: 'Agile Methodologies', time: '6 months', text: 'Working in sprints and tracking tasks with Jira.' },
 ];
 
 
@@ -181,8 +181,7 @@ function Toolkit() {
           h('article', { className: 'card' },
             h('h3', null, t.name),
             h('span', { className: 'pill-sm' }, t.time),
-            h('p', null, t.text),
-            h('a', { className: 'more', href: t.href }, 'Check out my examples →')))))));
+            h('p', null, t.text)))))));
 }
 
 function App() {

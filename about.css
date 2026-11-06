@@ -90,3 +90,5 @@ html { scroll-padding-top: 72px; }
 .subnav nav a.on { border-color: var(--berry); color: var(--berry); font-weight: 600; }
 .bar { position: absolute; bottom: -1px; left: 0; height: 2px; background: var(--berry); }
 .card .logo.pixel { image-rendering: pixelated; background: none; }
+/* toolkit cards no longer have a link, so they can be shorter */
+.tools .card { min-height: 0; }
