@@ -1,89 +1,47 @@
 const { useState, useEffect, useRef, createContext, useContext } = React;
 const h = React.createElement;
 const FX = 'foxlove_assets/';
+const SITE = 'https://www.foxloverevenue.com/';
 const Zoom = createContext(() => {});
 const reduced = () => !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
-const scrollToId = (id) => { const el = document.getElementById(id); el && el.scrollIntoView({ behavior: reduced() ? 'auto' : 'smooth', block: 'start' }); };
 
 const SECTIONS = [
   { id: 'overview', nav: 'Overview' },
   { id: 'context', nav: '01 / Context', num: '01', label: 'Context & brief' },
-  { id: 'process', nav: '02 / Process', num: '02', label: 'Design process' },
-  { id: 'research', nav: '03 / Research', num: '03', label: 'Discovery research' },
-  { id: 'requirements', nav: '04 / Requirements', num: '04', label: 'Requirements & structure' },
-  { id: 'handoff', nav: '05 / Handoff', num: '05', label: 'Communicating the design' },
-  { id: 'impact', nav: '06 / Impact', num: '06', label: 'Impact of the process' },
-  { id: 'reflection', nav: '07 / Reflection', num: '07', label: 'Reflection' },
+  { id: 'research', nav: '02 / Research', num: '02', label: 'Discovery research' },
+  { id: 'requirements', nav: '03 / Requirements', num: '03', label: 'Requirements & structure' },
+  { id: 'system', nav: '04 / Design system', num: '04', label: 'Design system' },
+  { id: 'impact', nav: '05 / Impact', num: '05', label: 'Impact' },
+  { id: 'reflection', nav: '06 / Reflection', num: '06', label: 'Reflection' },
 ];
 
 const STEPS = [
-  ['Listen', 'Semi-structured interviews'],
+  ['Listen', 'Open-ended interviews'],
   ['Cluster', 'Affinity mapping'],
   ['Recognise', 'Patterns across people'],
   ['Translate', 'Design implications'],
   ['Prioritise', 'Key features'],
 ];
 
-const PHASES = [
-  { label: 'Understand', sub: 'Start with the business and the people.',
-    did: 'I worked with the founder to understand the commercial goal, then studied the storyboard, context and personas she shared to see who the product was for and where it fitted into their day.',
-    methods: ['Stakeholder conversations', 'Storyboard review', 'Persona review'],
-    out: 'A shared picture of the problem, and a list of questions I could not yet answer.' },
-  { label: 'Question', sub: 'Personas give a starting point, not proof.',
-    did: 'I used the personas to map likely frustrations from the context I had. These were informed guesses, so I treated them as assumptions to test rather than facts to build on.',
-    methods: ['Persona-based frustration mapping', 'Assumptions log'],
-    out: 'A set of assumptions to confirm or challenge with real people.' },
-  { label: 'Interview', sub: 'Ask people about their real days.',
-    did: 'I shortlisted candidates by role, then interviewed 12 people across the three target audiences. Semi-structured, open-ended questions covered their daily lives, frustrations and motivations, and each session included a prototype walkthrough to capture reactions.',
-    methods: ['Recruitment shortlist', 'Semi-structured interviews', 'Prototype walkthroughs'],
-    out: 'Detailed first-hand accounts of what frustrates and motivates each group.' },
-  { label: 'Synthesise', sub: 'Turn conversations into patterns.',
-    did: 'I logged every answer in a structured database, compared participants side by side, and used a colour-coded affinity board to cluster what people said, recognise patterns and see which features mattered most.',
-    methods: ['Q&A database', 'Comparison matrix', 'Affinity mapping', 'Feature prioritisation'],
-    out: 'Four themes, each paired with design implications.' },
-  { label: 'Define', sub: 'Turn priorities into scope and structure.',
-    did: 'I wrote functional and non-functional requirements, each linked back to its source in the research, then shaped the information architecture and the paths people would take through the product.',
-    methods: ['Source-grounded requirements', 'Information architecture', 'User flows'],
-    out: 'A clear, traceable scope for the MVP.' },
-  { label: 'Design', sub: 'Make it concrete enough to build.',
-    did: 'I created high-fidelity wireframes alongside user flows, and used them to communicate with the founder and the developer so everyone stayed aligned as the MVP took shape.',
-    methods: ['High-fidelity wireframes', 'User flows', 'Design handoff'],
-    out: 'Designs the founder could react to and the developer could build from.' },
-];
-
-const METHODS = [
-  { g: 'Understand', name: 'Persona-based frustration mapping', why: 'It gave me a starting point from the context the founder provided. I kept the output as assumptions to test, because it was not yet evidence.' },
-  { g: 'Discover', name: 'Recruitment shortlist', why: 'Shortlisting by role, and tracking outreach and NDA status in one place, helped make sure the interviews covered the right audiences.' },
-  { g: 'Discover', name: 'Semi-structured interviews', why: 'Open questions with room to follow up gave me rich, detailed data about frustrations, motivations and daily life, which assumptions alone could not.' },
-  { g: 'Synthesise', name: 'Structured Q&A database', why: 'Keeping every answer next to its design implication meant nothing was lost between the conversation and the design.' },
-  { g: 'Synthesise', name: 'Comparison matrix', why: 'It let me compare reactions, needs and concerns across different kinds of participants side by side.' },
-  { g: 'Synthesise', name: 'Colour-coded affinity mapping', why: 'Clustering what people said made patterns visible, and colour kept what people said separate from what I interpreted.' },
-  { g: 'Define', name: 'Source-grounded requirements', why: 'Linking each requirement to the interview or session it came from made every decision traceable and easier to defend.' },
-  { g: 'Define', name: 'Information architecture and user flows', why: 'They showed how people would move through the product before I committed to screens.' },
-  { g: 'Design', name: 'High-fidelity wireframes', why: 'They gave the founder and the developer something concrete to react to, discuss and build from.' },
-];
-const GROUPS = ['All', 'Understand', 'Discover', 'Synthesise', 'Define', 'Design'];
-
-const EVIDENCE = [
-  ['Signal and quote', 'What a participant said, kept in their own words as raw evidence.'],
-  ['Design requirement', 'What the product needs to do in response, written so it can be built and tested.'],
-  ['Emotional goal', 'How the experience should make someone feel, such as protected, focused or in control.'],
-  ['Design trigger', 'The specific design cue that would create that feeling.'],
-];
-
 const THEMES = [
   { title: 'Trust & candid feedback',
-    heard: 'Formal settings can inhibit honesty. Candid signals may surface in lower-pressure, psychologically safe moments.',
-    response: 'A lightweight, low-pressure way to contribute, with privacy choices.' },
+    heard: 'Formal meetings can make people guarded. The most honest signals tend to surface in lower-pressure, more informal moments.',
+    response: 'A lightweight, low-pressure way to contribute, with clear privacy choices.' },
   { title: 'Tool fatigue & context',
-    heard: 'Delivery staff may lack context on sales targets and resist complex, multi-field workflows.',
-    response: 'A simple, single-step way to capture a note.' },
-  { title: 'Psychological safety',
-    heard: 'Sales commissions and targets can feel misaligned with engineering work.',
-    response: 'A focus on recognition and visible impact.' },
+    heard: 'Delivery staff are busy and often lack context on sales goals. They resist complex, multi-field workflows.',
+    response: 'A simple, single-step way to capture a note, designed to feel quick on any device.' },
+  { title: 'Safety & recognition',
+    heard: 'Sales commissions and targets can feel disconnected from delivery work, so contributors need to feel safe and valued instead.',
+    response: 'A focus on visible impact and recognition rather than money, with protection built in.' },
   { title: 'Noise control & scale',
     heard: 'Account managers need more than a raw stream of notes from many contributors.',
-    response: 'Support for sorting and grouping notes so account managers see patterns.' },
+    response: 'Support for grouping and summarising notes so account managers see patterns, not piles.' },
+];
+
+const LIMITS = [
+  ['Small sample', 'Twelve interviews cannot speak for three audiences. I treated the findings as priorities to validate, not conclusions that apply to everyone.'],
+  ['What people say, not what they do', 'Interviews and prototype walkthroughs capture opinions and reactions. They are not the same as watching someone use the product.'],
+  ['A snapshot in time', 'The research reflects early-stage thinking. As the product grows and more people use it, the findings need revisiting.'],
 ];
 
 const REQS = {
@@ -101,11 +59,25 @@ const REQS = {
   ],
 };
 
-const AUDIENCES = [
-  { k: 'Founder', need: 'A clear picture of the product direction that she could react to, and confidence that it reflected what users had said.',
-    gave: ['High-fidelity wireframes', 'User flows', 'Requirements tied to research themes'] },
-  { k: 'Developer', need: 'Unambiguous designs to build from, with states and spacing spelled out and a sense of what to build first.',
-    gave: ['Wireframes with defined states', 'Layout and spacing guidance', 'A prioritised build order'] },
+const TIERS = [
+  { k: 'Brand', sub: 'The purest form', text: 'Raw values with no meaning attached: a full ramp of purples, blues, greens and greys, from darkest to lightest. Nothing in the interface uses these directly.',
+    rows: [['Purple700', '#512DA8'], ['Purple50', '#EDE7F6'], ['Greyscale800', '#424242']] },
+  { k: 'Alias', sub: 'Consistent names', text: 'Groups the raw values into named families with a step number, so everything downstream refers to a name on a scale instead of a hex code.',
+    rows: [['Purple / 700', 'Purple family, step 700'], ['Blue / 700', 'Blue family, step 700'], ['Greyscale / White', 'Neutral family']] },
+  { k: 'Mapped', sub: 'Meaning and modes', text: 'Gives each alias a job in the interface, such as text, surface or status colours, across two modes. Designers and developers use these, so a theme can change without touching a component.',
+    rows: [['Text / Primary', 'Purple / 700'], ['Text / Success', 'Green / 700'], ['Text / Error', 'Red / 700'], ['Surface / Page', 'Greyscale / White']] },
+];
+
+const SHADES = [
+  ['950', '#231367'], ['900', '#311B92'], ['800', '#4527A0'], ['700', '#512DA8'], ['600', '#5E35B1'], ['500', '#673AB7'],
+  ['400', '#7E57C2'], ['300', '#9575CD'], ['200', '#B39DDB'], ['100', '#D1C4E9'], ['50', '#EDE7F6'],
+];
+const ROLES = { 700: 'Text / Primary', 50: 'Surface / Primary light' };
+
+const WHY = [
+  ['Consistent', 'Every screen draws from the same small set of decisions, so the product feels like one thing as it grows.'],
+  ['Change once', 'Update a value at the right tier and it flows through everything that depends on it.'],
+  ['Built to scale', 'New screens, new modes and new team members can be added without starting again.'],
 ];
 
 const STATS = [[12, 'Interviews', 'from a shortlist of 44 candidates'], [19, 'Q&A entries', 'logged in a structured database'], [16, 'Insight cards', 'across four affinity themes'], [33, 'Requirements', 'each linked to a source']];
@@ -115,6 +87,14 @@ const IMPACT = [
   ['For the team', 'A shared picture to build from', 'Wireframes, flows and traceable requirements gave the founder something to react to and the developer something to build from.'],
   ['For the business', 'A focused MVP scope', 'Prioritised findings helped an early-stage team decide what mattered first, rather than working from a long list of possibilities.'],
 ];
+
+const METRICS = [
+  { g: 'Usability', name: 'Task success and time to log a signal', why: 'Can people finish the core task, and how quickly? The research said logging should take seconds, so I would measure it.', how: 'Think-aloud sessions and timed tasks' },
+  { g: 'Adoption', name: 'Activation and repeat use', why: 'Do contributors log a first signal, and do they come back? Adoption was the biggest worry raised in the interviews.', how: 'Product analytics over time' },
+  { g: 'Perception', name: 'Trust and ease', why: 'Do people feel safe and in control? A short in-product question or a standard usability scale would show it.', how: 'Short surveys and follow-up interviews' },
+  { g: 'Business', name: 'Signals that become action', why: 'Do notes turn into follow-ups and opportunities for account managers? This links the design to the outcome it exists for.', how: 'Funnel tracking from signal to action' },
+];
+const MGROUPS = ['All', 'Usability', 'Adoption', 'Perception', 'Business'];
 
 function useInView() {
   const ref = useRef(null);
@@ -217,132 +197,136 @@ const Glance = (items, note) => h(React.Fragment, null,
 
 function Hero() {
   const meta = [
-    ['Role', ['UX researcher & product designer (sole designer)']],
-    ['Methods', ['Interviews · affinity mapping · requirements · wireframes']],
-    ['Context', ['Early-stage B2B SaaS · MVP']],
+    ['Role', ['Sole product designer, research and design system']],
+    ['Status', ['Jul 2026 – Present']],
+    ['Context', ['Early-stage B2B SaaS']],
   ];
   return h('div', { id: 'overview', className: 'wrap' },
     h('div', { className: 'cs-hero' },
-      h('div', { className: 'pills' }, h('span', { className: 'tag' }, 'Foxlove'), h('span', { className: 'tag' }, 'UX research & design'), h('span', { className: 'tag hot' }, 'Client work')),
-      h('h1', null, 'Account Intelligence'),
+      h('div', { className: 'pills' }, h('span', { className: 'tag' }, 'Foxlove Revenue'), h('span', { className: 'tag' }, 'UX research & design'), h('span', { className: 'tag hot' }, 'Client work')),
+      h('h1', null, 'Foxlove Revenue'),
+      h('div', { className: 'fx-links' },
+        h('span', { className: 'live-badge' }, 'Ongoing project'),
+        h('a', { className: 'ext', href: SITE, target: '_blank', rel: 'noreferrer' }, 'Visit foxloverevenue.com ↗')),
       h('div', { className: 'stage' },
-        h('div', { className: 'stage-top' }, h('span', null, 'Quick signals from the people closest to the client'), h('span', null, 'Early-stage B2B SaaS · MVP')),
+        h('div', { className: 'stage-top' }, h('span', null, 'Quick signals from the people closest to the client'), h('span', null, 'Early-stage B2B SaaS')),
         h(Fig, { src: FX + 'hero-signin.png', alt: 'Foxlove sign-in screen with the line “Turn what you notice into what you win!”', label: 'Add ' + FX + 'hero-signin.png',
           caption: 'Foxlove sign-in screen. Project details have been generalised.' }))),
     h('dl', { className: 'meta' }, meta.map(([k, v]) => h('div', { key: k }, h('dt', null, k), v.map((line) => h('dd', { key: line }, line))))),
     h('div', { className: 'intro' },
       h('p', { className: 'eyebrow' }, 'The project'),
-      h('p', null, 'I led the design and the end-to-end research of an AI account intelligence layer that helps delivery teams share useful client signals quickly, while giving account managers a clearer view of risks and opportunities. As the sole designer, I led the research and design, from understanding the business to wireframes the developer could build from.')),
-    Glance([['12', 'interviews across three audiences, from a shortlist of 44'], ['4', 'research themes, each turned into a design response'], ['33', 'requirements, every one linked to its research source'], ['P0–P2', 'prioritised build order handed to the developer']]));
+      h('p', null, 'Foxlove Revenue helps consulting firms grow the accounts they already have. The people closest to client work hear the earliest signals, so the product makes it quick for delivery teams to share them, and gives account managers a clearer view of risks and opportunities. I am the sole designer. I lead the research, shaped the product’s experience, and built its design system from scratch. I use AI tools to speed up my process, which lets me keep pace with a startup without skipping the research. I am still working on it today.')),
+    Glance([['12', 'interviews across three audiences, from a shortlist of 44'], ['4', 'research themes, each turned into a design decision'], ['33', 'requirements, every one linked to its research source'], ['3', 'tiers in the design system I built from scratch']]));
 }
 
 function Context() {
   const line = { borderTop: '1px solid rgb(231 224 203 / 20%)' };
   return h(Sec, { id: 'context', dark: true },
     h('h2', { style: { marginTop: 24 } }, 'Valuable client knowledge rarely reaches the people who need it.'),
-    h('p', { className: 'lede' }, 'Foxlove is an early-stage B2B SaaS product exploring an account intelligence layer for consulting and technology teams. The people closest to client work notice shifts in sentiment, scope, budgets and competitor activity, but that knowledge rarely makes it into formal tools.'),
+    h('p', { className: 'lede' }, 'The people closest to client work notice shifts in sentiment, scope, budgets and competitor activity, but that knowledge rarely makes it into formal tools. Foxlove aims to give a voice to those people.'),
+    h('p', { className: 'lede' }, 'When I joined, Foxlove had no design system and needed a UX designer to shape a better experience. See more information at ',
+      h('a', { className: 'inline-link', href: SITE, target: '_blank', rel: 'noreferrer' }, 'foxloverevenue.com'), '.'),
     h('h3', { className: 'h3' }, 'Where I started'),
     h('p', { className: 'lede', style: { marginBottom: 20 } }, 'Before designing anything, I needed to understand the business and the people it was for. The founder gave me three starting points.'),
     h('div', { className: 'ctx' },
-      [['The storyboard', 'The founder’s picture of how the product would fit into someone’s working day.'], ['The context', 'The business goals and the reasoning behind the idea.'], ['The personas', 'Early profiles of the three audiences the product needed to serve.']].map(([k, t], i) =>
+      [['The storyboard', 'The founder’s picture of how the product would fit into someone’s working day.'], ['The context', 'The business goals and the reasoning behind the idea.'], ['The personas', 'Early profiles of the audiences the product needed to serve.']].map(([k, t], i) =>
         h('div', { key: k }, h('span', { className: 'n' }, '0' + (i + 1)), h('strong', null, k), h('p', null, t)))),
     h('div', { style: { ...line, margin: '40px 0' } }),
+    h('p', { className: 'kicker', style: { textAlign: 'left' } }, 'Early concerns'),
+    h('div', { className: 'two' },
+      h('p', null, 'Technical teams can experience tool fatigue when asked to use sales-focused systems and complete multi-field forms.'),
+      h('p', null, 'Account managers, meanwhile, may not see emerging risks or opportunities until they reach a formal update.')),
+    h('div', { style: { ...line, margin: '40px 0' } }),
     h('p', { className: 'kicker', style: { textAlign: 'left' } }, 'The design question'),
-    h('p', { className: 'big-q', style: { textAlign: 'left', margin: '0 0 40px', maxWidth: 900 } }, '“How might we make sharing a useful account signal feel quick, safe, and worth doing?”'),
-    h('div', { className: 'two', style: { ...line, paddingTop: 32 } },
-      h('p', null, 'Technical teams can experience tool fatigue when asked to use sales-focused systems and complete multi-field forms. Account managers, meanwhile, may not see emerging risks or opportunities until they reach a formal update.'),
-      h('p', null, 'The personas gave me a first view of these frustrations, but they were based on context and assumption. I needed to hear from real people before deciding what to build.')));
-}
-
-function Process() {
-  const [ph, setPh] = useState(0);
-  const [grp, setGrp] = useState('All');
-  const p = PHASES[ph];
-  const list = grp === 'All' ? METHODS : METHODS.filter((m) => m.g === grp);
-  return h(Sec, { id: 'process' },
-    h('h2', null, 'A research-led process, moving at startup speed.'),
-    h('p', { className: 'lede' }, 'I started with the business and the people it was for, tested my assumptions through real conversations, and only then defined and designed. In an early-stage startup these phases moved quickly and overlapped. Choose a phase to see what I did.'),
-    h(Tabs, { label: 'Design process phases', prefix: 'ph-tab-', panelId: 'ph-panel', value: ph, onChange: setPh, items: PHASES.map((x, i) => ({ label: x.label, num: '0' + (i + 1) })) }),
-    h('div', { key: ph, id: 'ph-panel', role: 'tabpanel', 'aria-labelledby': 'ph-tab-' + ph, className: 'phase swap' },
-      h('span', { className: 'big', 'aria-hidden': 'true' }, '0' + (ph + 1)),
-      h('h3', null, p.sub),
-      h('div', { className: 'col' }, h('p', { className: 'label' }, 'What I did'), h('p', null, p.did)),
-      h('div', { className: 'col' }, h('p', { className: 'label' }, 'Methods'), h('ul', null, p.methods.map((m) => h('li', { key: m }, m)))),
-      h('div', { className: 'col' }, h('p', { className: 'label' }, 'What it produced'), h('p', null, p.out))),
-    h('h3', { className: 'h3' }, 'Why these methods.'),
-    h('p', { className: 'lede', style: { marginBottom: 20 } }, 'Each method answered a specific question. Filter by phase to see what I chose and why.'),
-    h(Seg, { label: 'Filter methods by phase', items: GROUPS.map((g) => [g, g]), value: grp, onChange: setGrp }),
-    h('div', { key: grp, className: 'methods swap' },
-      list.map((m) => h('div', { key: m.name, className: 'mcard' }, h('span', { className: 'g' }, m.g), h('h4', null, m.name), h('p', null, m.why)))));
+    h('p', { className: 'big-q', style: { textAlign: 'left', margin: '0 0 32px', maxWidth: 900 } }, '“How might we make sharing a useful account signal feel quick, safe, and worth doing?”'),
+    h('p', { className: 'lede' }, 'The personas gave me a first view of these frustrations, but they were based on context and assumption. I needed to hear from real people before deciding what to build.'));
 }
 
 function Research() {
   const [tab, setTab] = useState(0);
-  const [ev, setEv] = useState(0);
   const t = THEMES[tab];
   const [stepsRef, stepsSeen] = useInView();
   return h(Sec, { id: 'research' },
-    h('h2', null, 'Twelve conversations. Four themes.'),
-    h('p', { className: 'lede' }, 'The personas gave me assumptions about frustrations. To test them, I interviewed 12 people across the three target audiences. Semi-structured, open-ended questions let me understand their daily lives, frustrations and motivations in their own words, and a prototype walkthrough in each session captured their reactions. I then used affinity mapping to recognise patterns across what they said.'),
+    h('h2', null, 'I asked 12 people what the personas could only guess.'),
+    h('p', { className: 'lede' }, 'My personas and storyboard were built from context, which meant they were assumptions. To check them, I interviewed 12 people across the three target audiences. I used open-ended questions so people could describe their days, frustrations and goals in their own words, and showed a prototype in each session to capture their reactions.'),
     h('div', { ref: stepsRef, className: stepsSeen ? 'in' : '' },
       h('ol', { className: 'steps' }, STEPS.map(([n, s], i) => h('li', { key: n, style: { '--i': i } }, h('span', { className: 'n' }, '0' + (i + 1)), h('h3', null, n), h('p', null, s))))),
-    h('h3', { className: 'h3' }, 'Four themes. Four design responses.'),
-    h('p', { className: 'lede', style: { marginBottom: 0 } }, 'Choose a theme to see what the research surfaced and how the design responded.'),
+    h('div', { style: { marginTop: 40 } },
+      h(Fig, { src: FX + 'research-interviews.png', alt: 'Roseanne interviewing a participant over video', label: 'Add ' + FX + 'research-interviews.png', caption: 'Interviewing a participant · participant anonymised' })),
+    h('h3', { className: 'h3' }, 'What I found, and what I decided.'),
+    h('p', { className: 'lede', style: { marginBottom: 0 } }, 'I logged every answer in a structured database, then grouped them on an affinity board to spot patterns. Four themes came out of it. Choose one to see what people said and the design decision it led to.'),
     h(Tabs, { label: 'Research themes', prefix: 'theme-tab-', panelId: 'theme-panel', value: tab, onChange: setTab, items: THEMES.map((x, i) => ({ label: x.title, num: '0' + (i + 1) })) }),
     h('div', { key: tab, id: 'theme-panel', role: 'tabpanel', 'aria-labelledby': 'theme-tab-' + tab, className: 'insight swap' },
       h('span', { className: 'big', 'aria-hidden': 'true' }, '0' + (tab + 1)),
       h('h3', null, t.title),
-      h('div', { className: 'col' }, h('p', { className: 'label' }, 'What the research surfaced'), h('p', null, t.heard)),
-      h('div', { className: 'col' }, h('p', { className: 'label' }, 'Design response'), h('p', null, t.response))),
+      h('div', { className: 'col' }, h('p', { className: 'label' }, 'What people told me'), h('p', null, t.heard)),
+      h('div', { className: 'col' }, h('p', { className: 'label' }, 'Design decision'), h('p', null, t.response))),
     h('div', { className: 'takeaway' },
       h('p', { className: 'label' }, 'Core research takeaway'),
       h('h3', null, 'Entry friction can overwhelm intent.'),
-      h('p', null, 'When sharing a signal means filling in several fields or dropdowns, people have more reason to abandon it. Speed and psychological safety shaped the foundation of the experience. Concerns about adoption, incentives and trust in the data also came up repeatedly, across all three audiences.')),
-    h('div', { className: 'crit' },
-      h('p', { className: 'label' }, 'A limit I acknowledged'),
-      h('h3', null, 'Twelve people cannot speak for three audiences.'),
-      h('p', null, 'With three target audiences, I could not generalise from 12 interviews. Even so, the patterns gave the team a clear set of priorities to start from, and I treated them as priorities to build on and validate, not as conclusions that applied to everyone.')),
-    h('h3', { className: 'h3' }, 'How each insight was structured.'),
-    h('p', { className: 'lede', style: { marginBottom: 20 } }, 'On the affinity board, every theme followed the same chain, so a quote could be traced all the way to a design cue.'),
-    h(Seg, { label: 'Insight structure', items: EVIDENCE.map((x, n) => [n, x[0]]), value: ev, onChange: setEv }),
-    h('div', { key: ev, className: 'imp swap' }, h('h4', null, EVIDENCE[ev][0]), h('p', null, EVIDENCE[ev][1])),
-    h('h3', { className: 'h3' }, 'The research in practice.'),
-    h('div', { className: 'pair', style: { marginTop: 20 } },
-      h(Fig, { src: FX + 'research-interviews.png', alt: 'Anonymised view of a video interview session', label: 'Add ' + FX + 'research-interviews.png', caption: 'Interview sessions · participants anonymised' }),
-      h(Fig, { src: FX + 'research-affinity.png', alt: 'Anonymised affinity map of interview findings', label: 'Add ' + FX + 'research-affinity.png', caption: 'Affinity mapping · details anonymised' })));
+      h('p', null, 'When sharing a signal means filling in several fields, people have more reason to abandon it. Speed and psychological safety shaped the foundation of the experience. Concerns about adoption, incentives and trust in the data also came up repeatedly, across all three audiences.')),
+    h(Fig, { src: FX + 'research-affinity.png', alt: 'Anonymised affinity map of interview findings', label: 'Add ' + FX + 'research-affinity.png', caption: 'Affinity mapping · details anonymised' }),
+    h('h3', { className: 'h3' }, 'Research overview and limits.'),
+    h('p', { className: 'lede', style: { marginBottom: 20 } }, 'Good research includes knowing where it stops. These are the limits I kept in mind while turning findings into decisions.'),
+    h('div', { className: 'ovr' },
+      h('div', { className: 'ovr-stats' },
+        [['12', 'interviews'], ['3', 'target audiences'], ['4', 'themes']].map(([b, l]) => h('div', { key: l }, h('b', null, b), h('span', null, l)))),
+      h('ul', { className: 'limits' }, LIMITS.map(([k, d]) => h('li', { key: k }, h('strong', null, k), h('p', null, d))))));
 }
 
 function Requirements() {
   const [kind, setKind] = useState('functional');
   return h(Sec, { id: 'requirements' },
     h('h2', null, 'From findings to a buildable scope.'),
-    h('p', { className: 'lede' }, 'With priorities clear, I wrote functional and non-functional requirements that traced back to the research, then mapped how people would move through the product.'),
+    h('p', { className: 'lede' }, 'With priorities clear, I wrote functional and non-functional requirements that traced back to the research, so every decision could be explained. Then I mapped how people would move through the product before committing to screens.'),
     h(Seg, { label: 'Requirement type', items: [['functional', 'Functional'], ['nonfunctional', 'Non-functional']], value: kind, onChange: setKind }),
     h('ul', { key: kind, className: 'reqs swap' }, REQS[kind].map(([t, d, th]) => h('li', { key: t }, h('div', null, h('h4', null, t), h('p', null, d)), h('span', { className: 'trace' }, th)))),
     h('p', { className: 'note' }, 'Simplified examples. In total I documented 23 functional and 10 non-functional requirements, each linked to its source.'),
     h('h3', { className: 'h3' }, 'Structure and flow.'),
-    h('p', { className: 'lede', style: { marginBottom: 20 } }, 'The information architecture and user flows showed how people would move through the product before I committed to screens.'),
-    h('div', { className: 'pair' },
-      h(Fig, { src: FX + 'ia.png', alt: 'Simplified information architecture for the product', label: 'Add ' + FX + 'ia.png', caption: 'Information architecture' }),
-      h(Fig, { src: FX + 'user-flow.png', alt: 'Simplified user flow for logging a signal', label: 'Add ' + FX + 'user-flow.png', caption: 'User flow' })),
-    h('p', { className: 'note' }, 'Simplified project artefacts.'));
+    h('p', { className: 'lede', style: { marginBottom: 20 } }, 'User flows showed where people might hesitate or get lost, and gave the founder and the developer a shared way to talk about the product.'),
+    h('div', { className: 'pair flows' },
+      h(Fig, { src: FX + 'flow-invite.png', alt: 'User flow: an admin invites an employee, who creates a password, accepts the privacy terms and enters the product', label: 'Add ' + FX + 'flow-invite.png', caption: 'User flow · onboarding an employee' }),
+      h(Fig, { src: FX + 'flow-signin.png', alt: 'User flow: signing in, with an error path and role-based routing to the correct dashboard', label: 'Add ' + FX + 'flow-signin.png', caption: 'User flow · signing in' })),
+    h('p', { className: 'note' }, 'Early working flows, shown lightly. I used them alongside high-fidelity wireframes to keep the team aligned.'));
 }
 
-function Handoff() {
-  const [who, setWho] = useState(0);
-  const a = AUDIENCES[who];
-  return h(Sec, { id: 'handoff', dark: true },
-    h('h2', null, 'Wireframes and flows became a shared language.'),
-    h('p', { className: 'lede' }, 'As the only designer in a fast-moving team, I used high-fidelity wireframes and user flows to keep the founder and the developer aligned. Each of them needed something different from the design.'),
-    h(Seg, { label: 'Who the design was for', items: AUDIENCES.map((x, i) => [i, x.k]), value: who, onChange: setWho }),
-    h('div', { key: who, className: 'aud swap' },
-      h('div', null, h('p', { className: 'label' }, 'What they needed'), h('p', null, a.need)),
-      h('div', null, h('p', { className: 'label' }, 'What I gave them'), h('ul', null, a.gave.map((g) => h('li', { key: g }, g))))),
-    h('h3', { className: 'h3' }, 'Initial delivery priorities'),
-    h('div', { className: 'prio' },
-      [['P0', 'The core experience that tests the main idea'], ['P1', 'Layout and spacing foundations'], ['P2', 'Typography and colour tokens']].map(([k, t]) => h('div', { key: k }, h('strong', null, k), h('span', null, t)))),
-    h('div', { style: { marginTop: 32 } },
-      h(Fig, { src: FX + 'wireframes-hifi.png', alt: 'Selected high-fidelity wireframes', label: 'Add ' + FX + 'wireframes-hifi.png', caption: 'Selected wireframes · details limited' })));
+function System() {
+  const [ti, setTi] = useState(0);
+  const [si, setSi] = useState(3);
+  const tier = TIERS[ti];
+  const sh = SHADES[si];
+  const light = si >= 8;
+  const style = { '--p700': sh[1], '--p50': '#EDE7F6' };
+  return h(Sec, { id: 'system', dark: true },
+    h('h2', null, 'Giving Foxlove a brand it can build on.'),
+    h('p', { className: 'lede' }, 'Foxlove did not have a design system, so every screen risked being designed from scratch. I created one that establishes the brand, and I documented it in Confluence so the whole team can use it.'),
+    h('h3', { className: 'h3' }, 'A three-tier token architecture.'),
+    h('p', { className: 'lede', style: { marginBottom: 20 } }, 'I organised the design tokens in three tiers because it helps a system scale. Choose a tier to see what it does.'),
+    h(Tabs, { label: 'Token tiers', prefix: 'tier-tab-', panelId: 'tier-panel', value: ti, onChange: setTi, items: TIERS.map((x, i) => ({ label: x.k, num: '0' + (i + 1) })) }),
+    h('div', { key: ti, id: 'tier-panel', role: 'tabpanel', 'aria-labelledby': 'tier-tab-' + ti, className: 'tier swap' },
+      h('div', null, h('p', { className: 'label' }, tier.sub), h('p', null, tier.text)),
+      h('ul', { className: 'tier-rows' }, tier.rows.map(([a, b]) => h('li', { key: a }, h('code', null, a), h('span', null, b))))),
+    h('h3', { className: 'h3' }, 'Why it scales.'),
+    h('div', { className: 'ctx' }, WHY.map(([k, t], i) => h('div', { key: k }, h('span', { className: 'n' }, '0' + (i + 1)), h('strong', null, k), h('p', null, t)))),
+    h('h3', { className: 'h3' }, 'One brand colour: purple.'),
+    h('p', { className: 'lede', style: { marginBottom: 20 } }, 'Purple is Foxlove’s only brand colour. I built it as a ramp from 950 to 50, so there is a shade for every job. Greys handle structure, and green, orange, red and blue are kept for status, so purple always means “Foxlove”. Choose a shade to see it.'),
+    h('div', { className: 'ramp', role: 'group', 'aria-label': 'Purple shades' },
+      SHADES.map(([n, hex], i) => h('button', { key: n, type: 'button', className: 'shade' + (si === i ? ' on' : ''), style: { background: hex, color: i >= 8 ? '#231367' : '#fff' }, 'aria-pressed': si === i, onClick: () => setSi(i), 'aria-label': 'Purple ' + n + ' ' + hex }, n))),
+    h('div', { className: 'rebrand', style },
+      h('div', { className: 'rb-ui' },
+        h('p', { className: 'rb-head' }, 'Signals this month'),
+        h('span', { className: 'rb-chip' }, 'New insights'),
+        h('span', { className: 'rb-btn' }, 'Add a signal')),
+      h('ul', { className: 'tier-rows' },
+        [['Token', 'Purple' + sh[0]], ['Hex', sh[1]], ['Used for', ROLES[sh[0]] || 'Available in the brand tier']].map(([a, b]) => h('li', { key: a }, h('code', null, a), h('span', null, b))))),
+    h('h3', { className: 'h3' }, 'The system in the product.'),
+    h('p', { className: 'lede', style: { marginBottom: 20 } }, 'The same tokens carry through every screen, from signing in to logging a signal.'),
+    h('div', { className: 'pair apps' },
+      h(Fig, { src: FX + 'ds-signin.png', alt: 'Foxlove sign-in screen in purple', label: 'Add ' + FX + 'ds-signin.png', caption: 'Sign in · purple as the single brand colour' }),
+      h(Fig, { src: FX + 'ds-log-insight.png', alt: 'Foxlove log insight screen using the same purple, with status colours kept separate', label: 'Add ' + FX + 'ds-log-insight.png', caption: 'Logging a signal · same tokens, same colour' })),
+    h('div', { className: 'pair', style: { marginTop: 40 } },
+      h(Fig, { src: FX + 'tokens-brand.png', alt: 'Brand tier variables: a purple ramp from 950 to 50 and greyscale, with hex values', label: 'Add ' + FX + 'tokens-brand.png', caption: 'Brand tier · the purple ramp, as raw values' }),
+      h(Fig, { src: FX + 'tokens-mapped.png', alt: 'Mapped tier variables: text and surface roles pointing to palette values in two modes', label: 'Add ' + FX + 'tokens-mapped.png', caption: 'Mapped tier · roles in two modes' })));
 }
 
 function Impact() {
@@ -358,16 +342,22 @@ function Impact() {
 }
 
 function Reflection() {
+  const [g, setG] = useState('All');
+  const list = g === 'All' ? METRICS : METRICS.filter((m) => m.g === g);
   return h(Sec, { id: 'reflection' },
     h('div', { className: 'refl' },
-      h('h2', null, 'Learning to design quickly without losing the research.'),
-      h('p', null, 'In an early-stage startup, priorities and information change fast. This project taught me to adapt and design quickly, working in short cycles while keeping decisions grounded in what users told me.'),
-      h('h3', null, 'What I learnt.'),
-      h('p', null, 'Moving quickly does not mean skipping research. The interviews gave me something real to design from, and made conversations with the founder and developer easier. Clear flows and wireframes mattered as much as polished screens, because they were how the whole team understood the design.'),
-      h('h3', null, 'What I would explore next.'),
-      h('p', null, 'I would test the designs with more participants from each of the three audiences, so findings can be compared across groups rather than read as one pool of opinions.'),
-      h('h3', null, 'Constraints I faced.'),
-      h('p', null, 'Twelve interviews across three audiences is a small sample, so I treated the findings as priorities to validate. Project details have been generalised to respect confidentiality.')));
+      h('h2', null, 'Still learning, and still shipping.'),
+      h('p', null, 'This project is ongoing and I am learning a lot about design along the way. Working at startup speed means priorities change quickly, so I am also learning how AI can speed up my process without lowering the quality of the thinking.'),
+      h('h3', null, 'What I am exploring next.'),
+      h('p', null, 'I am learning to use Claude Design and other AI tools to work faster and more efficiently. I also hope to do more testing, such as think-aloud sessions where I watch someone use the product, to see whether it really works for them.'),
+      h('h3', null, 'How would I know the design is working?'),
+      h('p', null, 'Shipping a design is not the finish line. I want to be able to say whether it succeeded, which means choosing what to measure and how to test it. These are the questions I am working through.')),
+    h(Seg, { label: 'Filter metrics', items: MGROUPS.map((x) => [x, x]), value: g, onChange: setG }),
+    h('div', { key: g, className: 'methods swap' },
+      list.map((m) => h('div', { key: m.name, className: 'mcard' }, h('span', { className: 'g' }, m.g), h('h4', null, m.name), h('p', null, m.why), h('p', { className: 'how' }, h('strong', null, 'How to test: '), m.how)))),
+    h('div', { className: 'refl' },
+      h('h3', null, 'The lesson so far.'),
+      h('p', null, 'Moving quickly does not mean skipping research. The interviews gave me something real to design from, and the design system gives me something solid to move fast on. Project details have been generalised to respect confidentiality.')));
 }
 
 function Lightbox({ item, onClose }) {
@@ -405,7 +395,7 @@ function App() {
     h(React.Fragment, null,
       h('div', { className: 'fx' },
         h(SubNav, { active }),
-        h('main', null, h(Hero), h(Context), h(Process), h(Research), h(Requirements), h(Handoff), h(Impact), h(Reflection)),
+        h('main', null, h(Hero), h(Context), h(Research), h(Requirements), h(System), h(Impact), h(Reflection)),
         h(typeof SiteFooter === 'function' ? SiteFooter : Footer)),
       h(Lightbox, { item: zoom, onClose: () => setZoom(null) })));
 }

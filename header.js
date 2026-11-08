@@ -60,7 +60,7 @@
 // About and the case studies already have one, so this only adds it where it is missing.
 (function () {
   var p = location.pathname.toLowerCase();
-  var kind = /theinterface/.test(p) ? 'interface' : /play/.test(p) ? 'play' : /about|resource|foxlove|deep-within|pippy|case-study/.test(p) ? null : 'home';
+  var kind = /theinterface/.test(p) ? 'interface' : /play/.test(p) ? 'play' : null;
   if (!kind) return;
 
   var pages = {
