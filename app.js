@@ -71,9 +71,9 @@ function Hero() {
   return h('section', { className: 'hero-bg' },
     h('div', { className: 'blobs', ref: blobs, 'aria-hidden': 'true' }, h('i'), h('i'), h('i')),
     h('div', { className: 'hero wrap' },
-      h('h1', null, 'I’m ', h('em', null, 'Roseanne Hwami'), ' – I design digital experiences with people in mind.'),
+      h('h1', null, 'I’m ', h('em', null, 'Roseanne Hwami'), ' - I design digital experiences with people in mind.'),
       h('p', null, 'I’m studying Interactive Media at the University of York, where I’m exploring how research, psychology and design can make digital experiences more accessible.'),
-      h('p', null, 'Currently, I’m designing for an early-stage B2B SaaS startup across account management, delivery and sales — always balancing user needs with business goals.')));
+      h('p', null, 'Currently, I’m designing for an early-stage B2B SaaS startup across account management, delivery and sales. Balancing user needs with business goals.')));
 }
 
 function ProjectCard({ project, index, onLocked }) {

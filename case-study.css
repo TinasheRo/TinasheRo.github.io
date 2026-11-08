@@ -192,3 +192,8 @@ html { scroll-padding-top: 80px; }
 .glance b { display: block; font-family: var(--serif); font-size: clamp(38px, 4.6vw, 58px); font-weight: 500; line-height: 1; color: var(--berry); }
 .glance span { display: block; margin-top: 10px; font-size: 14px; line-height: 1.5; }
 .glance-note { margin: 16px 0 0; }
+/* reflection */
+.refl { max-width: 780px; }
+.refl h3 { margin: 56px 0 14px; font-family: var(--serif); font-size: clamp(26px, 3vw, 36px); font-weight: 600; line-height: 1.15; }
+.refl h3:first-child { margin-top: 8px; }
+.refl p { margin: 0 0 18px; font-size: clamp(16px, 1.4vw, 18px); line-height: 1.75; }

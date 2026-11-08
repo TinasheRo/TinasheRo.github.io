@@ -208,11 +208,17 @@ function Page() {
     h(Impact),
     h(Sec, { id: 'reflection' },
       h('h2', null, 'Reflection'),
-      h('p', { className: 'lede' }, 'We had two months to deliver this, and I wish we had more time. Even so, I’m happy with what we built and how far it went.'),
-      h('div', { className: 'cols3' }, [
-        ['Two people, two months', 'This wasn’t a solo project. I worked with another student, we split the work evenly, and we met our managers every week to show our progress and agree what came next.'],
-        ['What I wish we’d had', 'Time for real testing. I’d have liked to run methods such as think-aloud sessions, watching students use the directory, but the time crunch meant we couldn’t.'],
-        ['What I’m proud of', 'We took the product all the way from gathering information, to information architecture, to design and development. Students are using it, and we met every requirement.']].map(Mini))));
+      h('p', { className: 'lede' }, 'We had two months to bring the Resource Directory to life, and I’m proud of how far we got. Seeing it go live and knowing students were already accessing it made the work feel worthwhile. But looking back, there are definitely things I’d love to have explored further.'),
+      h('div', { className: 'refl' },
+        h('h3', null, 'Learning to communicate my ideas'),
+        h('p', null, 'One thing I learnt was how important it is to show my thinking, not just the final design. Creating different iterations of the directory helped me explain my design decisions to my manager, get feedback and make changes along the way. It made me realise that design is also about being able to communicate why something works, not just how it looks.'),
+        h('h3', null, 'Looking beyond the numbers'),
+        h('p', null, 'Seeing 60 unique users and 328 visits in the first two months was exciting because it showed that people were using the directory. However, I only had access to Google Analytics, so I couldn’t really understand what the experience was like for students.'),
+        h('p', null, 'If I had more time, I’d love to introduce a short feedback survey through the VLE and carry out usability testing. I’d want to know whether students could easily find what they needed, what they found confusing and what could be improved. I think this would have given me a much better understanding of the directory’s impact.'),
+        h('h3', null, 'What I’d do differently'),
+        h('p', null, 'During development, I came across some challenges with navigation. It made me realise that I needed to think more about how everything connects before getting into the coding. If I did this project again, I’d spend more time planning the navigation and testing it before implementation.'),
+        h('p', null, 'Working remotely was also a learning experience. I had to manage my own tasks, stay organised and communicate with others to keep things moving. It helped me become more independent while recognising when collaboration was needed.'),
+        h('p', null, 'Overall, I’m proud that we took something that started as scattered information and turned it into a live resource that students can actually use. It’s taught me that getting a product live is only part of the process. There’s always more to learn from the people using it, and that’s something I’d carry into my next project.'))));
 }
 
 function Lightbox({ item, onClose }) {

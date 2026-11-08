@@ -79,12 +79,3 @@ body { background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.
 /* space between the cards and the footer */
 .pl-sec .pl-grid { padding-bottom: 96px; }
 @media (max-width: 600px) { .pl-sec .pl-grid { padding-bottom: 64px; } }
-
-/* player reviews (Interface project) */
-.pl-reviews { margin-top: 24px; padding-top: 16px; border-top: 1px solid rgb(49 1 15 / 25%); }
-.pl-reviews h3 { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--berry); }
-.pl-review-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 12px; }
-.pl-review { margin: 0; padding: 16px; border: 1px solid rgb(49 1 15 / 25%); border-radius: 6px; }
-.pl-review .stars { color: var(--berry); font-size: 15px; letter-spacing: 2px; }
-.pl-review blockquote { margin: 8px 0 0; font-family: var(--serif); font-size: 20px; line-height: 1.3; }
-.pl-review figcaption { margin-top: 8px; font-size: 13px; color: var(--berry); }
